@@ -197,7 +197,7 @@ body:after {
     position: absolute;
     z-index: 1;
     width: 135%;
-    height: 135%;
+    height: 200%;
     top: 18%;
     left: 0;
     content: '';
