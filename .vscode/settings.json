@@ -1,5 +1,0 @@
-{
-    "IDX.webDevTools": true,
-    "typescript.experimental.tsserver.web.typeAcquisition.enabled": true,
-    "workbench.editor.enablePreviewFromQuickOpen": true
-}
