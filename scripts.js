@@ -171,4 +171,7 @@
     alert('⚠️ An error occurred. Please check your internet connection.');
     console.error(error);
 }
-});
+        if (formData.get('honey')) {
+            return; // spam
+        }
+    });
