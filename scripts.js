@@ -140,38 +140,40 @@
         });
 
         // Form submission
-    document.querySelector('.contact-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
+        document.querySelector('.contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-    const form = e.target;
-    const formData = new FormData(form);
+            const form = e.target;
+            const formData = new FormData(form);
 
-    const payload = {
-    name: formData.get('name'),
-    email: formData.get('email'),
-    message: formData.get('message')
-};
+            // ✅ Honeypot защита
+            if (formData.get('honey')) {
+                return; // spam
+            }
 
-    try {
-    const response = await fetch('https://telesender.berson-vladimir.workers.dev/', {
-    method: 'POST',
-    headers: {
-    'Content-Type': 'application/json'
-},
-    body: JSON.stringify(payload)
-});
+            const payload = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message')
+            };
 
-    if (response.ok) {
-    alert('✅ Message sent successfully!');
-    form.reset();
-} else {
-    alert('❌ Failed to send message. Try again later.');
-}
-} catch (error) {
-    alert('⚠️ An error occurred. Please check your internet connection.');
-    console.error(error);
-}
-        if (formData.get('honey')) {
-            return; // spam
-        }
-    });
+            try {
+                const response = await fetch('https://telesender.berson-vladimir.workers.dev/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    alert('✅ Message sent successfully!');
+                    form.reset();
+                } else {
+                    alert('❌ Failed to send message. Try again later.');
+                }
+            } catch (error) {
+                alert('⚠️ An error occurred. Please check your internet connection.');
+                console.error(error);
+            }
+        });
