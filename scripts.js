@@ -146,7 +146,7 @@
             const form = e.target;
             const formData = new FormData(form);
 
-            // ✅ Honeypot защита
+
             if (formData.get('honey')) {
                 return; // spam
             }
