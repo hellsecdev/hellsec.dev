@@ -158,7 +158,7 @@
             };
 
             try {
-                const response = await fetch('https://telesender.berson-vladimir.workers.dev/', {
+                const response = await fetch('https://sender.pumalabs.io/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
