@@ -18,11 +18,16 @@
             let nodes = [];
             // track mouse if needed later
             let mouse = { x: 0, y: 0 };
+            let dpr = 1;
+            let logicalWidth = 0;
+            let logicalHeight = 0;
 
             const resizeCanvas = () => {
-                const dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+                dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
                 const cssWidth = window.innerWidth;
                 const cssHeight = window.innerHeight;
+                logicalWidth = cssWidth;
+                logicalHeight = cssHeight;
                 canvas.width = Math.floor(cssWidth * dpr);
                 canvas.height = Math.floor(cssHeight * dpr);
                 canvas.style.width = cssWidth + 'px';
@@ -43,8 +48,8 @@
                     this.x += this.vx;
                     this.y += this.vy;
 
-                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                    if (this.x < 0 || this.x > logicalWidth) this.vx *= -1;
+                    if (this.y < 0 || this.y > logicalHeight) this.vy *= -1;
                 }
 
                 draw() {
@@ -60,8 +65,8 @@
                 const count = 100;
                 for (let i = 0; i < count; i++) {
                     nodes.push(new Node(
-                        Math.random() * canvas.width,
-                        Math.random() * canvas.height
+                        Math.random() * logicalWidth,
+                        Math.random() * logicalHeight
                     ));
                 }
             }
@@ -88,7 +93,7 @@
             let running = true;
             function animate() {
                 if (!running) return;
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.clearRect(0, 0, logicalWidth, logicalHeight);
 
                 nodes.forEach(node => {
                     node.update();
@@ -138,6 +143,15 @@
             mobileToggle.addEventListener('click', () => {
                 mobileToggle.classList.toggle('active');
                 navMenu.classList.toggle('active');
+                mobileToggle.setAttribute('aria-expanded', mobileToggle.classList.contains('active') ? 'true' : 'false');
+            });
+
+            // Keyboard accessibility for toggle
+            mobileToggle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    mobileToggle.click();
+                }
             });
 
             // Close mobile menu when clicking on a link
@@ -145,6 +159,7 @@
                 link.addEventListener('click', () => {
                     mobileToggle.classList.remove('active');
                     navMenu.classList.remove('active');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
                 });
             });
         }

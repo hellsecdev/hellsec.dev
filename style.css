@@ -1042,3 +1042,12 @@
                 font-size: 1.5rem;
             }
         }
+
+:focus-visible {
+    outline: 2px dashed var(--primary);
+    outline-offset: 2px;
+}
+
+a:focus-visible, button:focus-visible, .neural-btn:focus-visible, .skill-node:focus-visible, .social-links a:focus-visible {
+    box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.35);
+}

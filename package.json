@@ -1,10 +1,9 @@
 {
-  "name": "PumaLabs",
+  "name": "pumalabs.io",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Static website for Puma Labs (product R&D and cybersecurity)",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests defined for static site\" && exit 0"
   },
   "private": true
 }
