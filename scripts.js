@@ -1,179 +1,245 @@
 // JavaScript Document
 
-// Neural Network Background Animation
+// Wrap in DOMContentLoaded to ensure elements exist before use
+(function () {
+    const onReady = (fn) => {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', fn, { once: true });
+        } else {
+            fn();
+        }
+    };
+
+    onReady(() => {
+        // Neural Network Background Animation (with HiDPI support and guards)
         const canvas = document.getElementById('neural-bg');
-        const ctx = canvas.getContext('2d');
-        let nodes = [];
-        let mouse = { x: 0, y: 0 };
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let nodes = [];
+            // track mouse if needed later
+            let mouse = { x: 0, y: 0 };
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+            const resizeCanvas = () => {
+                const dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+                const cssWidth = window.innerWidth;
+                const cssHeight = window.innerHeight;
+                canvas.width = Math.floor(cssWidth * dpr);
+                canvas.height = Math.floor(cssHeight * dpr);
+                canvas.style.width = cssWidth + 'px';
+                canvas.style.height = cssHeight + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            };
 
-        class Node {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 3 + 1;
+            class Node {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.radius = Math.random() * 3 + 1;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = '#00ffff';
+                    ctx.fill();
+                }
             }
 
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            function init() {
+                nodes = [];
+                const count = 100;
+                for (let i = 0; i < count; i++) {
+                    nodes.push(new Node(
+                        Math.random() * canvas.width,
+                        Math.random() * canvas.height
+                    ));
+                }
             }
 
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#00ffff';
-                ctx.fill();
-            }
-        }
+            function connectNodes() {
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const dx = nodes[i].x - nodes[j].x;
+                        const dy = nodes[i].y - nodes[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
 
-        function init() {
-            nodes = [];
-            for (let i = 0; i < 100; i++) {
-                nodes.push(new Node(
-                    Math.random() * canvas.width,
-                    Math.random() * canvas.height
-                ));
-            }
-        }
-
-        function connectNodes() {
-            for (let i = 0; i < nodes.length; i++) {
-                for (let j = i + 1; j < nodes.length; j++) {
-                    const dx = nodes[i].x - nodes[j].x;
-                    const dy = nodes[i].y - nodes[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 150) {
-                        ctx.beginPath();
-                        ctx.moveTo(nodes[i].x, nodes[i].y);
-                        ctx.lineTo(nodes[j].x, nodes[j].y);
-                        ctx.strokeStyle = `rgba(0, 255, 255, ${1 - distance / 150})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
+                        if (distance < 150) {
+                            ctx.beginPath();
+                            ctx.moveTo(nodes[i].x, nodes[i].y);
+                            ctx.lineTo(nodes[j].x, nodes[j].y);
+                            ctx.strokeStyle = `rgba(0, 255, 255, ${1 - distance / 150})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
                     }
                 }
             }
-        }
 
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            nodes.forEach(node => {
-                node.update();
-                node.draw();
-            });
+                nodes.forEach(node => {
+                    node.update();
+                    node.draw();
+                });
 
-            connectNodes();
-            requestAnimationFrame(animate);
-        }
+                connectNodes();
+                requestAnimationFrame(animate);
+            }
 
-        // Initialize and start animation
-        init();
-        animate();
-
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            // Initialize and start animation
+            resizeCanvas();
             init();
-        });
+            animate();
 
-        // Mouse move effect
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-        });
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                init();
+            }, { passive: true });
 
-        // Mobile menu toggle
+            // Mouse move (reserved for future interactions)
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            });
+        }
+
+        // Mobile menu toggle (guarded)
         const mobileToggle = document.getElementById('mobile-toggle');
         const navMenu = document.getElementById('nav-menu');
-
-        mobileToggle.addEventListener('click', () => {
-            mobileToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => {
+                mobileToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
             });
-        });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+        }
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') return; // ignore empty anchors
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+        // Navbar scroll effect + section fade-in using IntersectionObserver
+        const navbar = document.getElementById('navbar');
+        const sections = Array.from(document.querySelectorAll('.fade-in'));
 
-            // Fade in sections
-            const sections = document.querySelectorAll('.fade-in');
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.8) {
-                    section.classList.add('visible');
+        const onScroll = () => {
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll(); // initialize state on load
+
+        if ('IntersectionObserver' in window && sections.length) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, rootMargin: '0px', threshold: 0.2 });
+            sections.forEach(sec => io.observe(sec));
+        } else if (sections.length) {
+            // Fallback: simple scroll check
+            const revealOnScroll = () => {
+                const vh = window.innerHeight;
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top < vh * 0.8) {
+                        section.classList.add('visible');
+                    }
+                });
+            };
+            window.addEventListener('scroll', revealOnScroll, { passive: true });
+            revealOnScroll();
+        }
+
+        // Form submission (guarded + better UX)
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const form = e.target;
+                const formData = new FormData(form);
+
+                // honeypot spam check
+                if (formData.get('honey')) {
+                    return; // spam, silently ignore
+                }
+
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const prevText = submitBtn ? submitBtn.textContent : '';
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
+                }
+
+                const payload = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    message: formData.get('message')
+                };
+
+                try {
+                    const response = await fetch('https://sender.pumalabs.io/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        alert('✅ Message sent successfully!');
+                        form.reset();
+                    } else {
+                        const text = await response.text().catch(() => '');
+                        alert('❌ Failed to send message. Try again later.' + (text ? `\nDetails: ${text}` : ''));
+                    }
+                } catch (error) {
+                    console.error(error);
+                    alert('⚠️ An error occurred. Please check your internet connection.');
+                } finally {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = prevText || 'SEND MESSAGE';
+                    }
                 }
             });
-        });
-
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const form = e.target;
-            const formData = new FormData(form);
-
-
-            if (formData.get('honey')) {
-                return; // spam
-            }
-
-            const payload = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                message: formData.get('message')
-            };
-
-            try {
-                const response = await fetch('https://sender.pumalabs.io/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                if (response.ok) {
-                    alert('✅ Message sent successfully!');
-                    form.reset();
-                } else {
-                    alert('❌ Failed to send message. Try again later.');
-                }
-            } catch (error) {
-                alert('⚠️ An error occurred. Please check your internet connection.');
-                console.error(error);
-            }
-        });
+        }
+    });
+})();
