@@ -85,7 +85,9 @@
                 }
             }
 
+            let running = true;
             function animate() {
+                if (!running) return;
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                 nodes.forEach(node => {
@@ -100,7 +102,21 @@
             // Initialize and start animation
             resizeCanvas();
             init();
+            running = true;
             animate();
+
+            // Pause/resume on tab visibility change to save CPU
+            const handleVisibility = () => {
+                if (document.hidden) {
+                    running = false;
+                } else {
+                    if (!running) {
+                        running = true;
+                        requestAnimationFrame(animate);
+                    }
+                }
+            };
+            document.addEventListener('visibilitychange', handleVisibility);
 
             // Handle window resize
             window.addEventListener('resize', () => {
