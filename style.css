@@ -51,7 +51,6 @@
             line-height: 1.7;
         }
 
-        /* Network Canvas Background */
         #neural-bg {
             position: fixed;
             top: 0;
@@ -62,7 +61,6 @@
             opacity: 0.3;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -89,7 +87,6 @@
             margin: 0 auto;
         }
 
-        /* Logo */
         .logo-container {
             display: flex;
             align-items: center;
@@ -120,7 +117,6 @@
             text-transform: uppercase;
         }
 
-        /* Menu decorative lines */
         .nav-menu {
             position: relative;
         }
@@ -179,7 +175,6 @@
             width: 100%;
         }
 
-        /* Mobile Menu */
         .mobile-menu-toggle {
             display: none;
             flex-direction: column;
@@ -208,7 +203,6 @@
             transform: rotate(-45deg) translate(8px, -8px);
         }
 
-        /* Hero Section */
         .hero {
             height: 65vh;
             display: flex;
@@ -293,7 +287,6 @@
             50% { background-position: 100% 50%; }
         }
 
-        /* Scroll Button */
         .scroll-btn {
             position: absolute;
             bottom: 50px;
@@ -341,7 +334,6 @@
             50% { transform: translateY(5px); }
         }
 
-        /* Sections */
         section {
             padding: 100px 50px;
             max-width: 1200px;
@@ -386,7 +378,6 @@
             box-shadow: 0 0 10px var(--primary);
         }
 
-        /* Glass Cards */
         .glass-card {
             background: var(--bg-glass);
             backdrop-filter: blur(10px);
@@ -425,7 +416,6 @@
             border-color: var(--primary);
         }
 
-        /* About Section */
         .about-container {
             display: grid;
             grid-template-columns: 1fr 2fr;
@@ -536,7 +526,6 @@
             font-weight: 400;
         }
 
-        /* Projects Grid */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -596,7 +585,6 @@
             100% { transform: rotate(45deg) translateY(100%); opacity: 0; }
         }
 
-        /* Skills */
         .skills-container {
             display: flex;
             flex-wrap: wrap;
@@ -644,7 +632,6 @@
             opacity: 0.3;
         }
 
-        /* Contact */
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -708,7 +695,6 @@
             height: 300px;
         }
 
-        /* Footer */
         footer {
             background: rgba(10, 10, 10, 0.95);
             border-top: 1px solid rgba(0, 255, 255, 0.2);
@@ -793,7 +779,6 @@
 			color: white;
 		}
 
-        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -816,7 +801,6 @@
             transform: translateY(0);
         }
 
-        /* Respect users who prefer reduced motion */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -840,7 +824,6 @@
             }
         }
 
-        /* Tablet Responsive */
         @media (max-width: 1024px) and (min-width: 769px) {
             .projects-grid {
                 gap: 25px;
@@ -851,7 +834,6 @@
             }
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             nav {
                 padding: 15px 20px;
@@ -1053,7 +1035,7 @@ a:focus-visible, button:focus-visible, .neural-btn:focus-visible, .skill-node:fo
 }
 
 .partner-logo {
-    width: 100px; /* или любое другое значение */
+    width: 100px;
     height: auto;
     transition: transform 0.5s ease;
 }

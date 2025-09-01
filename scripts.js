@@ -1,6 +1,3 @@
-// JavaScript Document
-
-// Wrap in DOMContentLoaded to ensure elements exist before use
 (function () {
     const onReady = (fn) => {
         if (document.readyState === 'loading') {
@@ -11,7 +8,6 @@
     };
 
     onReady(() => {
-        // Neural Network Background Animation (with HiDPI support and guards)
         const canvas = document.getElementById('neural-bg');
         if (canvas) {
             const ctx = canvas.getContext('2d');
@@ -104,13 +100,11 @@
                 requestAnimationFrame(animate);
             }
 
-            // Initialize and start animation
             resizeCanvas();
             init();
             running = true;
             animate();
 
-            // Pause/resume on tab visibility change to save CPU
             const handleVisibility = () => {
                 if (document.hidden) {
                     running = false;
@@ -123,20 +117,17 @@
             };
             document.addEventListener('visibilitychange', handleVisibility);
 
-            // Handle window resize
             window.addEventListener('resize', () => {
                 resizeCanvas();
                 init();
             }, { passive: true });
 
-            // Mouse move (reserved for future interactions)
             window.addEventListener('mousemove', (e) => {
                 mouse.x = e.clientX;
                 mouse.y = e.clientY;
             });
         }
 
-        // Mobile menu toggle (guarded)
         const mobileToggle = document.getElementById('mobile-toggle');
         const navMenu = document.getElementById('nav-menu');
         if (mobileToggle && navMenu) {
@@ -146,7 +137,6 @@
                 mobileToggle.setAttribute('aria-expanded', mobileToggle.classList.contains('active') ? 'true' : 'false');
             });
 
-            // Keyboard accessibility for toggle
             mobileToggle.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -154,7 +144,6 @@
                 }
             });
 
-            // Close mobile menu when clicking on a link
             document.querySelectorAll('.nav-menu a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileToggle.classList.remove('active');
@@ -164,7 +153,6 @@
             });
         }
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
@@ -177,7 +165,6 @@
             });
         });
 
-        // Navbar scroll effect + section fade-in using IntersectionObserver
         const navbar = document.getElementById('navbar');
         const sections = Array.from(document.querySelectorAll('.fade-in'));
 
@@ -191,7 +178,7 @@
             }
         };
         window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll(); // initialize state on load
+        onScroll();
 
         if ('IntersectionObserver' in window && sections.length) {
             const io = new IntersectionObserver((entries) => {
@@ -204,7 +191,6 @@
             }, { root: null, rootMargin: '0px', threshold: 0.2 });
             sections.forEach(sec => io.observe(sec));
         } else if (sections.length) {
-            // Fallback: simple scroll check
             const revealOnScroll = () => {
                 const vh = window.innerHeight;
                 sections.forEach(section => {
@@ -218,7 +204,6 @@
             revealOnScroll();
         }
 
-        // Form submission (guarded + better UX)
         const contactForm = document.querySelector('.contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', async (e) => {
@@ -227,9 +212,8 @@
                 const form = e.target;
                 const formData = new FormData(form);
 
-                // honeypot spam check
                 if (formData.get('honey')) {
-                    return; // spam, silently ignore
+                    return;
                 }
 
                 const submitBtn = form.querySelector('button[type="submit"]');
