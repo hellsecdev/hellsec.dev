@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puma Labs - Product R&D / Cybersecurity for Entrepreneurs & Startups</title>
     <link rel="icon" href="assets/favicon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
     <meta name="description" content="Puma Labs provides product R&D and cybersecurity services for entrepreneurs and startups: product development, UI/UX, AI integration, and ongoing support.">
     <meta name="author" content="Puma Labs">
     <meta name="publisher" content="Puma Labs">
@@ -176,6 +177,7 @@
     </script>
 </head>
 <body>
+    <a class="skip-link" href="#home">Skip to content</a>
     <canvas id="neural-bg"></canvas>
 
     <nav id="navbar">
@@ -407,18 +409,22 @@
         <h2 class="section-title">CONTACT</h2>
         <form class="contact-form glass-card">
             <div class="form-group">
-                <input type="text" name="name" placeholder="Your Name" required>
+                <label class="sr-only" for="contact-name">Your Name</label>
+                <input type="text" id="contact-name" name="name" placeholder="Your Name" required autocomplete="name" inputmode="text">
             </div>
             <div class="form-group">
-                <input type="email" name="email" placeholder="Your Email" required>
+                <label class="sr-only" for="contact-email">Your Email</label>
+                <input type="email" id="contact-email" name="email" placeholder="Your Email" required autocomplete="email" inputmode="email">
             </div>
             <div class="form-group">
-                <textarea rows="5" name="message" placeholder="Your Message" required></textarea>
+                <label class="sr-only" for="contact-message">Your Message</label>
+                <textarea id="contact-message" rows="5" name="message" placeholder="Your Message" required></textarea>
             </div>
             <div class="form-group">
                 <input type="text" name="honey" hidden aria-hidden="true" tabindex="-1" autocomplete="off">
             </div>
             <button type="submit" class="neural-btn">SEND MESSAGE</button>
+            <p class="form-status" aria-live="polite" aria-atomic="true"></p>
         </form>
     </section>
 
@@ -458,7 +464,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 PumaLabs. All rights reserved.</p>
+            <p>&copy; <span id="current-year">2025</span> PumaLabs. All rights reserved.</p>
         </div>
     </footer>
 <noscript>

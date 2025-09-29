@@ -216,11 +216,17 @@
                     return;
                 }
 
+                const statusEl = form.querySelector('.form-status');
+
                 const submitBtn = form.querySelector('button[type="submit"]');
                 const prevText = submitBtn ? submitBtn.textContent : '';
                 if (submitBtn) {
                     submitBtn.disabled = true;
                     submitBtn.textContent = 'Sending...';
+                }
+                if (statusEl) {
+                    statusEl.classList.remove('success', 'error');
+                    statusEl.textContent = 'Sending...';
                 }
 
                 const payload = {
@@ -239,15 +245,32 @@
                     });
 
                     if (response.ok) {
-                        alert('✅ Message sent successfully!');
+                        if (statusEl) {
+                            statusEl.textContent = 'Message sent successfully!';
+                            statusEl.classList.remove('error');
+                            statusEl.classList.add('success');
+                        } else {
+                            console.log('Message sent successfully!');
+                        }
                         form.reset();
                     } else {
                         const text = await response.text().catch(() => '');
-                        alert('❌ Failed to send message. Try again later.' + (text ? `\nDetails: ${text}` : ''));
+                        const msg = 'Failed to send message. Try again later.' + (text ? ` Details: ${text}` : '');
+                        if (statusEl) {
+                            statusEl.textContent = msg;
+                            statusEl.classList.remove('success');
+                            statusEl.classList.add('error');
+                        } else {
+                            console.warn(msg);
+                        }
                     }
                 } catch (error) {
                     console.error(error);
-                    alert('⚠️ An error occurred. Please check your internet connection.');
+                    if (statusEl) {
+                        statusEl.textContent = 'An error occurred. Please check your internet connection.';
+                        statusEl.classList.remove('success');
+                        statusEl.classList.add('error');
+                    }
                 } finally {
                     if (submitBtn) {
                         submitBtn.disabled = false;
@@ -255,6 +278,57 @@
                     }
                 }
             });
+        }
+        // Register Service Worker for basic offline caching
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(err => console.warn('Service worker registration failed:', err));
+            });
+        }
+
+        // Active nav link highlight and aria-current
+        try {
+            const navLinks = Array.from(document.querySelectorAll('.nav-menu a[href^="#"]'));
+            const sectionIds = navLinks
+                .map(l => l.getAttribute('href') || '')
+                .filter(h => h.startsWith('#'))
+                .map(h => h.slice(1));
+            const observedSections = sectionIds
+                .map(id => document.getElementById(id))
+                .filter(Boolean);
+
+            const setAriaCurrent = (id) => {
+                navLinks.forEach(link => {
+                    const target = (link.getAttribute('href') || '').slice(1);
+                    if (target === id) {
+                        link.setAttribute('aria-current', 'true');
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
+                });
+            };
+
+            const updateActiveLink = () => {
+                let currentId = observedSections.length ? observedSections[0].id : '';
+                for (const sec of observedSections) {
+                    const rect = sec.getBoundingClientRect();
+                    if (rect.top <= 120) {
+                        currentId = sec.id;
+                    }
+                }
+                if (currentId) setAriaCurrent(currentId);
+            };
+
+            window.addEventListener('scroll', updateActiveLink, { passive: true });
+            updateActiveLink();
+        } catch (e) {
+            // no-op
+        }
+
+        // Footer year
+        const yearEl = document.getElementById('current-year');
+        if (yearEl) {
+            yearEl.textContent = String(new Date().getFullYear());
         }
     });
 })();

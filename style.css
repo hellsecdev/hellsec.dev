@@ -16,6 +16,7 @@
             --bg-glass: rgba(255, 255, 255, 0.05);
             --text-primary: #ffffff;
             --text-secondary: #b0b0b0;
+            color-scheme: dark;
         }
 
         body {
@@ -1176,4 +1177,65 @@ a:focus-visible, button:focus-visible, .neural-btn:focus-visible, .skill-node:fo
     border-color: var(--primary);
     box-shadow: 0 0 12px rgba(0,255,255,0.2);
     transform: translateY(-1px);
+}
+
+/* Accessibility: visually hidden but screen-reader accessible */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Contact form status messages */
+.form-status {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    min-height: 1.2em;
+}
+.form-status.success {
+    color: #6ee7a8; /* green-300 */
+    text-shadow: 0 0 8px rgba(110, 231, 168, 0.25);
+}
+.form-status.error {
+    color: #f87171; /* red-400 */
+    text-shadow: 0 0 8px rgba(248, 113, 113, 0.25);
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 10000;
+    background: #111;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.skip-link:focus {
+    left: 16px;
+    top: 16px;
+    width: auto;
+    height: auto;
+    outline: 2px dashed var(--primary);
+    outline-offset: 2px;
+}
+
+/* Active nav link state */
+nav ul a[aria-current="true"] {
+    color: var(--primary);
+}
+nav ul a[aria-current="true"]::after {
+    width: 100%;
 }
