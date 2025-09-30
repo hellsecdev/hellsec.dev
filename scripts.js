@@ -138,6 +138,36 @@
             });
         });
 
+        // Theme toggle (dark <-> light) with icon and persistence
+        (function initThemeToggle() {
+            const root = document.documentElement;
+            const btn = document.getElementById('theme-toggle');
+            const setLabels = () => {
+                const isLight = root.getAttribute('data-theme') === 'light';
+                const label = isLight ? 'Switch to dark theme' : 'Switch to light theme';
+                if (btn) {
+                    btn.setAttribute('aria-label', label);
+                    btn.setAttribute('title', label);
+                }
+            };
+            // initial theme
+            const saved = localStorage.getItem('theme');
+            if (saved === 'light' || saved === 'dark') {
+                root.setAttribute('data-theme', saved);
+            } else {
+                root.setAttribute('data-theme', 'dark');
+            }
+            setLabels();
+
+            btn?.addEventListener('click', () => {
+                const current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+                const next = current === 'light' ? 'dark' : 'light';
+                root.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+                setLabels();
+            });
+        })();
+
         // Theme toggle (dark <-> light)
         (function initThemeToggle() {
             const root = document.documentElement;

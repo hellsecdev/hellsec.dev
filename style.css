@@ -127,6 +127,24 @@
             border-color: rgba(0,0,0,0.08);
         }
 
+        /* Light theme navbar/footer overrides */
+        html[data-theme="light"] nav {
+            background: rgba(255,255,255,0.9);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        html[data-theme="light"] nav.scrolled {
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        html[data-theme="light"] footer {
+            background: rgba(255,255,255,0.95);
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        html[data-theme="light"] .glass-card {
+            background: var(--bg-glass);
+            border-color: rgba(0,0,0,0.08);
+        }
+
         /* Icon theme toggle */
         .theme-icon-btn {
             display: inline-flex;
