@@ -20,6 +20,15 @@
 
     <!-- Theming -->
     <meta name="theme-color" content="#0a0a0a">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Critical CSS (subset for first paint) -->
+    <style id="critical-css">
+      html,body{background:#0a0a0a;color:#fff}
+      #navbar{position:fixed;top:0;left:0;right:0;padding:12px 24px;background:rgba(10,10,10,.9);border-bottom:1px solid rgba(0,255,255,.2)}
+      .hero{height:65vh;display:flex;align-items:center;justify-content:center;margin-top:80px}
+      .glitch{font-family:'Orbitron',system-ui,ui-sans-serif,sans-serif;font-size:3rem;letter-spacing:4px}
+    </style>
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -188,7 +197,9 @@
                 <span></span>
                 <span></span>
             </div>
-            
+
+            <button id="theme-toggle" class="neural-btn" style="margin-left:12px;" aria-label="Toggle theme" type="button">Theme</button>
+
             <div class="nav-menu" id="nav-menu">
                 <ul>
                     <li><a href="#home">HOME</a></li>
@@ -202,6 +213,8 @@
             </div>
         </div>
     </nav>
+
+    <main id="main" role="main">
 
     <section id="home" class="hero">
         <div class="hero-content">
@@ -407,18 +420,21 @@
 
     <section id="contact" class="fade-in">
         <h2 class="section-title">CONTACT</h2>
-        <form class="contact-form glass-card">
+        <form class="contact-form glass-card" novalidate>
             <div class="form-group">
                 <label class="sr-only" for="contact-name">Your Name</label>
-                <input type="text" id="contact-name" name="name" placeholder="Your Name" required autocomplete="name" inputmode="text">
+                <input type="text" id="contact-name" name="name" placeholder="Your Name" required autocomplete="name" inputmode="text" aria-describedby="error-name">
+                <p class="field-error" id="error-name" aria-live="polite"></p>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="contact-email">Your Email</label>
-                <input type="email" id="contact-email" name="email" placeholder="Your Email" required autocomplete="email" inputmode="email">
+                <input type="email" id="contact-email" name="email" placeholder="Your Email" required autocomplete="email" inputmode="email" aria-describedby="error-email">
+                <p class="field-error" id="error-email" aria-live="polite"></p>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="contact-message">Your Message</label>
-                <textarea id="contact-message" rows="5" name="message" placeholder="Your Message" required></textarea>
+                <textarea id="contact-message" rows="5" name="message" placeholder="Your Message" required aria-describedby="error-message"></textarea>
+                <p class="field-error" id="error-message" aria-live="polite"></p>
             </div>
             <div class="form-group">
                 <input type="text" name="honey" hidden aria-hidden="true" tabindex="-1" autocomplete="off">
@@ -428,7 +444,9 @@
         </form>
     </section>
 
-    <footer>
+    </main>
+
+    <footer role="contentinfo">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Navigation</h3>

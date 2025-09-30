@@ -1239,3 +1239,39 @@ nav ul a[aria-current="true"] {
 nav ul a[aria-current="true"]::after {
     width: 100%;
 }
+
+/* Field error styling */
+.field-error {
+    color: #f87171;
+    font-size: 0.9rem;
+    margin-top: 6px;
+    min-height: 1.1em;
+}
+
+/* Theme presets */
+:root, html[data-theme="neon"] {
+    --primary: #00ffff;
+    --secondary: #ff00ff;
+    --accent: #ffff00;
+    --bg-dark: #0a0a0a;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+}
+html[data-theme="magenta"] {
+    --primary: #ff4dff;
+    --secondary: #ff9ee8;
+    --accent: #ffc3ff;
+}
+html[data-theme="sunset"] {
+    --primary: #ffb703;
+    --secondary: #fb8500;
+    --accent: #ffd166;
+}
+
+/* Theme toggle button */
+#theme-toggle {
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    margin-left: 12px;
+}
