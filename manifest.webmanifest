@@ -20,25 +20,3 @@
     }
   ]
 }
-{
-  "name": "Puma Labs",
-  "short_name": "PumaLabs",
-  "start_url": "/",
-  "scope": "/",
-  "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#0a0a0a",
-  "description": "Product R&D and cybersecurity services for entrepreneurs and startups.",
-  "icons": [
-    {
-      "src": "/assets/favicon.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/assets/favicon.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
-}

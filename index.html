@@ -1,547 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puma Labs - Product R&D / Cybersecurity for Entrepreneurs & Startups</title>
-    <link rel="icon" href="assets/favicon.png">
-    <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="manifest" href="/manifest.webmanifest">
-    <meta name="description" content="Puma Labs provides product R&D and cybersecurity services for entrepreneurs and startups: product development, UI/UX, AI integration, and ongoing support.">
-    <meta name="author" content="Puma Labs">
-    <meta name="publisher" content="Puma Labs">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puma Labs - Product R&D / Cybersecurity for Entrepreneurs & Startups</title>
+  <meta name="description" content="Puma Labs provides product R&D and cybersecurity services for entrepreneurs and startups: product development, UI/UX, AI integration, and ongoing support.">
+  <meta name="author" content="Puma Labs">
+  <meta name="publisher" content="Puma Labs">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <!-- Canonical + hreflang -->
-    <link rel="canonical" href="https://pumalabs.io/">
-    <link rel="alternate" href="https://pumalabs.io/" hreflang="en" />
-    <link rel="alternate" href="https://pumalabs.io/" hreflang="x-default" />
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="canonical" href="https://pumalabs.io/">
+  <link rel="alternate" href="https://pumalabs.io/" hreflang="en" />
+  <link rel="alternate" href="https://pumalabs.io/" hreflang="x-default" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
-    <!-- Robots -->
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://sender.pumalabs.io" crossorigin>
 
-    <!-- Theming -->
-    <meta name="theme-color" content="#0a0a0a">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
+  <style id="critical-css">
+    html,body{background:#0a0a0a;color:#fff}
+    #navbar{position:fixed;top:0;left:0;right:0;padding:12px 24px;background:rgba(10,10,10,.9);border-bottom:1px solid rgba(0,255,255,.2)}
+    .hero{height:65vh;display:flex;align-items:center;justify-content:center;margin-top:80px}
+    .glitch{font-family:'Orbitron',system-ui,ui-sans-serif,sans-serif;font-size:3rem;letter-spacing:4px}
+  </style>
 
-    <!-- Critical CSS (subset for first paint) -->
-    <style id="critical-css">
-      html,body{background:#0a0a0a;color:#fff}
-      #navbar{position:fixed;top:0;left:0;right:0;padding:12px 24px;background:rgba(10,10,10,.9);border-bottom:1px solid rgba(0,255,255,.2)}
-      .hero{height:65vh;display:flex;align-items:center;justify-content:center;margin-top:80px}
-      .glitch{font-family:'Orbitron',system-ui,ui-sans-serif,sans-serif;font-size:3rem;letter-spacing:4px}
-    </style>
-    <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Puma Labs - Product R&D / Cybersecurity for Entrepreneurs & Startups">
+  <meta property="og:description" content="Product development, UI/UX, AI integration, cybersecurity, and ongoing support for entrepreneurs and startups.">
+  <meta property="og:url" content="https://pumalabs.io/">
+  <meta property="og:site_name" content="Puma Labs">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://pumalabs.io/assets/favicon.png">
+  <meta property="og:image:alt" content="Puma Labs logo">
+  <meta property="og:updated_time" content="2025-09-29T00:00:00Z">
 
-    <!-- Critical CSS (very small subset for first paint) -->
-    <style id="critical-css">
-      html,body{background:#0a0a0a;color:#fff}
-      #navbar{position:fixed;top:0;left:0;right:0;padding:12px 24px;background:rgba(10,10,10,.9);border-bottom:1px solid rgba(0,255,255,.2)}
-      .hero{height:65vh;display:flex;align-items:center;justify-content:center;margin-top:80px}
-      .glitch{font-family:'Orbitron',system-ui,ui-sans-serif,sans-serif;font-size:3rem;letter-spacing:4px}
-    </style>
-    <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Puma Labs - Product R&D / Cybersecurity for Entrepreneurs & Startups">
+  <meta name="twitter:description" content="Product development, UI/UX, AI integration, cybersecurity, and ongoing support for entrepreneurs and startups.">
+  <meta name="twitter:image" content="https://pumalabs.io/assets/favicon.png">
+  <meta name="twitter:image:alt" content="Puma Labs logo">
 
-    <!-- Critical CSS (subset for first paint) -->
-    <style id="critical-css">
-      html,body{background:#0a0a0a;color:#fff}
-      #navbar{position:fixed;top:0;left:0;right:0;padding:12px 24px;background:rgba(10,10,10,.9);border-bottom:1px solid rgba(0,255,255,.2)}
-      .hero{height:65vh;display:flex;align-items:center;justify-content:center;margin-top:80px}
-      .glitch{font-family:'Orbitron',system-ui,ui-sans-serif,sans-serif;font-size:3rem;letter-spacing:4px}
-    </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Exo+2:wght@300;400;500;600;700&family=Audiowide&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Puma Labs - Product R&D / Cybersecurity for Entrepreneurs & Startups">
-    <meta property="og:description" content="Product development, UI/UX, AI integration, cybersecurity, and ongoing support for entrepreneurs and startups.">
-    <meta property="og:url" content="https://pumalabs.io/">
-    <meta property="og:site_name" content="Puma Labs">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:image" content="https://pumalabs.io/assets/favicon.png">
-    <meta property="og:image:alt" content="Puma Labs logo">
-    <meta property="og:updated_time" content="2025-09-29T00:00:00Z">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Puma Labs - Product R&D / Cybersecurity for Entrepreneurs & Startups">
-    <meta name="twitter:description" content="Product development, UI/UX, AI integration, cybersecurity, and ongoing support for entrepreneurs and startups.">
-    <meta name="twitter:image" content="https://pumalabs.io/assets/favicon.png">
-    <meta name="twitter:image:alt" content="Puma Labs logo">
-
-    <!-- Icons -->
-    <link rel="apple-touch-icon" href="assets/favicon.png">
-
-    <!-- Sitemap hint -->
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-
-    <!-- Performance hints -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://sender.pumalabs.io" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Exo+2:wght@300;400;500;600;700&family=Audiowide&display=swap" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": "https://pumalabs.io/",
-      "name": "Puma Labs",
-      "inLanguage": "en",
-      "potentialAction": [{
-        "@type": "ContactAction",
-        "target": "https://pumalabs.io/#contact",
-        "name": "Contact Puma Labs"
-      }]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Puma Labs",
-      "url": "https://pumalabs.io/",
-      "logo": "https://pumalabs.io/assets/favicon.png",
-      "sameAs": [
-        "https://github.com/Puma-Labs",
-        "https://www.linkedin.com/company/pumalabs"
-      ],
-      "contactPoint": [{
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "url": "https://pumalabs.io/#contact",
-        "availableLanguage": "en"
-      }]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SiteNavigationElement",
-      "name": ["Home","About","Services","We Build","Partners","Contact"],
-      "url": [
-        "https://pumalabs.io/#home",
-        "https://pumalabs.io/#about",
-        "https://pumalabs.io/#services",
-        "https://pumalabs.io/#build",
-        "https://pumalabs.io/#partners",
-        "https://pumalabs.io/#faq",
-        "https://pumalabs.io/#contact"
-      ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org",
-      "@type":"ItemList",
-      "name":"Puma Labs Services",
-      "itemListElement":[
-        { "@type":"Service","name":"Product Development","serviceType":"Software development","description":"From idea to launch: scalable product engineering with startup agility." },
-        { "@type":"Service","name":"UI and UX Design","serviceType":"Design","description":"Clear, functional interfaces that reflect your brand and optimize user journeys." },
-        { "@type":"Service","name":"AI Integration","serviceType":"Artificial Intelligence","description":"Automation, prediction and personalization powered by machine learning." },
-        { "@type":"Service","name":"Cybersecurity","serviceType":"Security","description":"Built-in protection: encryption, secure coding and proactive threat prevention." },
-        { "@type":"Service","name":"Ongoing Support","serviceType":"Maintenance","description":"Post‑launch maintenance, updates and performance monitoring." },
-        { "@type":"Service","name":"Tech Consulting","serviceType":"Consulting","description":"Architecture, stack and delivery strategy aligned with business goals." }
-      ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org",
-      "@type":"FAQPage",
-      "mainEntity":[
-        {
-          "@type":"Question",
-          "name":"What services do you offer?",
-          "acceptedAnswer":{"@type":"Answer","text":"We provide product development, UI/UX design, AI integration, cybersecurity, ongoing support, and technology consulting for entrepreneurs and startups."}
-        },
-        {
-          "@type":"Question",
-          "name":"Do you work with early-stage startups?",
-          "acceptedAnswer":{"@type":"Answer","text":"Yes. We frequently help founders validate ideas and ship MVPs quickly while laying a scalable foundation for growth."}
-        },
-        {
-          "@type":"Question",
-          "name":"How do you handle cybersecurity?",
-          "acceptedAnswer":{"@type":"Answer","text":"Security is built-in from day one: secure coding practices, encryption, dependency hygiene, automated checks, and periodic reviews."}
-        },
-        {
-          "@type":"Question",
-          "name":"How can I get started?",
-          "acceptedAnswer":{"@type":"Answer","text":"Share your goals via the contact form — we’ll reply with next steps, a rough approach and timeline."}
-        },
-        {
-          "@type":"Question",
-          "name":"What is a typical timeline for an MVP?",
-          "acceptedAnswer":{"@type":"Answer","text":"Most MVPs are delivered within 4–8 weeks depending on scope, integrations and compliance requirements."}
-        },
-        {
-          "@type":"Question",
-          "name":"What tech stack do you use?",
-          "acceptedAnswer":{"@type":"Answer","text":"We choose the stack to fit your goals; common choices include modern web frameworks, cloud-native infrastructure, and proven security tooling."}
-        },
-        {
-          "@type":"Question",
-          "name":"How do you price projects?",
-          "acceptedAnswer":{"@type":"Answer","text":"We offer both fixed-price for well-defined scopes and time-and-materials for iterative work; after a short discovery we provide a transparent estimate."}
-        },
-        {
-          "@type":"Question",
-          "name":"Who owns the IP and source code?",
-          "acceptedAnswer":{"@type":"Answer","text":"You retain 100% ownership of the IP and source code; we hand over repositories, documentation and access at each milestone."}
-        },
-        {
-          "@type":"Question",
-          "name":"Do you sign an NDA?",
-          "acceptedAnswer":{"@type":"Answer","text":"Yes — we can sign a mutual NDA before discussing details."}
-        },
-        {
-          "@type":"Question",
-          "name":"Do you provide ongoing support and SLAs?",
-          "acceptedAnswer":{"@type":"Answer","text":"Yes — we offer maintenance and support plans with response-time SLAs aligned to your needs."}
-        }
-      ]
-    }
-    </script>
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://pumalabs.io/",
+    "name": "Puma Labs",
+    "inLanguage": "en",
+    "potentialAction": [{
+      "@type": "ContactAction",
+      "target": "https://pumalabs.io/#contact",
+      "name": "Contact Puma Labs"
+    }]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Puma Labs",
+    "url": "https://pumalabs.io/",
+    "logo": "https://pumalabs.io/assets/favicon.png",
+    "sameAs": [
+      "https://github.com/Puma-Labs",
+      "https://www.linkedin.com/company/pumalabs"
+    ],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "url": "https://pumalabs.io/#contact",
+      "availableLanguage": "en"
+    }]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "name": ["Home","About","Services","We Build","Partners","FAQ","Contact"],
+    "url": [
+      "https://pumalabs.io/#home",
+      "https://pumalabs.io/#about",
+      "https://pumalabs.io/#services",
+      "https://pumalabs.io/#build",
+      "https://pumalabs.io/#partners",
+      "https://pumalabs.io/#faq",
+      "https://pumalabs.io/#contact"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "name":"Puma Labs Services",
+    "itemListElement":[
+      { "@type":"Service","name":"Product Development","serviceType":"Software development","description":"From idea to launch: scalable product engineering with startup agility." },
+      { "@type":"Service","name":"UI and UX Design","serviceType":"Design","description":"Clear, functional interfaces that reflect your brand and optimize user journeys." },
+      { "@type":"Service","name":"AI Integration","serviceType":"Artificial Intelligence","description":"Automation, prediction and personalization powered by machine learning." },
+      { "@type":"Service","name":"Cybersecurity","serviceType":"Security","description":"Built-in protection: encryption, secure coding and proactive threat prevention." },
+      { "@type":"Service","name":"Ongoing Support","serviceType":"Maintenance","description":"Post-launch maintenance, updates and performance monitoring." },
+      { "@type":"Service","name":"Tech Consulting","serviceType":"Consulting","description":"Architecture, stack and delivery strategy aligned with business goals." }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What services do you offer?",
+        "acceptedAnswer":{"@type":"Answer","text":"We provide product development, UI/UX design, AI integration, cybersecurity, ongoing support, and technology consulting for entrepreneurs and startups."}
+      },
+      {
+        "@type":"Question",
+        "name":"Do you work with early-stage startups?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes. We frequently help founders validate ideas and ship MVPs quickly while laying a scalable foundation for growth."}
+      },
+      {
+        "@type":"Question",
+        "name":"How do you handle cybersecurity?",
+        "acceptedAnswer":{"@type":"Answer","text":"Security is built-in from day one: secure coding practices, encryption, dependency hygiene, automated checks, and periodic reviews."}
+      },
+      {
+        "@type":"Question",
+        "name":"How can I get started?",
+        "acceptedAnswer":{"@type":"Answer","text":"Share your goals via the contact form — we’ll reply with next steps, a rough approach and timeline."}
+      },
+      {
+        "@type":"Question",
+        "name":"What is a typical timeline for an MVP?",
+        "acceptedAnswer":{"@type":"Answer","text":"Most MVPs are delivered within 4–8 weeks depending on scope, integrations and compliance requirements."}
+      },
+      {
+        "@type":"Question",
+        "name":"What tech stack do you use?",
+        "acceptedAnswer":{"@type":"Answer","text":"We choose the stack to fit your goals; common choices include modern web frameworks, cloud-native infrastructure, and proven security tooling."}
+      },
+      {
+        "@type":"Question",
+        "name":"How do you price projects?",
+        "acceptedAnswer":{"@type":"Answer","text":"We offer both fixed-price for well-defined scopes and time-and-materials for iterative work; after a short discovery we provide a transparent estimate."}
+      },
+      {
+        "@type":"Question",
+        "name":"Who owns the IP and source code?",
+        "acceptedAnswer":{"@type":"Answer","text":"You retain 100% ownership of the IP and source code; we hand over repositories, documentation and access at each milestone."}
+      },
+      {
+        "@type":"Question",
+        "name":"Do you sign an NDA?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes — we can sign a mutual NDA before discussing details."}
+      },
+      {
+        "@type":"Question",
+        "name":"Do you provide ongoing support and SLAs?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes — we offer maintenance and support plans with response-time SLAs aligned to your needs."}
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-    <a class="skip-link" href="#home">Skip to content</a>
-    <a class="skip-link" href="#home">Skip to content</a>
-    <canvas id="neural-bg"></canvas>
+  <a class="skip-link" href="#home">Skip to content</a>
+  <canvas id="neural-bg"></canvas>
 
-    <nav id="navbar">
-        <div class="nav-container">
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="mobile-menu-toggle" id="mobile-toggle" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-            <div class="mobile-menu-toggle" id="mobile-toggle" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <button id="theme-toggle" class="theme-icon-btn" aria-label="Switch to light theme" type="button" title="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 0l1.79-1.8 1.41 1.41-1.8 1.79-1.4-1.4zM12 4V1h0v3h0zm0 19v-3h0v3h0zM4 12H1v0h3v0zm19 0h-3v0h3v0zM6.76 19.16l-1.42 1.42-1.79-1.8 1.41-1.41 1.8 1.79zm12.03-1.8l1.41 1.41-1.79 1.8-1.41-1.42 1.79-1.79zM12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        <span class="sr-only">Toggle theme</span>
+      </button>
 
-            <button id="theme-toggle" class="theme-icon-btn" aria-label="Switch to light theme" type="button" title="Toggle theme">
-                <!-- Moon icon (active in dark theme) -->
-                <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/></svg>
-                <!-- Sun icon (active in light theme) -->
-                <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 0l1.79-1.8 1.41 1.41-1.8 1.79-1.4-1.4zM12 4V1h0v3h0zm0 19v-3h0v3h0zM4 12H1v0h3v0zm19 0h-3v0h3v0zM6.76 19.16l-1.42 1.42-1.79-1.8 1.41-1.41 1.8 1.79zm12.03-1.8l1.41 1.41-1.79 1.8-1.41-1.42 1.79-1.79zM12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
-                <span class="sr-only">Toggle theme</span>
-            </button>
+      <div class="nav-menu" id="nav-menu">
+        <ul>
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#services">SERVICES</a></li>
+          <li><a href="#build">WE BUILD</a></li>
+          <li><a href="#partners">PARTNERS</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-            <button id="theme-toggle" class="theme-icon-btn" aria-label="Switch to light theme" type="button" title="Toggle theme">
-                <!-- Moon icon (for dark theme active) -->
-                <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/></svg>
-                <!-- Sun icon (hidden by default, shown in light) -->
-                <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 0l1.79-1.8 1.41 1.41-1.8 1.79-1.4-1.4zM12 4V1h-0v3h0zm0 19v-3h0v3h0zM4 12H1v0h3v0zm19 0h-3v0h3v0zM6.76 19.16l-1.42 1.42-1.79-1.8 1.41-1.41 1.8 1.79zm12.03-1.8l1.41 1.41-1.79 1.8-1.41-1.42 1.79-1.79zM12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
-                <span class="sr-only">Toggle theme</span>
-            </button>
-
-            <button id="theme-toggle" class="neural-btn" style="margin-left:12px;" aria-label="Toggle theme" type="button">Theme</button>
-
-            <button id="theme-toggle" class="theme-icon-btn" aria-label="Switch to light theme" type="button" title="Toggle theme">
-                <!-- Moon icon (active in dark theme) -->
-                <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/></svg>
-                <!-- Sun icon (active in light theme) -->
-                <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 0l1.79-1.8 1.41 1.41-1.8 1.79-1.4-1.4zM12 4V1h0v3h0zm0 19v-3h0v3h0zM4 12H1v0h3v0zm19 0h-3v0h3v0zM6.76 19.16l-1.42 1.42-1.79-1.8 1.41-1.41 1.8 1.79zm12.03-1.8l1.41 1.41-1.79 1.8-1.41-1.42 1.79-1.79zM12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
-                <span class="sr-only">Toggle theme</span>
-            </button>
-
-            <div class="nav-menu" id="nav-menu">
-                <ul>
-                    <li><a href="#home">HOME</a></li>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#services">SERVICES</a></li>
-                    <li><a href="#build">WE BUILD</a></li>
-                    <li><a href="#partners">PARTNERS</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-<main id="main" role="main">
-
-<main id="main" role="main">
-
-    <main id="main" role="main">
-
+  <main id="main" role="main">
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="glitch" data-text="Puma Labs">Puma Labs</h1>
-            <p class="subtitle">Product R&D / Cybersecurity for Entrepreneurs & Startups</p>
+      <div class="hero-content">
+        <h1 class="glitch" data-text="Puma Labs">Puma Labs</h1>
+        <p class="subtitle">Product R&D / Cybersecurity for Entrepreneurs & Startups</p>
+      </div>
+      <a href="#about" class="scroll-btn">
+        <div class="scroll-btn-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+          </svg>
         </div>
-        <a href="#about" class="scroll-btn">
-            <div class="scroll-btn-inner">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                </svg>
-            </div>
-        </a>
+      </a>
     </section>
 
     <section id="about" class="fade-in">
-        <h2 class="section-title">ABOUT US</h2>
-        <div class="about-container">
-            <div class="about-image">
-                <div class="profile-img-wrapper">
-                    <div class="profile-img">
-                        <span>AI</span>
-                    </div>
-                </div>
+      <h2 class="section-title">ABOUT US</h2>
+      <div class="about-container">
+        <div class="about-image">
+          <div class="profile-img-wrapper">
+            <div class="profile-img">
+              <span>AI</span>
             </div>
-            <div class="about-content">
-                <h3>Innovate with Confidence</h3>
-                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
-                    Puma Labs provides comprehensive support for entrepreneurs and startups at every stage of product development. We help turn ideas into reality, from initial concept and design to full-scale development and long-term support.
-                </p>
-                <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);">
-                    We don’t just build high-quality products, we prioritize data security to protect your projects from cyber threats. Innovation is at the heart of everything we do, and we strive to deliver every project with maximum efficiency and security.
-                </p>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Projects</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">6+</div>
-                        <div class="stat-label">Years Exp</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">80+</div>
-                        <div class="stat-label">Clients</div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="about-content">
+          <h3>Innovate with Confidence</h3>
+          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+            Puma Labs provides comprehensive support for entrepreneurs and startups at every stage of product development. We help turn ideas into reality, from initial concept and design to full-scale development and long-term support.
+          </p>
+          <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);">
+            We don’t just build high-quality products, we prioritize data security to protect your projects from cyber threats. Innovation is at the heart of everything we do, and we strive to deliver every project with maximum efficiency and security.
+          </p>
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="stat-number">100+</div>
+              <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">6+</div>
+              <div class="stat-label">Years Exp</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">80+</div>
+              <div class="stat-label">Clients</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="services" class="fade-in">
-        <h2 class="section-title">SERVICES</h2>
-        <div class="projects-grid">
-            <div class="glass-card project-card">
-                <h3 style="color: var(--primary);">Product Development</h3>
-                <p style="color: var(--text-secondary);">From idea to launch products are built to scale with a focus on speed reliability and startup flexibility</p>
-            </div>
-            <div class="glass-card project-card">
-                <h3 style="color: var(--secondary);">UI and UX Design</h3>
-                <p style="color: var(--text-secondary);">Clear functional and engaging interfaces that reflect your brand and optimize the user journey</p>
-            </div>
-            <div class="glass-card project-card">
-                <h3 style="color: var(--accent);">AI Integration</h3>
-                <p style="color: var(--text-secondary);">Enhance your product with automation prediction and personalization powered by machine learning</p>
-            </div>
-            <div class="glass-card project-card">
-                <h3 style="color: var(--primary);">Cybersecurity</h3>
-                <p style="color: var(--text-secondary);">Built in protection for your product including encryption secure coding and threat prevention from day one</p>
-            </div>
-            <div class="glass-card project-card">
-                <h3 style="color: var(--secondary);">Ongoing Support</h3>
-                <p style="color: var(--text-secondary);">Post launch maintenance updates and performance monitoring to keep your product growing</p>
-            </div>
-            <div class="glass-card project-card">
-                <h3 style="color: var(--accent);">Tech Consulting</h3>
-                <p style="color: var(--text-secondary);">Expert guidance on architecture tech stack and development strategy tailored to your business goals</p>
-            </div>
+      <h2 class="section-title">SERVICES</h2>
+      <div class="projects-grid">
+        <div class="glass-card project-card">
+          <h3 style="color: var(--primary);">Product Development</h3>
+          <p style="color: var(--text-secondary);">From idea to launch, products are built to scale with a focus on speed, reliability, and startup flexibility.</p>
         </div>
+        <div class="glass-card project-card">
+          <h3 style="color: var(--secondary);">UI and UX Design</h3>
+          <p style="color: var(--text-secondary);">Clear, functional interfaces that reflect your brand and optimize the user journey.</p>
+        </div>
+        <div class="glass-card project-card">
+          <h3 style="color: var(--accent);">AI Integration</h3>
+          <p style="color: var(--text-secondary);">Enhance your product with automation, prediction, and personalization powered by machine learning.</p>
+        </div>
+        <div class="glass-card project-card">
+          <h3 style="color: var(--primary);">Cybersecurity</h3>
+          <p style="color: var(--text-secondary);">Built-in protection for your product, including encryption, secure coding, and threat prevention from day one.</p>
+        </div>
+        <div class="glass-card project-card">
+          <h3 style="color: var(--secondary);">Ongoing Support</h3>
+          <p style="color: var(--text-secondary);">Post-launch maintenance, updates, and performance monitoring to keep your product growing.</p>
+        </div>
+        <div class="glass-card project-card">
+          <h3 style="color: var(--accent);">Tech Consulting</h3>
+          <p style="color: var(--text-secondary);">Expert guidance on architecture, tech stack, and development strategy tailored to your business goals.</p>
+        </div>
+      </div>
     </section>
 
     <section id="build" class="fade-in">
-        <h2 class="section-title">We Build</h2>
-        <div class="skills-container">
-            <div class="skill-node">
-                <span>MVP</span>
-            </div>
-            <div class="skill-node">
-                <span>WEB</span>
-            </div>
-            <div class="skill-node">
-                <span>BOTS</span>
-            </div>
-            <div class="skill-node">
-                <span>AI</span>
-            </div>
-            <div class="skill-node">
-                <span>SECURITY</span>
-            </div>
-            <div class="skill-node">
-                <span>ADMIN</span>
-            </div>
-        </div>
+      <h2 class="section-title">We Build</h2>
+      <div class="skills-container">
+        <div class="skill-node"><span>MVP</span></div>
+        <div class="skill-node"><span>WEB</span></div>
+        <div class="skill-node"><span>BOTS</span></div>
+        <div class="skill-node"><span>AI</span></div>
+        <div class="skill-node"><span>SECURITY</span></div>
+        <div class="skill-node"><span>ADMIN</span></div>
+      </div>
     </section>
 
     <section id="partners" class="fade-in">
-        <h2 class="section-title">PARTNERS</h2>
-        <div class="skills-container">
-            <div class="glass-card project-card">
-                <a href="https://m.do.co/c/9fe481cfbee3" target="_blank" rel="sponsored noopener noreferrer">
-                    <img src="assets/partners/2.png" alt="Digital Ocean" class="partner-logo" loading="lazy" decoding="async" width="100">
-                </a>
-            </div>
-            <div class="glass-card project-card">
-                <a href="https://go.getproton.me/SH1ue" target="_blank" rel="sponsored noopener noreferrer">
-                    <img src="assets/partners/7.png" alt="Proton VPN" class="partner-logo" loading="lazy" decoding="async" width="100">
-                </a>
-            </div>
-            <div class="glass-card project-card">
-                <a href="https://download.getneema.com/kaopaNDCvFb" target="_blank" rel="sponsored noopener noreferrer">
-                    <img src="assets/partners/8.png" alt="Neema Bank" class="partner-logo" loading="lazy" decoding="async" width="100">
-                </a>
-            </div>
+      <h2 class="section-title">PARTNERS</h2>
+      <div class="skills-container">
+        <div class="glass-card project-card">
+          <a href="https://m.do.co/c/9fe481cfbee3" target="_blank" rel="sponsored noopener noreferrer">
+            <img src="assets/partners/2.png" alt="Digital Ocean" class="partner-logo" loading="lazy" decoding="async" width="100">
+          </a>
         </div>
+        <div class="glass-card project-card">
+          <a href="https://go.getproton.me/SH1ue" target="_blank" rel="sponsored noopener noreferrer">
+            <img src="assets/partners/7.png" alt="Proton VPN" class="partner-logo" loading="lazy" decoding="async" width="100">
+          </a>
+        </div>
+        <div class="glass-card project-card">
+          <a href="https://download.getneema.com/kaopaNDCvFb" target="_blank" rel="sponsored noopener noreferrer">
+            <img src="assets/partners/8.png" alt="Neema Bank" class="partner-logo" loading="lazy" decoding="async" width="100">
+          </a>
+        </div>
+      </div>
     </section>
 
     <section id="faq" class="fade-in">
-        <h2 class="section-title">FAQ</h2>
-
-
-        <div class="glass-card">
-            <details class="faq-item" id="q-services" open>
-                <summary>What services do you offer?</summary>
-                <p>
-                    We provide product development, UI/UX design, AI integration, cybersecurity, ongoing support, and technology consulting for entrepreneurs and startups.
-                </p>
-            </details>
-
-            <details class="faq-item" id="q-startups">
-                <summary>Do you work with early-stage startups?</summary>
-                <p>
-                    Yes. We frequently help founders validate ideas and ship MVPs quickly while laying a scalable foundation for growth.
-                </p>
-            </details>
-
-            <details class="faq-item" id="q-security">
-                <summary>How do you handle cybersecurity?</summary>
-                <p>
-                    Security is built-in from day one: secure coding practices, encryption, dependency hygiene, automated checks, and periodic reviews.
-                </p>
-            </details>
-
-            <details class="faq-item" id="q-get-started">
-                <summary>How can I get started?</summary>
-                <p>
-                    Share your goals via the contact form — we’ll reply with next steps, a rough approach and timeline.
-                </p>
-            </details>
-
-            <details class="faq-item" id="q-timeline">
-                <summary>What is a typical timeline for an MVP?</summary>
-                <p>
-                    Most MVPs are delivered within 4–8 weeks depending on scope, integrations and compliance requirements.
-                </p>
-            </details>
-
-            <details class="faq-item" id="q-stack">
-                <summary>What tech stack do you use?</summary>
-                <p>
-                    We choose the stack to fit your goals; common choices include modern web frameworks, cloud-native infrastructure, and proven security tooling.
-                </p>
-            </details>
-
-            <details class="faq-item" id="q-pricing">
-                <summary>How do you price projects?</summary>
-                <p>
-                    We offer both fixed-price for well-defined scopes and time-and-materials for iterative work; after a short discovery we provide a transparent estimate.
-                </p>
-            </details>
-
-            <details class="faq-item" id="q-ip">
-                <summary>Who owns the IP and source code?</summary>
-                <p>
-                    You retain 100% ownership of the IP and source code; we hand over repositories, documentation and access at each milestone.
-                </p>
-            </details>
-
-            <details class="faq-item" id="q-nda">
-                <summary>Do you sign an NDA?</summary>
-                <p>
-                    Yes — we can sign a mutual NDA before discussing details.
-                </p>
-            </details>
-
-            <details class="faq-item" id="q-support">
-                <summary>Do you provide ongoing support and SLAs?</summary>
-                <p>
-                    Yes — we offer maintenance and support plans with response-time SLAs aligned to your needs.
-                </p>
-            </details>
-        </div>
+      <h2 class="section-title">FAQ</h2>
+      <div class="glass-card">
+        <details class="faq-item" id="q-services" open>
+          <summary>What services do you offer?</summary>
+          <p>We provide product development, UI/UX design, AI integration, cybersecurity, ongoing support, and technology consulting for entrepreneurs and startups.</p>
+        </details>
+        <details class="faq-item" id="q-startups">
+          <summary>Do you work with early-stage startups?</summary>
+          <p>Yes. We frequently help founders validate ideas and ship MVPs quickly while laying a scalable foundation for growth.</p>
+        </details>
+        <details class="faq-item" id="q-security">
+          <summary>How do you handle cybersecurity?</summary>
+          <p>Security is built-in from day one: secure coding practices, encryption, dependency hygiene, automated checks, and periodic reviews.</p>
+        </details>
+        <details class="faq-item" id="q-get-started">
+          <summary>How can I get started?</summary>
+          <p>Share your goals via the contact form — we’ll reply with next steps, a rough approach, and timeline.</p>
+        </details>
+        <details class="faq-item" id="q-timeline">
+          <summary>What is a typical timeline for an MVP?</summary>
+          <p>Most MVPs are delivered within 4–8 weeks depending on scope, integrations, and compliance requirements.</p>
+        </details>
+        <details class="faq-item" id="q-stack">
+          <summary>What tech stack do you use?</summary>
+          <p>We choose the stack to fit your goals; common choices include modern web frameworks, cloud-native infrastructure, and proven security tooling.</p>
+        </details>
+        <details class="faq-item" id="q-pricing">
+          <summary>How do you price projects?</summary>
+          <p>We offer both fixed-price for well-defined scopes and time-and-materials for iterative work; after a short discovery we provide a transparent estimate.</p>
+        </details>
+        <details class="faq-item" id="q-ip">
+          <summary>Who owns the IP and source code?</summary>
+          <p>You retain 100% ownership of the IP and source code; we hand over repositories, documentation, and access at each milestone.</p>
+        </details>
+        <details class="faq-item" id="q-nda">
+          <summary>Do you sign an NDA?</summary>
+          <p>Yes — we can sign a mutual NDA before discussing details.</p>
+        </details>
+        <details class="faq-item" id="q-sla">
+          <summary>Do you provide ongoing support and SLAs?</summary>
+          <p>Yes — we offer maintenance and support plans with response-time SLAs aligned to your needs.</p>
+        </details>
+      </div>
     </section>
 
     <section id="contact" class="fade-in">
-        <h2 class="section-title">CONTACT</h2>
-        <form class="contact-form glass-card" novalidate>
-            <div class="form-group">
-                <label class="sr-only" for="contact-name">Your Name</label>
-                <input type="text" id="contact-name" name="name" placeholder="Your Name" required autocomplete="name" inputmode="text" aria-describedby="error-name">
-                <p class="field-error" id="error-name" aria-live="polite"></p>
-            </div>
-            <div class="form-group">
-                <label class="sr-only" for="contact-email">Your Email</label>
-                <input type="email" id="contact-email" name="email" placeholder="Your Email" required autocomplete="email" inputmode="email" aria-describedby="error-email">
-                <p class="field-error" id="error-email" aria-live="polite"></p>
-            </div>
-            <div class="form-group">
-                <label class="sr-only" for="contact-message">Your Message</label>
-                <textarea id="contact-message" rows="5" name="message" placeholder="Your Message" required aria-describedby="error-message"></textarea>
-                <p class="field-error" id="error-message" aria-live="polite"></p>
-            </div>
-            <div class="form-group">
-                <input type="text" name="honey" hidden aria-hidden="true" tabindex="-1" autocomplete="off">
-            </div>
-            <button type="submit" class="neural-btn">SEND MESSAGE</button>
-            <p class="form-status" aria-live="polite" aria-atomic="true"></p>
-        </form>
+      <h2 class="section-title">CONTACT</h2>
+      <form class="contact-form glass-card" novalidate>
+        <div class="form-group">
+          <label class="sr-only" for="contact-name">Your Name</label>
+          <input type="text" id="contact-name" name="name" placeholder="Your Name" required autocomplete="name" inputmode="text" aria-describedby="error-name">
+          <p class="field-error" id="error-name" aria-live="polite"></p>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="contact-email">Your Email</label>
+          <input type="email" id="contact-email" name="email" placeholder="Your Email" required autocomplete="email" inputmode="email" aria-describedby="error-email">
+          <p class="field-error" id="error-email" aria-live="polite"></p>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="contact-message">Your Message</label>
+          <textarea id="contact-message" rows="5" name="message" placeholder="Your Message" required aria-describedby="error-message"></textarea>
+          <p class="field-error" id="error-message" aria-live="polite"></p>
+        </div>
+        <div class="form-group" hidden>
+          <label for="contact-honey" class="sr-only">Leave blank</label>
+          <input type="text" id="contact-honey" name="honey" tabindex="-1" autocomplete="off">
+        </div>
+        <button type="submit" class="neural-btn">SEND MESSAGE</button>
+        <p class="form-status" aria-live="polite" aria-atomic="true"></p>
+      </form>
     </section>
+  </main>
 
-    </main>
-
-    <footer role="contentinfo">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Navigation</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#build">We Build</a></li>
-                    <li><a href="#partners">Partners</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="/privacy.html">Privacy</a></li>
-                </ul>
-            </div>
-            
-<button id="theme-toggle" class="neural-btn" style="margin-left:12px;" aria-label="Toggle theme" type="button">Theme</button>
-
-            <div class="footer-section">
-                <h3>Connect</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 10px;">
-                    Let's build something amazing together
-                </p>
-                <div class="social-links">
-                    <a href="https://github.com/Puma-Labs" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/company/pumalabs" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#build">We Build</a></li>
+          <li><a href="#partners">Partners</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 10px;">Let's build something amazing together</p>
+        <div class="social-links">
+          <a href="https://github.com/Puma-Labs" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/pumalabs" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
         </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; <span id="current-year">2025</span> PumaLabs. All rights reserved.</p>
-        </div>
-    </footer>
-<noscript>
-    <div style="max-width:1200px;margin:20px auto;padding:15px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);border-radius:8px;color:#fff;">
-        JavaScript is disabled in your browser. Some interactive effects (animations, smooth scrolling, contact form) are limited.
+      </div>
     </div>
-</noscript>
-<script src="scripts.js"></script>
+    <div class="footer-bottom">
+      <p>&copy; <span id="current-year">2025</span> PumaLabs. All rights reserved.</p>
+    </div>
+  </footer>
 
+  <noscript>
+    <div style="max-width:1200px;margin:20px auto;padding:15px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);border-radius:8px;color:#fff;">
+      JavaScript is disabled in your browser. Some interactive effects (animations, smooth scrolling, contact form) are limited.
+    </div>
+  </noscript>
+
+  <script src="scripts.js"></script>
 </body>
 </html>

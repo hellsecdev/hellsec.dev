@@ -1,79 +1,31 @@
 # Puma Labs Website
-# Puma Labs Website
 
-Static, fast, and secure marketing site with light PWA features (offline cache), accessibility improvements, SEO metadata, and an optional build workflow.
+Статичный маркетинговый сайт с лёгкими PWA-функциями (офлайн-кеш), упором на производительность, доступность и SEO.
 
-## Features
+## Возможности
+- Чистый стек: HTML + CSS + vanilla JS
+- Оптимизация производительности: минификация HTML/CSS/JS, сервис-воркер с pre-cache
+- SEO и соцсети: канонические ссылки, Open Graph/Twitter карты, sitemap, robots
+- Улучшенная доступность: «Skip to content», фокус-трапы, aria-метки, поддержка reduced motion
+- Контактная форма: отправка JSON на внешний endpoint + honeypot-поле
+- CI/CD (опционально): сборка и деплой через GitHub Actions на GitHub Pages
 
-- Modern static site: HTML + CSS + vanilla JS
-- Performance:
-  - Minified HTML/CSS/JS during build
-  - Service Worker pre-caches core assets for fast repeat visits and basic offline support
-- SEO:
-  - Canonical and hreflang links
-  - Robots directives and sitemap
-  - Open Graph and Twitter meta tags
-  - Structured data (JSON‑LD: WebSite, Organization, Nav, FAQ, Services)
-- Accessibility:
-  - Keyboard-friendly navigation, “Skip to content” link
-  - Screen‑reader labels for form fields
-  - Reduced‑motion support
-- Contact form:
-  - Submits JSON to an external endpoint
-  - Honeypot anti‑bot field
-- Optional CI/CD:
-  - GitHub Actions builds and deploys to GitHub Pages
+## Технологии
+- Node.js (скрипт сборки)
+- esbuild (минификация CSS/JS)
+- html-minifier-terser (минификация HTML)
+- Service Worker + Web App Manifest
 
-## Tech Stack
-
-- Node.js (for the build step)
-- html-minifier-terser (HTML minification)
-- esbuild (CSS/JS minification)
-- Service Worker + Web App Manifest for PWA flavor
-
-## Prerequisites
-
-- Node.js 18+ (recommended Node 20+)
+## Требования
+- Node.js 18+ (рекомендовано 20+)
 - npm
 
-## Getting Started (Local)
+## Быстрый старт
+1. Установить зависимости: `npm install`
+2. Запустить сборку статики: `npm run build`
+3. Проверить итоговую директорию: `dist/`
 
-1) Install dependencies
-Static, fast, and secure marketing site with light PWA features (offline cache), accessibility improvements, SEO metadata, and an optional build workflow.
-
-## Features
-
-- Modern static site: HTML + CSS + vanilla JS
-- Performance:
-  - Minified HTML/CSS/JS during build
-  - Service Worker pre-caches core assets for fast repeat visits and basic offline support
-- SEO:
-  - Canonical and hreflang links
-  - Robots directives and sitemap
-  - Open Graph and Twitter meta tags
-  - Structured data (JSON‑LD: WebSite, Organization, Nav, FAQ, Services)
-- Accessibility:
-  - Keyboard-friendly navigation, “Skip to content” link
-  - Screen‑reader labels for form fields
-  - Reduced‑motion support
-- Contact form:
-  - Submits JSON to an external endpoint
-  - Honeypot anti‑bot field
-- Optional CI/CD:
-  - GitHub Actions builds and deploys to GitHub Pages
-
-## Tech Stack
-
-- Node.js (for the build step)
-- html-minifier-terser (HTML minification)
-- esbuild (CSS/JS minification)
-- Service Worker + Web App Manifest for PWA flavor
-
-## Prerequisites
-
-- Node.js 18+ (recommended Node 20+)
-- npm
-
-## Getting Started (Local)
-
-1) Install dependencies
+## Полезные скрипты
+- `npm run build` — выполнить сборку в `dist/`
+- `npm run validate:html` — прогнать HTML-валидатор по содержимому `dist/`
+- `npm test` — заглушка для статического проекта
