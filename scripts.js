@@ -138,6 +138,31 @@
             });
         });
 
+        // Theme toggle (dark <-> light)
+        (function initThemeToggle() {
+            const root = document.documentElement;
+            const btn = document.getElementById('theme-toggle');
+            const setLabel = () => {
+                const isLight = root.getAttribute('data-theme') === 'light';
+                btn?.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+                btn?.setAttribute('title', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+            };
+            const saved = localStorage.getItem('theme');
+            if (saved === 'light' || saved === 'dark') {
+                root.setAttribute('data-theme', saved);
+            } else {
+                root.setAttribute('data-theme', 'dark');
+            }
+            setLabel();
+            btn?.addEventListener('click', () => {
+                const current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+                const next = current === 'light' ? 'dark' : 'light';
+                root.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+                setLabel();
+            });
+        })();
+
         // Navbar scrolled state
         const navbar = document.getElementById('navbar');
         const sections = Array.from(document.querySelectorAll('.fade-in'));
