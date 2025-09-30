@@ -6,6 +6,7 @@
     <title>Puma Labs - Product R&D / Cybersecurity for Entrepreneurs & Startups</title>
     <link rel="icon" href="assets/favicon.png">
     <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="manifest" href="/manifest.webmanifest">
     <meta name="description" content="Puma Labs provides product R&D and cybersecurity services for entrepreneurs and startups: product development, UI/UX, AI integration, and ongoing support.">
     <meta name="author" content="Puma Labs">
     <meta name="publisher" content="Puma Labs">
@@ -20,6 +21,24 @@
 
     <!-- Theming -->
     <meta name="theme-color" content="#0a0a0a">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Critical CSS (subset for first paint) -->
+    <style id="critical-css">
+      html,body{background:#0a0a0a;color:#fff}
+      #navbar{position:fixed;top:0;left:0;right:0;padding:12px 24px;background:rgba(10,10,10,.9);border-bottom:1px solid rgba(0,255,255,.2)}
+      .hero{height:65vh;display:flex;align-items:center;justify-content:center;margin-top:80px}
+      .glitch{font-family:'Orbitron',system-ui,ui-sans-serif,sans-serif;font-size:3rem;letter-spacing:4px}
+    </style>
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Critical CSS (very small subset for first paint) -->
+    <style id="critical-css">
+      html,body{background:#0a0a0a;color:#fff}
+      #navbar{position:fixed;top:0;left:0;right:0;padding:12px 24px;background:rgba(10,10,10,.9);border-bottom:1px solid rgba(0,255,255,.2)}
+      .hero{height:65vh;display:flex;align-items:center;justify-content:center;margin-top:80px}
+      .glitch{font-family:'Orbitron',system-ui,ui-sans-serif,sans-serif;font-size:3rem;letter-spacing:4px}
+    </style>
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- Critical CSS (subset for first paint) -->
@@ -107,6 +126,7 @@
         "https://pumalabs.io/#services",
         "https://pumalabs.io/#build",
         "https://pumalabs.io/#partners",
+        "https://pumalabs.io/#faq",
         "https://pumalabs.io/#contact"
       ]
     }
@@ -187,6 +207,7 @@
 </head>
 <body>
     <a class="skip-link" href="#home">Skip to content</a>
+    <a class="skip-link" href="#home">Skip to content</a>
     <canvas id="neural-bg"></canvas>
 
     <nav id="navbar">
@@ -216,6 +237,14 @@
 
             <button id="theme-toggle" class="neural-btn" style="margin-left:12px;" aria-label="Toggle theme" type="button">Theme</button>
 
+            <button id="theme-toggle" class="theme-icon-btn" aria-label="Switch to light theme" type="button" title="Toggle theme">
+                <!-- Moon icon (active in dark theme) -->
+                <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/></svg>
+                <!-- Sun icon (active in light theme) -->
+                <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 0l1.79-1.8 1.41 1.41-1.8 1.79-1.4-1.4zM12 4V1h0v3h0zm0 19v-3h0v3h0zM4 12H1v0h3v0zm19 0h-3v0h3v0zM6.76 19.16l-1.42 1.42-1.79-1.8 1.41-1.41 1.8 1.79zm12.03-1.8l1.41 1.41-1.79 1.8-1.41-1.42 1.79-1.79zM12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+                <span class="sr-only">Toggle theme</span>
+            </button>
+
             <div class="nav-menu" id="nav-menu">
                 <ul>
                     <li><a href="#home">HOME</a></li>
@@ -229,6 +258,10 @@
             </div>
         </div>
     </nav>
+
+<main id="main" role="main">
+
+<main id="main" role="main">
 
     <main id="main" role="main">
 
@@ -477,6 +510,8 @@
                 </ul>
             </div>
             
+<button id="theme-toggle" class="neural-btn" style="margin-left:12px;" aria-label="Toggle theme" type="button">Theme</button>
+
             <div class="footer-section">
                 <h3>Connect</h3>
                 <p style="color: var(--text-secondary); margin-bottom: 10px;">

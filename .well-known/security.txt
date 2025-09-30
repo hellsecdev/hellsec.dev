@@ -2,3 +2,7 @@ Contact: mailto:security@pumalabs.io
 Policy: https://pumalabs.io/privacy.html
 Preferred-Languages: en
 Expires: 2026-12-31T23:59:59Z
+Contact: mailto:security@pumalabs.io
+Policy: https://pumalabs.io/privacy.html
+Preferred-Languages: en
+Expires: 2026-12-31T23:59:59Z

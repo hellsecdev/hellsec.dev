@@ -1,6 +1,14 @@
 # Dependencies
 node_modules/
+# Dependencies
+node_modules/
 
+# Build output
+dist/
+
+# OS junk
+.DS_Store
+Thumbs.db
 # Build output
 dist/
 

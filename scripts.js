@@ -193,6 +193,61 @@
             });
         })();
 
+        // Theme toggle (dark <-> light) with icon and persistence
+        (function initThemeToggle() {
+            const root = document.documentElement;
+            const btn = document.getElementById('theme-toggle');
+            const setLabels = () => {
+                const isLight = root.getAttribute('data-theme') === 'light';
+                const label = isLight ? 'Switch to dark theme' : 'Switch to light theme';
+                if (btn) {
+                    btn.setAttribute('aria-label', label);
+                    btn.setAttribute('title', label);
+                }
+            };
+            // initial theme
+            const saved = localStorage.getItem('theme');
+            if (saved === 'light' || saved === 'dark') {
+                root.setAttribute('data-theme', saved);
+            } else {
+                root.setAttribute('data-theme', 'dark');
+            }
+            setLabels();
+
+            btn?.addEventListener('click', () => {
+                const current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+                const next = current === 'light' ? 'dark' : 'light';
+                root.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+                setLabels();
+            });
+        })();
+
+        // Theme toggle (dark <-> light)
+        (function initThemeToggle() {
+            const root = document.documentElement;
+            const btn = document.getElementById('theme-toggle');
+            const setLabel = () => {
+                const isLight = root.getAttribute('data-theme') === 'light';
+                btn?.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+                btn?.setAttribute('title', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+            };
+            const saved = localStorage.getItem('theme');
+            if (saved === 'light' || saved === 'dark') {
+                root.setAttribute('data-theme', saved);
+            } else {
+                root.setAttribute('data-theme', 'dark');
+            }
+            setLabel();
+            btn?.addEventListener('click', () => {
+                const current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+                const next = current === 'light' ? 'dark' : 'light';
+                root.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+                setLabel();
+            });
+        })();
+
         // Navbar scrolled state
         const navbar = document.getElementById('navbar');
         const sections = Array.from(document.querySelectorAll('.fade-in'));
@@ -372,5 +427,56 @@
         // Footer year
         const yearEl = document.getElementById('current-year');
         if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+        // Register Service Worker for basic offline caching
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(err => console.warn('Service worker registration failed:', err));
+            });
+        }
+
+        // Active nav link highlight and aria-current
+        try {
+            const navLinks = Array.from(document.querySelectorAll('.nav-menu a[href^="#"]'));
+            const sectionIds = navLinks
+                .map(l => l.getAttribute('href') || '')
+                .filter(h => h.startsWith('#'))
+                .map(h => h.slice(1));
+            const observedSections = sectionIds
+                .map(id => document.getElementById(id))
+                .filter(Boolean);
+
+            const setAriaCurrent = (id) => {
+                navLinks.forEach(link => {
+                    const target = (link.getAttribute('href') || '').slice(1);
+                    if (target === id) {
+                        link.setAttribute('aria-current', 'true');
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
+                });
+            };
+
+            const updateActiveLink = () => {
+                let currentId = observedSections.length ? observedSections[0].id : '';
+                for (const sec of observedSections) {
+                    const rect = sec.getBoundingClientRect();
+                    if (rect.top <= 120) {
+                        currentId = sec.id;
+                    }
+                }
+                if (currentId) setAriaCurrent(currentId);
+            };
+
+            window.addEventListener('scroll', updateActiveLink, { passive: true });
+            updateActiveLink();
+        } catch (e) {
+            // no-op
+        }
+
+        // Footer year
+        const yearEl = document.getElementById('current-year');
+        if (yearEl) {
+            yearEl.textContent = String(new Date().getFullYear());
+        }
     });
 })();
