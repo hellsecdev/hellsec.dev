@@ -25,10 +25,14 @@
   <link rel="preconnect" href="https://sender.pumalabs.io" crossorigin>
 
   <style id="critical-css">
-    html,body{background:#0a0a0a;color:#fff}
-    #navbar{position:fixed;top:0;left:0;right:0;padding:12px 24px;background:rgba(10,10,10,.9);border-bottom:1px solid rgba(0,255,255,.2)}
-    .hero{height:65vh;display:flex;align-items:center;justify-content:center;margin-top:80px}
-    .glitch{font-family:'Orbitron',system-ui,ui-sans-serif,sans-serif;font-size:3rem;letter-spacing:4px}
+    html,body{margin:0;padding:0;background:#0a0a0a;color:#ffffff;font-family:'Exo 2',system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
+    #navbar{position:fixed;top:0;left:0;right:0;padding:15px 50px;background:rgba(10,10,10,0.9);border-bottom:1px solid rgba(0,255,255,0.2);z-index:1000}
+    #navbar .nav-container{display:flex;align-items:center;justify-content:center;max-width:1400px;margin:0 auto;padding:0 48px;gap:16px}
+    #navbar .nav-menu ul{list-style:none;margin:0;padding:0;display:flex;gap:40px}
+    #navbar .nav-menu a{color:#ffffff;text-decoration:none;font-family:'Audiowide',sans-serif;letter-spacing:1px;font-size:0.85rem;text-transform:uppercase;position:relative;padding:5px 0;transition:color 0.3s ease}
+    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding-top:calc(var(--nav-height,80px) - 10px);padding-bottom:30px}
+    .hero-content{text-align:center}
+    .glitch{font-family:'Orbitron',system-ui,sans-serif;font-size:5rem;letter-spacing:8px}
   </style>
 
   <!-- Open Graph -->
@@ -39,6 +43,9 @@
   <meta property="og:site_name" content="Puma Labs">
   <meta property="og:locale" content="en_US">
   <meta property="og:image" content="https://pumalabs.io/assets/favicon.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
   <meta property="og:image:alt" content="Puma Labs logo">
   <meta property="og:updated_time" content="2025-09-29T00:00:00Z">
 
@@ -57,9 +64,12 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://pumalabs.io/#website",
     "url": "https://pumalabs.io/",
     "name": "Puma Labs",
     "inLanguage": "en",
+    "description": "Puma Labs helps entrepreneurs build secure products, integrate AI and ship MVPs fast.",
+    "publisher": {"@id": "https://pumalabs.io/#organization"},
     "potentialAction": [{
       "@type": "ContactAction",
       "target": "https://pumalabs.io/#contact",
@@ -71,9 +81,11 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://pumalabs.io/#organization",
     "name": "Puma Labs",
     "url": "https://pumalabs.io/",
     "logo": "https://pumalabs.io/assets/favicon.png",
+    "description": "Puma Labs provides product R&D, UI/UX, cybersecurity, AI integration and startup consulting services.",
     "sameAs": [
       "https://github.com/Puma-Labs",
       "https://www.linkedin.com/company/pumalabs"
@@ -90,6 +102,7 @@
   {
     "@context": "https://schema.org",
     "@type": "SiteNavigationElement",
+    "@id": "https://pumalabs.io/#navigation",
     "name": ["Home","About","Services","We Build","Partners","FAQ","Contact"],
     "url": [
       "https://pumalabs.io/#home",
@@ -106,6 +119,7 @@
   {
     "@context":"https://schema.org",
     "@type":"ItemList",
+    "@id":"https://pumalabs.io/#services-list",
     "name":"Puma Labs Services",
     "itemListElement":[
       { "@type":"Service","name":"Product Development","serviceType":"Software development","description":"From idea to launch: scalable product engineering with startup agility." },
@@ -121,6 +135,7 @@
   {
     "@context":"https://schema.org",
     "@type":"FAQPage",
+    "@id":"https://pumalabs.io/#faq-schema",
     "mainEntity":[
       {
         "@type":"Question",
@@ -172,6 +187,22 @@
         "name":"Do you provide ongoing support and SLAs?",
         "acceptedAnswer":{"@type":"Answer","text":"Yes — we offer maintenance and support plans with response-time SLAs aligned to your needs."}
       }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "@id":"https://pumalabs.io/#breadcrumbs",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://pumalabs.io/#home"},
+      {"@type":"ListItem","position":2,"name":"About","item":"https://pumalabs.io/#about"},
+      {"@type":"ListItem","position":3,"name":"Services","item":"https://pumalabs.io/#services"},
+      {"@type":"ListItem","position":4,"name":"We Build","item":"https://pumalabs.io/#build"},
+      {"@type":"ListItem","position":5,"name":"Partners","item":"https://pumalabs.io/#partners"},
+      {"@type":"ListItem","position":6,"name":"FAQ","item":"https://pumalabs.io/#faq"},
+      {"@type":"ListItem","position":7,"name":"Contact","item":"https://pumalabs.io/#contact"}
     ]
   }
   </script>
