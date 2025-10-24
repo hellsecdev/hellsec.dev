@@ -126,11 +126,29 @@ function posixify(p) {
   return p.split(path.sep).join('/');
 }
 
-const GOOGLE_FONTS_REGEX = /<link[^>]+href=["']https:\/\/fonts\.googleapis\.com\/[^"']+["'][^>]*>/i;
+const LINK_TAG_REGEX = /<link\b[^>]*>/gi;
+const GOOGLE_FONTS_PRECONNECT_REGEX = /<link\b[^>]*?(?:rel=["']preconnect["'][^>]*href=["']https:\/\/fonts\.(?:googleapis|gstatic)\.com[^"']*["']|href=["']https:\/\/fonts\.(?:googleapis|gstatic)\.com[^"']*["'][^>]*rel=["']preconnect["'])[^>]*>\s*/gi;
+const FONT_URL_REGEX = /url\((https:[^)]+\.(?:woff2|woff|ttf|otf))[^)]*\)/g;
+const BROWSER_USER_AGENT =
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
+
+function findGoogleFontsStylesheetTag(html) {
+  const matches = html.matchAll(LINK_TAG_REGEX);
+  for (const match of matches) {
+    const tag = match[0];
+    if (!/https:\/\/fonts\.googleapis\.com\//i.test(tag)) continue;
+    if (!/rel=["']stylesheet["']/i.test(tag)) continue;
+    const hrefMatch = tag.match(/href=["'](https:\/\/fonts\.googleapis\.com\/[^"']+)["']/i);
+    if (hrefMatch) {
+      return { tag, href: hrefMatch[1] };
+    }
+  }
+  return null;
+}
 
 async function extractFontsUrl(html) {
-  const match = html.match(/href=["'](https:\/\/fonts\.googleapis\.com\/[^"']+)["']/i);
-  return match ? match[1] : null;
+  const found = findGoogleFontsStylesheetTag(html);
+  return found ? found.href : null;
 }
 
 function mapRemoteFonts(css, mapping) {
@@ -149,16 +167,17 @@ async function localizeGoogleFonts() {
   const indexPath = path.join(DIST, 'index.html');
   if (!fssync.existsSync(indexPath)) return;
   const html = await fs.readFile(indexPath, 'utf8');
-  if (!GOOGLE_FONTS_REGEX.test(html)) return;
+  const fontsTag = findGoogleFontsStylesheetTag(html);
+  if (!fontsTag) return;
 
   const fontsUrl = await extractFontsUrl(html);
   if (!fontsUrl) return;
 
-  const response = await fetch(fontsUrl);
+  const response = await fetch(fontsUrl, { headers: { 'User-Agent': BROWSER_USER_AGENT } });
   if (!response.ok) return;
   const css = await response.text();
 
-  const fontUrls = Array.from(css.matchAll(/url\((https:[^)]+\.woff2)[^)]*\)/g)).map((match) => match[1]);
+  const fontUrls = Array.from(css.matchAll(FONT_URL_REGEX)).map((match) => match[1]);
   if (!fontUrls.length) return;
 
   const fontsDir = path.join(DIST, 'assets', 'fonts');
@@ -173,7 +192,7 @@ async function localizeGoogleFonts() {
     const fsPath = path.join(fontsDir, filename);
     const href = `/assets/fonts/${filename}`;
     if (!fssync.existsSync(fsPath)) {
-      const fontRes = await fetch(url);
+      const fontRes = await fetch(url, { headers: { 'User-Agent': BROWSER_USER_AGENT } });
       if (fontRes.ok) {
         const buffer = Buffer.from(await fontRes.arrayBuffer());
         await fs.writeFile(fsPath, buffer);
@@ -194,8 +213,10 @@ async function localizeGoogleFonts() {
 
   for (const file of htmlFiles) {
     const content = await fs.readFile(file, 'utf8');
-    if (!GOOGLE_FONTS_REGEX.test(content)) continue;
-    const updated = content.replace(GOOGLE_FONTS_REGEX, replacement);
+    const targetTag = findGoogleFontsStylesheetTag(content);
+    if (!targetTag) continue;
+    let updated = content.replace(targetTag.tag, replacement);
+    updated = updated.replace(GOOGLE_FONTS_PRECONNECT_REGEX, '');
     await fs.writeFile(file, updated, 'utf8');
   }
 }

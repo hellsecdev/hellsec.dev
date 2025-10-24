@@ -43,18 +43,30 @@
 
       const resizeCanvas = () => {
         dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = Math.floor(width * dpr);
-        canvas.height = Math.floor(height * dpr);
-        canvas.style.width = width + 'px';
-        canvas.style.height = height + 'px';
+        const doc = document.documentElement;
+        const body = document.body;
+        const viewportWidth = window.innerWidth || doc.clientWidth || (body ? body.clientWidth : 0) || 0;
+        const viewportHeight = window.innerHeight || doc.clientHeight || (body ? body.clientHeight : 0) || 0;
+        const nextWidth = Math.max(viewportWidth, doc.clientWidth || 0, body ? body.clientWidth || 0 : 0);
+        const nextHeight = Math.max(
+          viewportHeight,
+          doc.scrollHeight,
+          body ? body.scrollHeight : 0
+        );
+        width = nextWidth;
+        height = nextHeight;
+        canvas.width = Math.floor(nextWidth * dpr);
+        canvas.height = Math.floor(nextHeight * dpr);
+        canvas.style.width = nextWidth + 'px';
+        canvas.style.height = nextHeight + 'px';
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       };
 
       const initNodes = () => {
         nodes = [];
-        const count = 100;
+        const area = width * height;
+        const suggested = Math.round(area / 18000);
+        const count = Math.max(100, Math.min(220, suggested));
         for (let i = 0; i < count; i++) {
           nodes.push(new Node(Math.random() * width, Math.random() * height));
         }
@@ -99,10 +111,21 @@
         if (running) requestAnimationFrame(animate);
       });
 
-      window.addEventListener('resize', () => {
+      const handleResize = () => {
+        const prevWidth = width;
+        const prevHeight = height;
         resizeCanvas();
-        initNodes();
-      }, { passive: true });
+        if (Math.abs(width - prevWidth) > 1 || Math.abs(height - prevHeight) > 1) {
+          initNodes();
+        }
+      };
+
+      window.addEventListener('resize', handleResize, { passive: true });
+
+      if ('ResizeObserver' in window) {
+        const bodyObserver = new ResizeObserver(() => handleResize());
+        bodyObserver.observe(document.body);
+      }
     }
 
     // Mobile navigation toggle
