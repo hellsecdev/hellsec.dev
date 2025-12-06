@@ -1286,24 +1286,42 @@ button:focus-visible,
 
 
   .theme-icon-btn {
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
     margin-left: 0;
     margin-right: auto;
   }
 
   [dir="rtl"] .theme-icon-btn {
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
     margin-left: auto;
     margin-right: 0;
   }
 
   .language-selector {
-    position: static;
-    transform: none;
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
     margin-left: 10px;
     margin-right: 0;
     gap: 6px;
   }
 
   [dir="rtl"] .language-selector {
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
     margin-left: 10px;
     margin-right: 0;
   }
@@ -1495,15 +1513,21 @@ button:focus-visible,
 @media (max-width: 768px) {
   /* В мобильной версии переключатели остаются на своих местах даже в RTL */
   [dir="rtl"] .language-selector {
-    position: static;
-    transform: none;
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
     margin-left: 10px;
     margin-right: 0;
   }
   
   [dir="rtl"] .theme-icon-btn {
-    left: 0 !important;
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
     right: auto !important;
+    top: auto !important;
     margin-left: auto;
     margin-right: 0;
   }
