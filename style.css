@@ -1315,8 +1315,10 @@ button:focus-visible,
     opacity: 1 !important;
     width: 38px !important;
     height: 38px !important;
-    margin-left: auto;
-    margin-right: 0;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
     z-index: 100 !important;
   }
 
@@ -1329,8 +1331,8 @@ button:focus-visible,
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
-    margin-left: 10px;
-    margin-right: 0;
+    margin-left: 10px !important;
+    margin-right: 0 !important;
     gap: 6px;
     z-index: 100 !important;
   }
@@ -1344,8 +1346,10 @@ button:focus-visible,
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
-    margin-left: 10px;
-    margin-right: 0;
+    width: auto !important;
+    min-width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0 !important;
     z-index: 100 !important;
   }
 
@@ -1546,8 +1550,10 @@ button:focus-visible,
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
-    margin-left: 10px;
-    margin-right: 0;
+    width: auto !important;
+    min-width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0 !important;
     z-index: 100 !important;
   }
   
@@ -1562,8 +1568,10 @@ button:focus-visible,
     opacity: 1 !important;
     width: 38px !important;
     height: 38px !important;
-    margin-left: auto;
-    margin-right: 0;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
     z-index: 100 !important;
   }
   
