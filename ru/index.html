@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puma Labs - Разработка продуктов и кибербезопасность для предпринимателей и стартапов</title>
+  <meta name="description" content="Puma Labs предоставляет услуги по разработке продуктов и кибербезопасности для предпринимателей и стартапов: разработка продуктов, UI/UX, интеграция ИИ и постоянная поддержка.">
+  <meta name="author" content="Puma Labs">
+  <meta name="publisher" content="Puma Labs">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="canonical" href="https://pumalabs.io/ru/">
+  <link rel="alternate" href="https://pumalabs.io/" hreflang="en" />
+  <link rel="alternate" href="https://pumalabs.io/ru/" hreflang="ru" />
+  <link rel="alternate" href="https://pumalabs.io/he/" hreflang="he" />
+  <link rel="alternate" href="https://pumalabs.io/" hreflang="x-default" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://sender.pumalabs.io" crossorigin>
+
+  <style id="critical-css">
+    html,body{margin:0;padding:0;background:#0a0a0a;color:#ffffff;font-family:'Exo 2',system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
+    #navbar{position:fixed;top:0;left:0;right:0;padding:15px 50px;background:rgba(10,10,10,0.9);border-bottom:1px solid rgba(0,255,255,0.2);z-index:1000}
+    #navbar .nav-container{display:flex;align-items:center;justify-content:center;max-width:1400px;margin:0 auto;padding:0 48px;gap:16px}
+    #navbar .nav-menu ul{list-style:none;margin:0;padding:0;display:flex;gap:40px}
+    #navbar .nav-menu a{color:#ffffff;text-decoration:none;font-family:'Audiowide',sans-serif;letter-spacing:1px;font-size:0.85rem;text-transform:uppercase;position:relative;padding:5px 0;transition:color 0.3s ease}
+    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding-top:calc(var(--nav-height,80px) - 10px);padding-bottom:30px}
+    .hero-content{text-align:center}
+    .glitch{font-family:'Orbitron',system-ui,sans-serif;font-size:5rem;letter-spacing:8px}
+  </style>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Puma Labs - Разработка продуктов и кибербезопасность для предпринимателей и стартапов">
+  <meta property="og:description" content="Разработка продуктов, UI/UX, интеграция ИИ, кибербезопасность и постоянная поддержка для предпринимателей и стартапов.">
+  <meta property="og:url" content="https://pumalabs.io/ru/">
+  <meta property="og:site_name" content="Puma Labs">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:image" content="https://pumalabs.io/assets/favicon.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="Puma Labs logo">
+  <meta property="og:updated_time" content="2025-09-29T00:00:00Z">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Puma Labs - Разработка продуктов и кибербезопасность для предпринимателей и стартапов">
+  <meta name="twitter:description" content="Разработка продуктов, UI/UX, интеграция ИИ, кибербезопасность и постоянная поддержка для предпринимателей и стартапов.">
+  <meta name="twitter:image" content="https://pumalabs.io/assets/favicon.png">
+  <meta name="twitter:image:alt" content="Puma Labs logo">
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Exo+2:wght@300;400;500;600;700&family=Audiowide&display=swap" rel="stylesheet">
+  <link href="../style.css" rel="stylesheet">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://pumalabs.io/ru/#website",
+    "url": "https://pumalabs.io/ru/",
+    "name": "Puma Labs",
+    "inLanguage": "ru",
+    "description": "Puma Labs помогает предпринимателям создавать безопасные продукты, интегрировать ИИ и быстро запускать MVP.",
+    "publisher": {"@id": "https://pumalabs.io/#organization"},
+    "potentialAction": [{
+      "@type": "ContactAction",
+      "target": "https://pumalabs.io/ru/#contact",
+      "name": "Связаться с Puma Labs"
+    }]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://pumalabs.io/#organization",
+    "name": "Puma Labs",
+    "url": "https://pumalabs.io/",
+    "logo": "https://pumalabs.io/assets/favicon.png",
+    "description": "Puma Labs предоставляет услуги по разработке продуктов, UI/UX, кибербезопасности, интеграции ИИ и консультированию стартапов.",
+    "sameAs": [
+      "https://github.com/Puma-Labs",
+      "https://www.linkedin.com/company/pumalabs"
+    ],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "url": "https://pumalabs.io/ru/#contact",
+      "availableLanguage": "ru"
+    }]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://pumalabs.io/ru/#navigation",
+    "name": ["Главная","О нас","Услуги","Мы создаём","Партнёры","FAQ","Контакты"],
+    "url": [
+      "https://pumalabs.io/ru/#home",
+      "https://pumalabs.io/ru/#about",
+      "https://pumalabs.io/ru/#services",
+      "https://pumalabs.io/ru/#build",
+      "https://pumalabs.io/ru/#partners",
+      "https://pumalabs.io/ru/#faq",
+      "https://pumalabs.io/ru/#contact"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "@id":"https://pumalabs.io/ru/#services-list",
+    "name":"Услуги Puma Labs",
+    "itemListElement":[
+      { "@type":"Service","name":"Разработка продуктов","serviceType":"Software development","description":"От идеи до запуска: масштабируемая разработка продуктов с гибкостью стартапа." },
+      { "@type":"Service","name":"UI и UX дизайн","serviceType":"Design","description":"Понятные, функциональные интерфейсы, отражающие ваш бренд и оптимизирующие пользовательский опыт." },
+      { "@type":"Service","name":"Интеграция ИИ","serviceType":"Artificial Intelligence","description":"Автоматизация, прогнозирование и персонализация на основе машинного обучения." },
+      { "@type":"Service","name":"Кибербезопасность","serviceType":"Security","description":"Встроенная защита: шифрование, безопасное программирование и проактивное предотвращение угроз." },
+      { "@type":"Service","name":"Постоянная поддержка","serviceType":"Maintenance","description":"Техническое обслуживание после запуска, обновления и мониторинг производительности." },
+      { "@type":"Service","name":"Техническое консультирование","serviceType":"Consulting","description":"Архитектура, стек и стратегия разработки, адаптированные под ваши бизнес-цели." }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "@id":"https://pumalabs.io/ru/#faq-schema",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Какие услуги вы предоставляете?",
+        "acceptedAnswer":{"@type":"Answer","text":"Мы предоставляем разработку продуктов, дизайн UI/UX, интеграцию ИИ, кибербезопасность, постоянную поддержку и технологическое консультирование для предпринимателей и стартапов."}
+      },
+      {
+        "@type":"Question",
+        "name":"Работаете ли вы с ранними стартапами?",
+        "acceptedAnswer":{"@type":"Answer","text":"Да. Мы часто помогаем основателям валидировать идеи и быстро запускать MVP, закладывая масштабируемый фундамент для роста."}
+      },
+      {
+        "@type":"Question",
+        "name":"Как вы обеспечиваете кибербезопасность?",
+        "acceptedAnswer":{"@type":"Answer","text":"Безопасность встроена с первого дня: практики безопасного программирования, шифрование, гигиена зависимостей, автоматизированные проверки и периодические обзоры."}
+      },
+      {
+        "@type":"Question",
+        "name":"Как начать работу?",
+        "acceptedAnswer":{"@type":"Answer","text":"Поделитесь своими целями через форму обратной связи — мы ответим с следующими шагами, примерным подходом и временными рамками."}
+      },
+      {
+        "@type":"Question",
+        "name":"Каковы типичные сроки для MVP?",
+        "acceptedAnswer":{"@type":"Answer","text":"Большинство MVP доставляются в течение 4–8 недель в зависимости от объёма, интеграций и требований соответствия."}
+      },
+      {
+        "@type":"Question",
+        "name":"Какой технологический стек вы используете?",
+        "acceptedAnswer":{"@type":"Answer","text":"Мы выбираем стек в соответствии с вашими целями; распространённые варианты включают современные веб-фреймворки, облачную инфраструктуру и проверенные инструменты безопасности."}
+      },
+      {
+        "@type":"Question",
+        "name":"Как вы оцениваете проекты?",
+        "acceptedAnswer":{"@type":"Answer","text":"Мы предлагаем как фиксированную цену для чётко определённых объёмов, так и оплату по времени и материалам для итеративной работы; после короткого исследования мы предоставляем прозрачную оценку."}
+      },
+      {
+        "@type":"Question",
+        "name":"Кому принадлежат IP и исходный код?",
+        "acceptedAnswer":{"@type":"Answer","text":"Вы сохраняете 100% владение IP и исходным кодом; мы передаём репозитории, документацию и доступ на каждом этапе."}
+      },
+      {
+        "@type":"Question",
+        "name":"Подписываете ли вы NDA?",
+        "acceptedAnswer":{"@type":"Answer","text":"Да — мы можем подписать взаимное NDA перед обсуждением деталей."}
+      },
+      {
+        "@type":"Question",
+        "name":"Предоставляете ли вы постоянную поддержку и SLA?",
+        "acceptedAnswer":{"@type":"Answer","text":"Да — мы предлагаем планы обслуживания и поддержки с SLA по времени отклика, адаптированными под ваши потребности."}
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "@id":"https://pumalabs.io/ru/#breadcrumbs",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Главная","item":"https://pumalabs.io/ru/#home"},
+      {"@type":"ListItem","position":2,"name":"О нас","item":"https://pumalabs.io/ru/#about"},
+      {"@type":"ListItem","position":3,"name":"Услуги","item":"https://pumalabs.io/ru/#services"},
+      {"@type":"ListItem","position":4,"name":"Мы создаём","item":"https://pumalabs.io/ru/#build"},
+      {"@type":"ListItem","position":5,"name":"Партнёры","item":"https://pumalabs.io/ru/#partners"},
+      {"@type":"ListItem","position":6,"name":"FAQ","item":"https://pumalabs.io/ru/#faq"},
+      {"@type":"ListItem","position":7,"name":"Контакты","item":"https://pumalabs.io/ru/#contact"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#home">Перейти к содержимому</a>
+  <canvas id="neural-bg"></canvas>
+
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="mobile-menu-toggle" id="mobile-toggle" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <button id="theme-toggle" class="theme-icon-btn" aria-label="Переключить на светлую тему" type="button" title="Переключить тему">
+        <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 0l1.79-1.8 1.41 1.41-1.8 1.79-1.4-1.4zM12 4V1h0v3h0zm0 19v-3h0v3h0zM4 12H1v0h3v0zm19 0h-3v0h3v0zM6.76 19.16l-1.42 1.42-1.79-1.8 1.41-1.41 1.8 1.79zm12.03-1.8l1.41 1.41-1.79 1.8-1.41-1.42 1.79-1.79zM12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        <span class="sr-only">Переключить тему</span>
+      </button>
+
+      <div class="nav-menu" id="nav-menu">
+        <ul>
+          <li><a href="#home">ГЛАВНАЯ</a></li>
+          <li><a href="#about">О НАС</a></li>
+          <li><a href="#services">УСЛУГИ</a></li>
+          <li><a href="#build">МЫ СОЗДАЁМ</a></li>
+          <li><a href="#partners">ПАРТНЁРЫ</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">КОНТАКТЫ</a></li>
+        </ul>
+      </div>
+
+      <div class="language-selector" id="language-selector">
+        <a href="/" class="lang-btn" data-lang="en" aria-label="English">EN</a>
+        <a href="/ru/" class="lang-btn active" data-lang="ru" aria-label="Русский">RU</a>
+        <a href="/he/" class="lang-btn" data-lang="he" aria-label="עברית">HE</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main" role="main">
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1 class="glitch" data-text="Puma Labs">Puma Labs</h1>
+        <p class="subtitle">Разработка продуктов / Кибербезопасность для предпринимателей и стартапов</p>
+      </div>
+      <a href="#about" class="scroll-btn">
+        <div class="scroll-btn-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+          </svg>
+        </div>
+      </a>
+    </section>
+
+    <section id="about" class="fade-in">
+      <h2 class="section-title">О НАС</h2>
+      <div class="about-container">
+        <div class="about-image">
+          <div class="profile-img-wrapper">
+            <div class="profile-img">
+              <span>AI</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-content">
+          <h3>Инновации с уверенностью</h3>
+          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+            Puma Labs предоставляет комплексную поддержку предпринимателям и стартапам на каждом этапе разработки продукта. Мы помогаем превращать идеи в реальность, от первоначальной концепции и дизайна до полномасштабной разработки и долгосрочной поддержки.
+          </p>
+          <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);">
+            Мы не просто создаём качественные продукты, мы приоритезируем безопасность данных для защиты ваших проектов от киберугроз. Инновации лежат в основе всего, что мы делаем, и мы стремимся выполнять каждый проект с максимальной эффективностью и безопасностью.
+          </p>
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="stat-number">100+</div>
+              <div class="stat-label">Проектов</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">6+</div>
+              <div class="stat-label">Лет опыта</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">80+</div>
+              <div class="stat-label">Клиентов</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="fade-in">
+      <h2 class="section-title">УСЛУГИ</h2>
+      <div class="projects-grid">
+        <div class="glass-card project-card">
+          <h3 style="color: var(--primary);">Разработка продуктов</h3>
+          <p style="color: var(--text-secondary);">От идеи до запуска, продукты создаются с учётом масштабируемости, с фокусом на скорость, надёжность и гибкость стартапа.</p>
+        </div>
+        <div class="glass-card project-card">
+          <h3 style="color: var(--secondary);">UI и UX дизайн</h3>
+          <p style="color: var(--text-secondary);">Понятные, функциональные интерфейсы, отражающие ваш бренд и оптимизирующие пользовательский опыт.</p>
+        </div>
+        <div class="glass-card project-card">
+          <h3 style="color: var(--accent);">Интеграция ИИ</h3>
+          <p style="color: var(--text-secondary);">Улучшите свой продукт с помощью автоматизации, прогнозирования и персонализации на основе машинного обучения.</p>
+        </div>
+        <div class="glass-card project-card">
+          <h3 style="color: var(--primary);">Кибербезопасность</h3>
+          <p style="color: var(--text-secondary);">Встроенная защита для вашего продукта, включая шифрование, безопасное программирование и предотвращение угроз с первого дня.</p>
+        </div>
+        <div class="glass-card project-card">
+          <h3 style="color: var(--secondary);">Постоянная поддержка</h3>
+          <p style="color: var(--text-secondary);">Техническое обслуживание после запуска, обновления и мониторинг производительности для роста вашего продукта.</p>
+        </div>
+        <div class="glass-card project-card">
+          <h3 style="color: var(--accent);">Техническое консультирование</h3>
+          <p style="color: var(--text-secondary);">Экспертное руководство по архитектуре, технологическому стеку и стратегии разработки, адаптированное под ваши бизнес-цели.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="build" class="fade-in">
+      <h2 class="section-title">МЫ СОЗДАЁМ</h2>
+      <div class="skills-container">
+        <div class="skill-node"><span>MVP</span></div>
+        <div class="skill-node"><span>WEB</span></div>
+        <div class="skill-node"><span>BOTS</span></div>
+        <div class="skill-node"><span>AI</span></div>
+        <div class="skill-node"><span>SECURITY</span></div>
+        <div class="skill-node"><span>ADMIN</span></div>
+      </div>
+    </section>
+
+    <section id="partners" class="fade-in">
+      <h2 class="section-title">ПАРТНЁРЫ</h2>
+      <div class="skills-container">
+        <div class="glass-card project-card">
+          <a href="https://m.do.co/c/9fe481cfbee3" target="_blank" rel="sponsored noopener noreferrer">
+            <img src="../assets/partners/2.png" alt="Digital Ocean" class="partner-logo" loading="lazy" decoding="async" width="100">
+          </a>
+        </div>
+        <div class="glass-card project-card">
+          <a href="https://go.getproton.me/SH1ue" target="_blank" rel="sponsored noopener noreferrer">
+            <img src="../assets/partners/7.png" alt="Proton VPN" class="partner-logo" loading="lazy" decoding="async" width="100">
+          </a>
+        </div>
+        <div class="glass-card project-card">
+          <a href="https://download.getneema.com/kaopaNDCvFb" target="_blank" rel="sponsored noopener noreferrer">
+            <img src="../assets/partners/8.png" alt="Neema Bank" class="partner-logo" loading="lazy" decoding="async" width="100">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="fade-in">
+      <h2 class="section-title">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</h2>
+      <div class="glass-card">
+        <details class="faq-item" id="q-services" open>
+          <summary>Какие услуги вы предоставляете?</summary>
+          <p>Мы предоставляем разработку продуктов, дизайн UI/UX, интеграцию ИИ, кибербезопасность, постоянную поддержку и технологическое консультирование для предпринимателей и стартапов.</p>
+        </details>
+        <details class="faq-item" id="q-startups">
+          <summary>Работаете ли вы с ранними стартапами?</summary>
+          <p>Да. Мы часто помогаем основателям валидировать идеи и быстро запускать MVP, закладывая масштабируемый фундамент для роста.</p>
+        </details>
+        <details class="faq-item" id="q-security">
+          <summary>Как вы обеспечиваете кибербезопасность?</summary>
+          <p>Безопасность встроена с первого дня: практики безопасного программирования, шифрование, гигиена зависимостей, автоматизированные проверки и периодические обзоры.</p>
+        </details>
+        <details class="faq-item" id="q-get-started">
+          <summary>Как начать работу?</summary>
+          <p>Поделитесь своими целями через форму обратной связи — мы ответим с следующими шагами, примерным подходом и временными рамками.</p>
+        </details>
+        <details class="faq-item" id="q-timeline">
+          <summary>Каковы типичные сроки для MVP?</summary>
+          <p>Большинство MVP доставляются в течение 4–8 недель в зависимости от объёма, интеграций и требований соответствия.</p>
+        </details>
+        <details class="faq-item" id="q-stack">
+          <summary>Какой технологический стек вы используете?</summary>
+          <p>Мы выбираем стек в соответствии с вашими целями; распространённые варианты включают современные веб-фреймворки, облачную инфраструктуру и проверенные инструменты безопасности.</p>
+        </details>
+        <details class="faq-item" id="q-pricing">
+          <summary>Как вы оцениваете проекты?</summary>
+          <p>Мы предлагаем как фиксированную цену для чётко определённых объёмов, так и оплату по времени и материалам для итеративной работы; после короткого исследования мы предоставляем прозрачную оценку.</p>
+        </details>
+        <details class="faq-item" id="q-ip">
+          <summary>Кому принадлежат IP и исходный код?</summary>
+          <p>Вы сохраняете 100% владение IP и исходным кодом; мы передаём репозитории, документацию и доступ на каждом этапе.</p>
+        </details>
+        <details class="faq-item" id="q-nda">
+          <summary>Подписываете ли вы NDA?</summary>
+          <p>Да — мы можем подписать взаимное NDA перед обсуждением деталей.</p>
+        </details>
+        <details class="faq-item" id="q-sla">
+          <summary>Предоставляете ли вы постоянную поддержку и SLA?</summary>
+          <p>Да — мы предлагаем планы обслуживания и поддержки с SLA по времени отклика, адаптированными под ваши потребности.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact" class="fade-in">
+      <h2 class="section-title">КОНТАКТЫ</h2>
+      <form class="contact-form glass-card" novalidate>
+        <div class="form-group">
+          <label class="sr-only" for="contact-name">Ваше имя</label>
+          <input type="text" id="contact-name" name="name" placeholder="Ваше имя" required autocomplete="name" inputmode="text" aria-describedby="error-name">
+          <p class="field-error" id="error-name" aria-live="polite"></p>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="contact-email">Ваш email</label>
+          <input type="email" id="contact-email" name="email" placeholder="Ваш email" required autocomplete="email" inputmode="email" aria-describedby="error-email">
+          <p class="field-error" id="error-email" aria-live="polite"></p>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="contact-message">Ваше сообщение</label>
+          <textarea id="contact-message" rows="5" name="message" placeholder="Ваше сообщение" required aria-describedby="error-message"></textarea>
+          <p class="field-error" id="error-message" aria-live="polite"></p>
+        </div>
+        <div class="form-group" hidden>
+          <label for="contact-honey" class="sr-only">Leave blank</label>
+          <input type="text" id="contact-honey" name="honey" tabindex="-1" autocomplete="off">
+        </div>
+        <button type="submit" class="neural-btn">ОТПРАВИТЬ СООБЩЕНИЕ</button>
+        <p class="form-status" aria-live="polite" aria-atomic="true"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Навигация</h3>
+        <ul>
+          <li><a href="#home">Главная</a></li>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#build">Мы создаём</a></li>
+          <li><a href="#partners">Партнёры</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Контакты</a></li>
+          <li><a href="/privacy.html">Конфиденциальность</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Связь</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 10px;">Давайте создадим что-то удивительное вместе</p>
+        <div class="social-links">
+          <a href="https://github.com/Puma-Labs" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/pumalabs" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="current-year">2025</span> PumaLabs. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <noscript>
+    <div style="max-width:1200px;margin:20px auto;padding:15px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);border-radius:8px;color:#fff;">
+      JavaScript отключён в вашем браузере. Некоторые интерактивные эффекты (анимации, плавная прокрутка, форма обратной связи) ограничены.
+    </div>
+  </noscript>
+
+  <script src="../scripts.js"></script>
+</body>
+</html>
+

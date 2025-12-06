@@ -240,14 +240,56 @@
       }
     };
 
+    const getCurrentLang = () => {
+      const path = window.location.pathname;
+      if (path.startsWith('/ru/') || path === '/ru') return 'ru';
+      if (path.startsWith('/he/') || path === '/he') return 'he';
+      return 'en';
+    };
+
+    const translations = {
+      en: {
+        nameRequired: 'Please enter your name.',
+        emailInvalid: 'Enter a valid email address.',
+        messageMinLength: 'Message should be at least 10 characters.',
+        sending: 'Sending...',
+        success: 'Message sent successfully!',
+        error: 'Failed to send message. Try again later.',
+        errorDetails: 'Details: ',
+        errorConnection: 'An error occurred. Please check your internet connection.'
+      },
+      ru: {
+        nameRequired: 'Пожалуйста, введите ваше имя.',
+        emailInvalid: 'Введите действительный адрес электронной почты.',
+        messageMinLength: 'Сообщение должно содержать не менее 10 символов.',
+        sending: 'Отправка...',
+        success: 'Сообщение успешно отправлено!',
+        error: 'Не удалось отправить сообщение. Попробуйте позже.',
+        errorDetails: 'Детали: ',
+        errorConnection: 'Произошла ошибка. Проверьте подключение к интернету.'
+      },
+      he: {
+        nameRequired: 'אנא הזן את השם שלך.',
+        emailInvalid: 'הזן כתובת אימייל תקינה.',
+        messageMinLength: 'ההודעה צריכה להכיל לפחות 10 תווים.',
+        sending: 'שולח...',
+        success: 'ההודעה נשלחה בהצלחה!',
+        error: 'שליחת ההודעה נכשלה. נסה שוב מאוחר יותר.',
+        errorDetails: 'פרטים: ',
+        errorConnection: 'אירעה שגיאה. אנא בדוק את חיבור האינטרנט שלך.'
+      }
+    };
+
     const validateForm = (form) => {
+      const lang = getCurrentLang();
+      const t = translations[lang];
       const name = form.querySelector('#contact-name');
       const email = form.querySelector('#contact-email');
       const message = form.querySelector('#contact-message');
       let valid = true;
 
       if (!name.value.trim()) {
-        setFieldError(name, 'Please enter your name.');
+        setFieldError(name, t.nameRequired);
         valid = false;
       } else {
         setFieldError(name, '');
@@ -256,14 +298,14 @@
       const emailValue = email.value.trim();
       const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
       if (!emailValid) {
-        setFieldError(email, 'Enter a valid email address.');
+        setFieldError(email, t.emailInvalid);
         valid = false;
       } else {
         setFieldError(email, '');
       }
 
       if (message.value.trim().length < 10) {
-        setFieldError(message, 'Message should be at least 10 characters.');
+        setFieldError(message, t.messageMinLength);
         valid = false;
       } else {
         setFieldError(message, '');
@@ -288,14 +330,16 @@
         const statusEl = form.querySelector('.form-status');
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn ? submitBtn.textContent : '';
+        const lang = getCurrentLang();
+        const t = translations[lang];
 
         if (submitBtn) {
           submitBtn.disabled = true;
-          submitBtn.textContent = 'Sending...';
+          submitBtn.textContent = t.sending;
         }
         if (statusEl) {
           statusEl.classList.remove('success', 'error');
-          statusEl.textContent = 'Sending...';
+          statusEl.textContent = t.sending;
         }
 
         const payload = {
@@ -312,14 +356,14 @@
           });
           if (response.ok) {
             if (statusEl) {
-              statusEl.textContent = 'Message sent successfully!';
+              statusEl.textContent = t.success;
               statusEl.classList.remove('error');
               statusEl.classList.add('success');
             }
             form.reset();
           } else {
             const text = await response.text().catch(() => '');
-            const messageText = 'Failed to send message. Try again later.' + (text ? ` Details: ${text}` : '');
+            const messageText = t.error + (text ? ` ${t.errorDetails}${text}` : '');
             if (statusEl) {
               statusEl.textContent = messageText;
               statusEl.classList.remove('success');
@@ -329,14 +373,15 @@
         } catch (error) {
           console.error(error);
           if (statusEl) {
-            statusEl.textContent = 'An error occurred. Please check your internet connection.';
+            statusEl.textContent = t.errorConnection;
             statusEl.classList.remove('success');
             statusEl.classList.add('error');
           }
         } finally {
           if (submitBtn) {
             submitBtn.disabled = false;
-            submitBtn.textContent = originalText || 'SEND MESSAGE';
+            const submitTexts = { en: 'SEND MESSAGE', ru: 'ОТПРАВИТЬ СООБЩЕНИЕ', he: 'שלח הודעה' };
+            submitBtn.textContent = originalText || submitTexts[lang] || 'SEND MESSAGE';
           }
         }
       });
@@ -415,5 +460,29 @@
     // Footer year stamp
     const yearEl = document.getElementById('current-year');
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+    // Language selector active state
+    (function initLanguageSelector() {
+      const langSelector = document.getElementById('language-selector');
+      if (!langSelector) return;
+
+      const currentPath = window.location.pathname;
+      let currentLang = 'en';
+      if (currentPath.startsWith('/ru/') || currentPath === '/ru') {
+        currentLang = 'ru';
+      } else if (currentPath.startsWith('/he/') || currentPath === '/he') {
+        currentLang = 'he';
+      }
+
+      const langButtons = langSelector.querySelectorAll('.lang-btn');
+      langButtons.forEach((btn) => {
+        const lang = btn.getAttribute('data-lang');
+        if (lang === currentLang) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    })();
   });
 })();
