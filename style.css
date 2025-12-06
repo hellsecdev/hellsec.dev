@@ -337,33 +337,6 @@ html[data-theme="light"] nav ul a[aria-current="true"] {
   color: #005dff;
 }
 
-.mobile-menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  z-index: 1001;
-}
-
-.mobile-menu-toggle span {
-  width: 30px;
-  height: 3px;
-  background: var(--primary);
-  margin: 3px 0;
-  transition: all 0.3s ease;
-  border-radius: 2px;
-}
-
-.mobile-menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(8px, 8px);
-}
-
-.mobile-menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.mobile-menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(8px, -8px);
-}
 
 .skip-link {
   position: absolute;
@@ -1301,26 +1274,9 @@ button:focus-visible,
     flex-direction: row;
   }
 
-  .mobile-menu-toggle {
-    display: flex;
-    order: 1;
-  }
-
-  [dir="rtl"] .mobile-menu-toggle {
-    order: 1;
-  }
 
   .nav-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: rgba(10, 10, 10, 0.98);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    margin-top: 15px;
-    /* Не участвует в flex-потоке, так как абсолютно позиционирован */
+    display: none;
   }
 
   [dir="rtl"] .nav-menu {
@@ -1328,45 +1284,15 @@ button:focus-visible,
     right: auto;
   }
 
-  .nav-menu.active {
-    max-height: 400px;
-    border-top: 1px solid rgba(0, 255, 255, 0.2);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-  }
-
-  .nav-menu::before,
-  .nav-menu::after {
-    display: none;
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 0;
-    padding: 20px;
-  }
-
-  nav ul li {
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  nav ul li:last-child {
-    border-bottom: none;
-  }
-
-  nav a {
-    font-size: 0.9rem;
-  }
 
   .theme-icon-btn {
-    margin-left: auto;
-    order: 2;
+    margin-left: 0;
+    margin-right: auto;
   }
 
   [dir="rtl"] .theme-icon-btn {
     margin-left: auto;
     margin-right: 0;
-    order: 2;
   }
 
   .language-selector {
@@ -1375,13 +1301,11 @@ button:focus-visible,
     margin-left: 10px;
     margin-right: 0;
     gap: 6px;
-    order: 3;
   }
 
   [dir="rtl"] .language-selector {
     margin-left: 10px;
     margin-right: 0;
-    order: 3;
   }
 
   .nav-menu {
@@ -1574,17 +1498,13 @@ button:focus-visible,
     position: static;
     transform: none;
     margin-left: 10px;
-    margin-right: auto;
+    margin-right: 0;
   }
   
   [dir="rtl"] .theme-icon-btn {
     left: 0 !important;
     right: auto !important;
-    margin-left: 0;
-    margin-right: auto;
-  }
-  
-  [dir="rtl"] .mobile-menu-toggle {
-    order: -1;
+    margin-left: auto;
+    margin-right: 0;
   }
 }

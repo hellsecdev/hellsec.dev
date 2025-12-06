@@ -128,33 +128,6 @@
       }
     }
 
-    // Mobile navigation toggle
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    if (mobileToggle && navMenu) {
-      const closeMenu = () => {
-        mobileToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-        mobileToggle.setAttribute('aria-expanded', 'false');
-      };
-
-      mobileToggle.addEventListener('click', () => {
-        const isOpen = mobileToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-
-      mobileToggle.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          mobileToggle.click();
-        }
-      });
-
-      navMenu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', closeMenu);
-      });
-    }
 
     // Smooth scrolling for anchors
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -387,30 +360,6 @@
       });
     }
 
-    // Focus trap for mobile menu when open
-    (function initFocusTrap() {
-      const menu = document.getElementById('nav-menu');
-      const toggle = document.getElementById('mobile-toggle');
-      if (!menu || !toggle) return;
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && menu.classList.contains('active')) {
-          toggle.click();
-          return;
-        }
-        if (event.key !== 'Tab' || !menu.classList.contains('active')) return;
-        const focusables = menu.querySelectorAll('a,button,[tabindex]:not([tabindex="-1"])');
-        if (!focusables.length) return;
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first.focus();
-        }
-      });
-    })();
 
     // Register service worker once
     if ('serviceWorker' in navigator) {
