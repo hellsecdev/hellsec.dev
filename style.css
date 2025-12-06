@@ -1279,10 +1279,19 @@ button:focus-visible,
 
 
   .nav-menu {
-    display: none;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
   }
 
   [dir="rtl"] .nav-menu {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
     left: 0;
     right: auto;
   }
@@ -1354,6 +1363,7 @@ button:focus-visible,
   }
 
   .nav-menu {
+    display: none !important;
     order: 4;
   }
 
