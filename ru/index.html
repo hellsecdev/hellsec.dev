@@ -105,10 +105,11 @@
     "@context": "https://schema.org",
     "@type": "SiteNavigationElement",
     "@id": "https://pumalabs.io/ru/#navigation",
-    "name": ["Главная","О нас","Услуги","Мы создаём","Партнёры","FAQ","Контакты"],
+    "name": ["Главная","О нас","Команда","Услуги","Мы создаём","Партнёры","FAQ","Контакты"],
     "url": [
       "https://pumalabs.io/ru/#home",
       "https://pumalabs.io/ru/#about",
+      "https://pumalabs.io/ru/#team",
       "https://pumalabs.io/ru/#services",
       "https://pumalabs.io/ru/#build",
       "https://pumalabs.io/ru/#partners",
@@ -200,11 +201,12 @@
     "itemListElement":[
       {"@type":"ListItem","position":1,"name":"Главная","item":"https://pumalabs.io/ru/#home"},
       {"@type":"ListItem","position":2,"name":"О нас","item":"https://pumalabs.io/ru/#about"},
-      {"@type":"ListItem","position":3,"name":"Услуги","item":"https://pumalabs.io/ru/#services"},
-      {"@type":"ListItem","position":4,"name":"Мы создаём","item":"https://pumalabs.io/ru/#build"},
-      {"@type":"ListItem","position":5,"name":"Партнёры","item":"https://pumalabs.io/ru/#partners"},
-      {"@type":"ListItem","position":6,"name":"FAQ","item":"https://pumalabs.io/ru/#faq"},
-      {"@type":"ListItem","position":7,"name":"Контакты","item":"https://pumalabs.io/ru/#contact"}
+      {"@type":"ListItem","position":3,"name":"Команда","item":"https://pumalabs.io/ru/#team"},
+      {"@type":"ListItem","position":4,"name":"Услуги","item":"https://pumalabs.io/ru/#services"},
+      {"@type":"ListItem","position":5,"name":"Мы создаём","item":"https://pumalabs.io/ru/#build"},
+      {"@type":"ListItem","position":6,"name":"Партнёры","item":"https://pumalabs.io/ru/#partners"},
+      {"@type":"ListItem","position":7,"name":"FAQ","item":"https://pumalabs.io/ru/#faq"},
+      {"@type":"ListItem","position":8,"name":"Контакты","item":"https://pumalabs.io/ru/#contact"}
     ]
   }
   </script>
@@ -231,6 +233,7 @@
         <ul>
           <li><a href="#home">ГЛАВНАЯ</a></li>
           <li><a href="#about">О НАС</a></li>
+          <li><a href="#team">КОМАНДА</a></li>
           <li><a href="#services">УСЛУГИ</a></li>
           <li><a href="#build">МЫ СОЗДАЁМ</a></li>
           <li><a href="#partners">ПАРТНЁРЫ</a></li>
@@ -294,6 +297,40 @@
               <div class="stat-label">Клиентов</div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="fade-in">
+      <h2 class="section-title">НАША КОМАНДА</h2>
+      <div class="team-grid">
+        <div class="glass-card team-card">
+          <div class="team-avatar">
+            <img src="../assets/team/vladimir.jpg" alt="Vladimir B." class="team-photo" loading="lazy" decoding="async">
+          </div>
+          <h3 class="team-name">Vladimir B.</h3>
+          <p class="team-role">Генеральный директор / Директор по информационным технологиям</p>
+        </div>
+        <div class="glass-card team-card">
+          <div class="team-avatar">
+            <img src="../assets/team/igor.jpg" alt="Igor R." class="team-photo" loading="lazy" decoding="async">
+          </div>
+          <h3 class="team-name">Igor R.</h3>
+          <p class="team-role">Технический директор</p>
+        </div>
+        <div class="glass-card team-card">
+          <div class="team-avatar">
+            <img src="../assets/team/matan.jpg" alt="Matan D." class="team-photo" loading="lazy" decoding="async">
+          </div>
+          <h3 class="team-name">Matan D.</h3>
+          <p class="team-role">Директор по маркетингу</p>
+        </div>
+        <div class="glass-card team-card">
+          <div class="team-avatar">
+            <img src="../assets/team/timofey.jpg" alt="Timofey K." class="team-photo" loading="lazy" decoding="async">
+          </div>
+          <h3 class="team-name">Timofey K.</h3>
+          <p class="team-role">Финансовый директор</p>
         </div>
       </div>
     </section>
@@ -442,6 +479,7 @@
         <ul>
           <li><a href="#home">Главная</a></li>
           <li><a href="#about">О нас</a></li>
+          <li><a href="#team">Команда</a></li>
           <li><a href="#services">Услуги</a></li>
           <li><a href="#build">Мы создаём</a></li>
           <li><a href="#partners">Партнёры</a></li>
