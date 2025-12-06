@@ -127,6 +127,7 @@ html[data-theme="light"] nav.scrolled {
   gap: 16px;
 }
 
+/* В десктопной версии nav-container остается row даже в RTL */
 [dir="rtl"] .nav-container {
   flex-direction: row;
 }
@@ -1290,10 +1291,23 @@ button:focus-visible,
 
   .nav-container {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  [dir="rtl"] .nav-container {
+    flex-direction: row;
   }
 
   .mobile-menu-toggle {
     display: flex;
+    order: 1;
+  }
+
+  [dir="rtl"] .mobile-menu-toggle {
+    order: 1;
   }
 
   .nav-menu {
@@ -1306,6 +1320,7 @@ button:focus-visible,
     overflow: hidden;
     transition: max-height 0.3s ease;
     margin-top: 15px;
+    /* Не участвует в flex-потоке, так как абсолютно позиционирован */
   }
 
   [dir="rtl"] .nav-menu {
@@ -1345,24 +1360,32 @@ button:focus-visible,
 
   .theme-icon-btn {
     margin-left: auto;
+    order: 2;
   }
 
   [dir="rtl"] .theme-icon-btn {
-    margin-left: 0;
-    margin-right: auto;
+    margin-left: auto;
+    margin-right: 0;
+    order: 2;
   }
 
   .language-selector {
     position: static;
     transform: none;
-    margin-left: auto;
-    margin-right: 10px;
+    margin-left: 10px;
+    margin-right: 0;
     gap: 6px;
+    order: 3;
   }
 
   [dir="rtl"] .language-selector {
     margin-left: 10px;
-    margin-right: auto;
+    margin-right: 0;
+    order: 3;
+  }
+
+  .nav-menu {
+    order: 4;
   }
 
   .lang-btn {
