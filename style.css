@@ -1481,15 +1481,17 @@ button:focus-visible,
   direction: rtl;
 }
 
-/* Переключатели остаются на своих местах даже в RTL */
-[dir="rtl"] .theme-icon-btn {
-  left: 0 !important;
-  right: auto !important;
-}
+/* Переключатели остаются на своих местах даже в RTL (только для десктопа) */
+@media (min-width: 769px) {
+  [dir="rtl"] .theme-icon-btn {
+    left: 0 !important;
+    right: auto !important;
+  }
 
-[dir="rtl"] .language-selector {
-  right: 0 !important;
-  left: auto !important;
+  [dir="rtl"] .language-selector {
+    right: 0 !important;
+    left: auto !important;
+  }
 }
 
 [dir="rtl"] .nav-menu::before {
