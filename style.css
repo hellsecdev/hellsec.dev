@@ -1260,6 +1260,15 @@ button:focus-visible,
 
   nav {
     padding: 15px 20px;
+    height: auto;
+    max-height: 70px;
+    overflow: visible;
+  }
+  
+  [dir="rtl"] nav {
+    height: auto;
+    max-height: 70px;
+    overflow: visible;
   }
 
   .nav-container {
@@ -1283,7 +1292,12 @@ button:focus-visible,
     visibility: hidden !important;
     opacity: 0 !important;
     height: 0 !important;
+    width: 0 !important;
     overflow: hidden !important;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    pointer-events: none !important;
   }
 
   [dir="rtl"] .nav-menu {
@@ -1291,9 +1305,13 @@ button:focus-visible,
     visibility: hidden !important;
     opacity: 0 !important;
     height: 0 !important;
+    width: 0 !important;
     overflow: hidden !important;
-    left: 0;
-    right: auto;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    right: auto !important;
+    pointer-events: none !important;
   }
 
 
@@ -1589,5 +1607,27 @@ button:focus-visible,
   [dir="rtl"] .nav-container {
     overflow: visible !important;
     min-height: 70px;
+  }
+  
+  /* Убеждаемся, что контент виден в RTL режиме */
+  [dir="rtl"] main {
+    position: relative !important;
+    z-index: 2 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  [dir="rtl"] section {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+  }
+  
+  [dir="rtl"] .hero {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 }
