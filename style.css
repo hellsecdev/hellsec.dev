@@ -389,9 +389,12 @@ section {
   margin: 0 auto;
 }
 
-[dir="rtl"] section {
-  max-width: 100%;
-  overflow-x: hidden;
+/* RTL section rules only for mobile, desktop keeps same padding/margin */
+@media (max-width: 768px) {
+  [dir="rtl"] section {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
 }
 
 .hero {
@@ -1549,6 +1552,7 @@ button:focus-visible,
 }
 
 /* Переключатели остаются на своих местах даже в RTL (только для десктопа) */
+/* Убеждаемся, что в десктопной версии RTL сохраняются те же отступы и края, что и в LTR */
 @media (min-width: 769px) {
   [dir="rtl"] .theme-icon-btn {
     left: 0 !important;
@@ -1558,6 +1562,25 @@ button:focus-visible,
   [dir="rtl"] .language-selector {
     right: 0 !important;
     left: auto !important;
+  }
+
+  /* В десктопной версии RTL сохраняем те же padding, margin и max-width, что и в LTR */
+  [dir="rtl"] section {
+    padding: 80px 50px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    overflow-x: visible !important;
+  }
+
+  /* Убеждаемся, что контейнеры в десктопной версии RTL сохраняют правильные отступы */
+  [dir="rtl"] .contact-form {
+    max-width: 600px !important;
+    margin: 0 auto !important;
+  }
+
+  [dir="rtl"] .footer-content {
+    max-width: 1200px !important;
+    margin: 0 auto 40px !important;
   }
 }
 
