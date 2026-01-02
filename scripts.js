@@ -186,12 +186,17 @@
       const io = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            entry.target.classList.remove('hidden-initially'); // Remove hiding class
             entry.target.classList.add('visible');
             observer.unobserve(entry.target);
           }
         });
       }, { threshold: 0.2 });
-      sections.forEach((section) => io.observe(section));
+      
+      sections.forEach((section) => {
+        section.classList.add('hidden-initially'); // Hide only when JS is ready
+        io.observe(section);
+      });
     } else if (sections.length) {
       const reveal = () => {
         const vh = window.innerHeight;
@@ -366,12 +371,13 @@
     }
 
 
-    // Register service worker once
+    // UNREGISTER Service Worker to fix caching issues
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch((err) => {
-          console.warn('Service worker registration failed:', err);
-        });
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (const registration of registrations) {
+          registration.unregister();
+          console.log('Service Worker unregistered');
+        }
       });
     }
 

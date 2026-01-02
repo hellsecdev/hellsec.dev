@@ -1060,9 +1060,19 @@ html[data-theme="light"] .footer-bottom {
 }
 
 .fade-in {
+  opacity: 1; /* Was 0. Changed to 1 to prevent invisible content on JS failure */
+  transform: none; /* Was translateY(30px) */
+  transition: all 0.6s ease;
+}
+
+/* Optional: You can keep the animation if you add a class via JS, 
+   but for stability now, let's keep it visible by default. 
+   The IntersectionObserver in JS adds .visible, which we can redefine below if needed 
+   but currently it just adds the class. */
+
+.fade-in.hidden-initially {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.6s ease;
 }
 
 .fade-in.visible {
