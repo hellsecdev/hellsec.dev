@@ -221,90 +221,6 @@ async function localizeGoogleFonts() {
   }
 }
 
-async function generateServiceWorker(pkgVersion) {
-  const allFiles = await findFilesRecursive(DIST, (file) => fssync.statSync(file).isFile());
-  const assets = new Set(['/']);
-  for (const abs of allFiles) {
-    const rel = posixify(path.relative(DIST, abs));
-    if (!rel || rel.startsWith('.')) continue;
-    const url = `/${rel}`;
-    if (url === '/sw.js') continue;
-    assets.add(url);
-  }
-
-  const now = new Date();
-  const versionSuffix = `${now.getUTCFullYear()}${String(now.getUTCMonth() + 1).padStart(2, '0')}${String(now.getUTCDate()).padStart(2, '0')}${String(now.getUTCHours()).padStart(2, '0')}${String(now.getUTCMinutes()).padStart(2, '0')}`;
-  const cacheName = `pumalabs-static-${pkgVersion}-${versionSuffix}`;
-
-  const swSource = `
-const CACHE_NAME = ${JSON.stringify(cacheName)};
-const ASSETS = ${JSON.stringify(Array.from(assets).sort(), null, 2)};
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)));
-  self.skipWaiting();
-});
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
-    )
-  );
-  self.clients.claim();
-});
-
-self.addEventListener('fetch', (event) => {
-  try {
-    const url = new URL(event.request.url);
-    if (event.request.method !== 'GET' || url.origin !== self.location.origin) return;
-  } catch (_) {
-    return;
-  }
-
-  // Network First strategy for HTML navigation
-  if (event.request.mode === 'navigate') {
-    event.respondWith(
-      fetch(event.request)
-        .then((response) => {
-          if (response.ok) {
-            const clone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone)).catch(() => {});
-          }
-          return response;
-        })
-        .catch(() => caches.match(event.request).then((cached) => cached || caches.match('/index.html')))
-    );
-    return;
-  }
-
-  // Cache First strategy for assets
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(event.request)
-        .then((response) => {
-          if (response.ok) {
-            const clone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone)).catch(() => {});
-          }
-          return response;
-        })
-        .catch(() => undefined);
-    })
-  );
-});
-`.trimStart();
-
-  await fs.writeFile(path.join(DIST, 'sw.js'), swSource, 'utf8');
-}
-
-async function readPkgVersion() {
-  const pkgPath = path.join(ROOT, 'package.json');
-  const pkg = JSON.parse(await fs.readFile(pkgPath, 'utf8'));
-  return pkg.version || '0.0.0';
-}
-
 async function main() {
   console.log('➡️  Cleaning dist...');
   await rimraf(DIST);
@@ -324,11 +240,29 @@ async function main() {
   console.log('➡️  Updating sitemap lastmod...');
   await updateSitemap();
 
-  console.log('➡️  Generating service worker...');
-  const version = await readPkgVersion();
-  await generateServiceWorker(version);
+  console.log('➡️  Generating KILLER service worker...');
+  
+  // Self-destructing Service Worker to clean up old caches and fix white screen loops
+  const swSource = `
+self.addEventListener('install', () => {
+  // Activate immediately
+  self.skipWaiting();
+});
 
-  console.log('✅ Build complete. Output: dist/');
+self.addEventListener('activate', (event) => {
+  // Unregister immediately
+  event.waitUntil(
+    self.registration.unregister().then(() => {
+      return self.clients.matchAll();
+    }).then((clients) => {
+      // Force reload all open tabs to get fresh content
+      clients.forEach(client => client.navigate(client.url));
+    })
+  );
+});
+`.trimStart();
+
+  await fs.writeFile(path.join(DIST, 'sw.js'), swSource, 'utf8');
 }
 
 main().catch((err) => {
