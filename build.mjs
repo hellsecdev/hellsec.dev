@@ -242,27 +242,38 @@ async function main() {
 
   console.log('➡️  Generating cleanup service worker...');
   
-  // Self-destructing Service Worker to clean up old caches
+  // Self-destructing Service Worker to clean up old caches and prevent caching issues
   const swSource = `
-self.addEventListener('install', () => {
+self.addEventListener('install', (event) => {
+  // Skip waiting to activate immediately
   self.skipWaiting();
+  // Don't cache anything
+  event.waitUntil(self.skipWaiting());
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    // Delete all caches first
-    caches.keys().then((cacheNames) => {
-      return Promise.all(cacheNames.map((cacheName) => caches.delete(cacheName)));
-    }).then(() => {
-      // Then unregister this service worker
-      return self.registration.unregister();
-    }).catch((err) => {
+    Promise.all([
+      // Delete all caches aggressively
+      caches.keys().then((cacheNames) => {
+        return Promise.all(cacheNames.map((cacheName) => {
+          return caches.delete(cacheName).catch(() => {});
+        }));
+      }),
+      // Claim all clients immediately
+      self.clients.claim(),
+      // Unregister this service worker after cleanup
+      self.registration.unregister().catch(() => {})
+    ]).catch((err) => {
       console.error('Service worker cleanup error:', err);
     })
   );
 });
 
-// Don't handle fetch events - let browser handle requests normally
+// Don't intercept any fetch events - let browser handle all requests normally
+self.addEventListener('fetch', () => {
+  // Do nothing - let all requests go to network
+});
 `.trimStart();
 
   await fs.writeFile(path.join(DIST, 'sw.js'), swSource, 'utf8');
