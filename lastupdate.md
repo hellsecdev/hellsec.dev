@@ -19,4 +19,4 @@ This file tracks all changes, improvements, and bug fixes performed by the AI ag
 ### Fixed
 - **White Screen Bug:** Addressed the issue where users saw a blank page on initial load by unregistering old Service Workers and implementing a force-reload mechanism in the new `sw.js`.
 - **JS Stability:** Wrapped the Neural Network canvas initialization in a `try-catch` block to ensure that any potential graphics errors don't block the rest of the site's functionality.
-- **HTML Validation:** Cleaned up HTML syntax and structure across all files to pass `html-validator` checks.
+- **HTML Validation:** Cleaned up HTML syntax and structure across all files to pass `html-validator` checks..
