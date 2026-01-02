@@ -262,6 +262,23 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Network First strategy for HTML navigation
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          if (response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone)).catch(() => {});
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request).then((cached) => cached || caches.match('/index.html')))
+    );
+    return;
+  }
+
+  // Cache First strategy for assets
   event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) return cached;
@@ -273,7 +290,7 @@ self.addEventListener('fetch', (event) => {
           }
           return response;
         })
-        .catch(() => (event.request.mode === 'navigate' ? caches.match('/index.html') : undefined));
+        .catch(() => undefined);
     })
   );
 });
