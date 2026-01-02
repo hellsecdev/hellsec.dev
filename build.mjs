@@ -240,26 +240,29 @@ async function main() {
   console.log('➡️  Updating sitemap lastmod...');
   await updateSitemap();
 
-  console.log('➡️  Generating KILLER service worker...');
+  console.log('➡️  Generating cleanup service worker...');
   
-  // Self-destructing Service Worker to clean up old caches and fix white screen loops
+  // Self-destructing Service Worker to clean up old caches
   const swSource = `
 self.addEventListener('install', () => {
-  // Activate immediately
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  // Unregister immediately
   event.waitUntil(
-    self.registration.unregister().then(() => {
-      return self.clients.matchAll();
-    }).then((clients) => {
-      // Force reload all open tabs to get fresh content
-      clients.forEach(client => client.navigate(client.url));
+    // Delete all caches first
+    caches.keys().then((cacheNames) => {
+      return Promise.all(cacheNames.map((cacheName) => caches.delete(cacheName)));
+    }).then(() => {
+      // Then unregister this service worker
+      return self.registration.unregister();
+    }).catch((err) => {
+      console.error('Service worker cleanup error:', err);
     })
   );
 });
+
+// Don't handle fetch events - let browser handle requests normally
 `.trimStart();
 
   await fs.writeFile(path.join(DIST, 'sw.js'), swSource, 'utf8');
