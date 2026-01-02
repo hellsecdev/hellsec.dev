@@ -11,6 +11,15 @@
   <link rel="apple-touch-icon" href="/assets/favicon.png">
   <link rel="manifest" href="/manifest.webmanifest">
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N35F3SLLG6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N35F3SLLG6');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Exo+2:wght@300;400;500;600;700&family=Audiowide&display=swap" rel="stylesheet">
@@ -53,6 +62,12 @@
           <li><a href="/#contact">CONTACT</a></li>
         </ul>
       </div>
+
+      <div class="language-selector" id="language-selector" style="margin-left:16px;">
+        <a href="/" class="lang-btn" aria-label="English">EN</a>
+        <a href="/ru/" class="lang-btn" aria-label="Русский">RU</a>
+        <a href="/he/" class="lang-btn" aria-label="עברית">HE</a>
+      </div>
     </div>
   </nav>
 
@@ -85,7 +100,7 @@
   <footer role="contentinfo">
     <div class="footer-content">
       <div class="footer-section">
-        <h3>Navigation</h3>
+        <h2 style="font-family:'Audiowide', sans-serif; color: var(--primary); margin-bottom: 20px; font-size: 1.1rem; letter-spacing: 2px;">Navigation</h2>
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/#about">About</a></li>
@@ -97,7 +112,7 @@
         </ul>
       </div>
       <div class="footer-section">
-        <h3>Connect</h3>
+        <h2 style="font-family:'Audiowide', sans-serif; color: var(--primary); margin-bottom: 20px; font-size: 1.1rem; letter-spacing: 2px;">Connect</h2>
         <p style="color: var(--text-secondary); margin-bottom: 10px;">Let's build something amazing together</p>
         <div class="social-links">
           <a href="https://github.com/Puma-Labs" aria-label="GitHub" target="_blank" rel="noopener noreferrer">

@@ -873,6 +873,13 @@ html[data-theme="light"] .partner-logo:hover {
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
 }
 
+.form-group input[aria-invalid="true"],
+.form-group textarea[aria-invalid="true"] {
+  border-color: #f87171;
+  box-shadow: 0 0 10px rgba(248, 113, 113, 0.2);
+  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
 html[data-theme="light"] .form-group input,
 html[data-theme="light"] .form-group textarea {
   background: rgba(255, 255, 255, 0.95);
@@ -1234,6 +1241,13 @@ button:focus-visible,
 @keyframes cyberGlow {
   0% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.5); }
   100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), inset 0 0 20px rgba(0, 255, 255, 0.1); }
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
