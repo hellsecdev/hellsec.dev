@@ -5,7 +5,7 @@ This file tracks all changes, improvements, and bug fixes performed by the AI ag
 ## [2026-01-03] - Initial Optimization & Stability Pass
 
 ### Added
-- **Google Analytics (GA4):** Integrated tracking ID `G-N35F3SLLG6` across all pages (`index.html`, `ru/index.html`, `he/index.html`, `404.html`, `privacy.html`).
+- **Google Analytics (GA4):** Integrated tracking ID `G-N35F3SLLG6` across all pages. Repositioned to be immediately after the opening `<head>` tag per Google recommendations.
 - **SEO Meta Tags:** Added `keywords`, `twitter:site`, and `twitter:creator` tags to all language versions.
 - **Structured Data (JSON-LD):** Added `Person` entities for team members within the `Organization` schema to improve search appearance.
 - **Form Validation UX:** Added visual feedback for invalid form fields (red borders and a subtle shake animation).
