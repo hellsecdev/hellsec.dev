@@ -4,5 +4,5 @@ HellSec partners with founders to turn ideas into secure digital products. We bl
 
 ## Connect
 - Website: [hellsec.dev](https://hellsec.dev/)
-- LinkedIn: [linkedin.com/company/pumalabs](https://www.linkedin.com/company/pumalabs)
-- GitHub: [github.com/Puma-Labs](https://github.com/Puma-Labs)
+- LinkedIn: [linkedin.com/company/hellsec](https://www.linkedin.com/company/hellsec)
+- GitHub: [github.com/hellsecdev](https://github.com/hellsecdev)
