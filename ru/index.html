@@ -512,8 +512,11 @@
         </div>
         <div class="form-group">
           <label class="sr-only" for="contact-message">Ваше сообщение</label>
-          <textarea id="contact-message" rows="5" name="message" placeholder="Ваше сообщение" required aria-describedby="error-message"></textarea>
-          <p class="field-error" id="error-message" aria-live="polite"></p>
+          <textarea id="contact-message" rows="5" name="message" placeholder="Ваше сообщение" required maxlength="500" aria-describedby="error-message message-counter"></textarea>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px;">
+            <p class="field-error" id="error-message" aria-live="polite"></p>
+            <span id="message-counter" style="color: var(--text-secondary); font-size: 0.85rem; margin-left: auto;">0/500</span>
+          </div>
         </div>
         <div class="form-group" hidden>
           <label for="contact-honey" class="sr-only">Leave blank</label>
@@ -564,6 +567,12 @@
       JavaScript отключён в вашем браузере. Некоторые интерактивные эффекты (анимации, плавная прокрутка, форма обратной связи) ограничены.
     </div>
   </noscript>
+
+  <button id="back-to-top" class="back-to-top" aria-label="Наверх" title="Наверх">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
 
   <script src="../scripts.js"></script>
 </body>

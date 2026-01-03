@@ -235,6 +235,8 @@
         nameRequired: 'Please enter your name.',
         emailInvalid: 'Enter a valid email address.',
         messageMinLength: 'Message should be at least 10 characters.',
+        messageMaxLength: 'Message should not exceed 500 characters.',
+        messageInvalidChars: 'Message can only contain letters, numbers, spaces, periods, commas, and exclamation marks.',
         sending: 'Sending...',
         success: 'Message sent successfully!',
         error: 'Failed to send message. Try again later.',
@@ -245,6 +247,8 @@
         nameRequired: 'Пожалуйста, введите ваше имя.',
         emailInvalid: 'Введите действительный адрес электронной почты.',
         messageMinLength: 'Сообщение должно содержать не менее 10 символов.',
+        messageMaxLength: 'Сообщение не должно превышать 500 символов.',
+        messageInvalidChars: 'Сообщение может содержать только буквы, цифры, пробелы, точки, запятые и восклицательные знаки.',
         sending: 'Отправка...',
         success: 'Сообщение успешно отправлено!',
         error: 'Не удалось отправить сообщение. Попробуйте позже.',
@@ -255,6 +259,8 @@
         nameRequired: 'אנא הזן את השם שלך.',
         emailInvalid: 'הזן כתובת אימייל תקינה.',
         messageMinLength: 'ההודעה צריכה להכיל לפחות 10 תווים.',
+        messageMaxLength: 'ההודעה לא צריכה לעלות על 500 תווים.',
+        messageInvalidChars: 'ההודעה יכולה להכיל רק אותיות, מספרים, רווחים, נקודות, פסיקים וסימני קריאה.',
         sending: 'שולח...',
         success: 'ההודעה נשלחה בהצלחה!',
         error: 'שליחת ההודעה נכשלה. נסה שוב מאוחר יותר.',
@@ -287,17 +293,80 @@
         setFieldError(email, '');
       }
 
-      if (message.value.trim().length < 10) {
+      const messageValue = message.value.trim();
+      
+      if (messageValue.length < 10) {
         setFieldError(message, t.messageMinLength);
         valid = false;
+      } else if (messageValue.length > 500) {
+        setFieldError(message, t.messageMaxLength);
+        valid = false;
       } else {
-        setFieldError(message, '');
+        // Проверка на допустимые символы: буквы, цифры, пробелы, точки, запятые, восклицательные знаки, переносы строк
+        const allowedPattern = /^[a-zA-Zа-яА-ЯёЁא-ת0-9\s.,!\n\r]*$/;
+        if (!allowedPattern.test(messageValue)) {
+          setFieldError(message, t.messageInvalidChars);
+          valid = false;
+        } else {
+          setFieldError(message, '');
+        }
       }
 
       return valid;
     };
 
     if (contactForm) {
+      // Обработчик для фильтрации символов в поле сообщения
+      const messageField = contactForm.querySelector('#contact-message');
+      const messageCounter = contactForm.querySelector('#message-counter');
+      
+      if (messageField) {
+        // Функция для фильтрации недопустимых символов
+        const sanitizeMessage = (value) => {
+          // Разрешаем только буквы, цифры, пробелы, точки, запятые, восклицательные знаки, переносы строк
+          return value.replace(/[^a-zA-Zа-яА-ЯёЁא-ת0-9\s.,!\n\r]/g, '');
+        };
+        
+        // Обновление счетчика символов
+        const updateCounter = () => {
+          const length = messageField.value.length;
+          if (messageCounter) {
+            messageCounter.textContent = `${length}/500`;
+            if (length > 450) {
+              messageCounter.style.color = 'var(--accent)';
+            } else if (length > 400) {
+              messageCounter.style.color = 'var(--secondary)';
+            } else {
+              messageCounter.style.color = 'var(--text-secondary)';
+            }
+          }
+        };
+        
+        // Фильтрация при вводе
+        messageField.addEventListener('input', (e) => {
+          const originalValue = e.target.value;
+          const sanitized = sanitizeMessage(originalValue);
+          
+          if (originalValue !== sanitized) {
+            const cursorPos = e.target.selectionStart;
+            e.target.value = sanitized;
+            // Восстанавливаем позицию курсора
+            e.target.setSelectionRange(cursorPos - 1, cursorPos - 1);
+          }
+          
+          // Ограничение до 500 символов
+          if (e.target.value.length > 500) {
+            e.target.value = e.target.value.substring(0, 500);
+          }
+          
+          updateCounter();
+          validateForm(contactForm);
+        });
+        
+        // Инициализация счетчика
+        updateCounter();
+      }
+      
       contactForm.addEventListener('input', () => validateForm(contactForm));
       contactForm.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -325,10 +394,15 @@
           statusEl.textContent = t.sending;
         }
 
+        // Санитизация сообщения перед отправкой
+        const sanitizeMessage = (value) => {
+          return value.replace(/[^a-zA-Zа-яА-ЯёЁא-ת0-9\s.,!\n\r]/g, '').substring(0, 500);
+        };
+        
         const payload = {
           name: data.get('name'),
           email: data.get('email'),
-          message: data.get('message')
+          message: sanitizeMessage(data.get('message') || '')
         };
 
         try {
@@ -416,6 +490,35 @@
     } catch (error) {
       console.warn('Nav highlight failed:', error);
     }
+
+    // Back to top button
+    (function initBackToTop() {
+      const backToTopBtn = document.getElementById('back-to-top');
+      const aboutSection = document.getElementById('about');
+      
+      if (!backToTopBtn || !aboutSection) return;
+      
+      const toggleButton = () => {
+        const aboutRect = aboutSection.getBoundingClientRect();
+        const aboutBottom = aboutRect.bottom;
+        
+        if (aboutBottom < window.innerHeight) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      };
+      
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      window.addEventListener('scroll', toggleButton, { passive: true });
+      toggleButton();
+    })();
 
     // Footer year stamp
     const yearEl = document.getElementById('current-year');
