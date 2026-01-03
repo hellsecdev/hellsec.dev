@@ -1,7 +1,7 @@
 {
-  "name": "pumalabs.io",
+  "name": "hellsec.dev",
   "version": "1.0.0",
-  "description": "Static website for Puma Labs (product R&D and cybersecurity)",
+  "description": "Static website for HellSec (product R&D and cybersecurity)",
   "scripts": {
     "test": "echo \"No tests defined for static site\" && exit 0",
     "build": "node build.mjs",

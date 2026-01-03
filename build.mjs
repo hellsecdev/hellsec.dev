@@ -1,4 +1,4 @@
-// Build script for Puma Labs static site
+// Build script for HellSec static site
 // - копирует проект в dist/
 // - минифицирует CSS/JS/HTML
 // - обновляет <lastmod> в sitemap

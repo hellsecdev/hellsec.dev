@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://pumalabs.io/</loc>
+    <loc>https://hellsec.dev/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <lastmod>2025-09-29</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pumalabs.io/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pumalabs.io/ru/" />
-    <xhtml:link rel="alternate" hreflang="he" href="https://pumalabs.io/he/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hellsec.dev/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hellsec.dev/ru/" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://hellsec.dev/he/" />
   </url>
   <url>
-    <loc>https://pumalabs.io/ru/</loc>
+    <loc>https://hellsec.dev/ru/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <lastmod>2025-09-29</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pumalabs.io/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pumalabs.io/ru/" />
-    <xhtml:link rel="alternate" hreflang="he" href="https://pumalabs.io/he/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hellsec.dev/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hellsec.dev/ru/" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://hellsec.dev/he/" />
   </url>
   <url>
-    <loc>https://pumalabs.io/he/</loc>
+    <loc>https://hellsec.dev/he/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <lastmod>2025-09-29</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pumalabs.io/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://pumalabs.io/ru/" />
-    <xhtml:link rel="alternate" hreflang="he" href="https://pumalabs.io/he/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hellsec.dev/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hellsec.dev/ru/" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://hellsec.dev/he/" />
   </url>
   <url>
-    <loc>https://pumalabs.io/privacy.html</loc>
+    <loc>https://hellsec.dev/privacy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
     <lastmod>2025-09-29</lastmod>
