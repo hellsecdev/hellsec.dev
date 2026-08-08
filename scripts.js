@@ -236,7 +236,7 @@
         emailInvalid: 'Enter a valid email address.',
         messageMinLength: 'Message should be at least 10 characters.',
         messageMaxLength: 'Message should not exceed 500 characters.',
-        messageInvalidChars: 'Message can only contain letters, numbers, spaces, periods, commas, and exclamation marks.',
+        messageInvalidChars: 'Message contains unsupported control characters.',
         sending: 'Sending...',
         success: 'Message sent successfully!',
         error: 'Failed to send message. Try again later.',
@@ -248,7 +248,7 @@
         emailInvalid: 'Введите действительный адрес электронной почты.',
         messageMinLength: 'Сообщение должно содержать не менее 10 символов.',
         messageMaxLength: 'Сообщение не должно превышать 500 символов.',
-        messageInvalidChars: 'Сообщение может содержать только буквы, цифры, пробелы, точки, запятые и восклицательные знаки.',
+        messageInvalidChars: 'Сообщение содержит неподдерживаемые служебные символы.',
         sending: 'Отправка...',
         success: 'Сообщение успешно отправлено!',
         error: 'Не удалось отправить сообщение. Попробуйте позже.',
@@ -260,7 +260,7 @@
         emailInvalid: 'הזן כתובת אימייל תקינה.',
         messageMinLength: 'ההודעה צריכה להכיל לפחות 10 תווים.',
         messageMaxLength: 'ההודעה לא צריכה לעלות על 500 תווים.',
-        messageInvalidChars: 'ההודעה יכולה להכיל רק אותיות, מספרים, רווחים, נקודות, פסיקים וסימני קריאה.',
+        messageInvalidChars: 'ההודעה מכילה תווי בקרה שאינם נתמכים.',
         sending: 'שולח...',
         success: 'ההודעה נשלחה בהצלחה!',
         error: 'שליחת ההודעה נכשלה. נסה שוב מאוחר יותר.',
@@ -302,8 +302,8 @@
         setFieldError(message, t.messageMaxLength);
         valid = false;
       } else {
-        // Проверка на допустимые символы: буквы, цифры, пробелы, точки, запятые, восклицательные знаки, переносы строк
-        const allowedPattern = /^[a-zA-Zа-яА-ЯёЁא-ת0-9\s.,!\n\r]*$/;
+        // Reject only control characters while allowing normal punctuation, currency signs, URLs and project notes.
+        const allowedPattern = /^[^\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]*$/;
         if (!allowedPattern.test(messageValue)) {
           setFieldError(message, t.messageInvalidChars);
           valid = false;
@@ -321,11 +321,8 @@
       const messageCounter = contactForm.querySelector('#message-counter');
       
       if (messageField) {
-        // Функция для фильтрации недопустимых символов
-        const sanitizeMessage = (value) => {
-          // Разрешаем только буквы, цифры, пробелы, точки, запятые, восклицательные знаки, переносы строк
-          return value.replace(/[^a-zA-Zа-яА-ЯёЁא-ת0-9\s.,!\n\r]/g, '');
-        };
+        // Remove only unsupported control characters; keep normal punctuation, currency signs, URLs and project details.
+        const sanitizeMessage = (value) => value.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '');
         
         // Обновление счетчика символов
         const updateCounter = () => {
@@ -394,10 +391,8 @@
           statusEl.textContent = t.sending;
         }
 
-        // Санитизация сообщения перед отправкой
-        const sanitizeMessage = (value) => {
-          return value.replace(/[^a-zA-Zа-яА-ЯёЁא-ת0-9\s.,!\n\r]/g, '').substring(0, 500);
-        };
+        // Санитизация сообщения перед отправкой: убираем только служебные символы, оставляя нормальную пунктуацию и валюты.
+        const sanitizeMessage = (value) => value.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').substring(0, 500);
         
         const payload = {
           name: data.get('name'),
