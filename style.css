@@ -303,7 +303,7 @@ section,
 
 .hero {
   min-height: min(72vh, 640px);
-  padding-top: calc(var(--nav-height) + 40px);
+  padding-top: calc(var(--nav-height) + 28px);
   padding-bottom: 48px;
   display: grid;
   align-items: center;
@@ -316,14 +316,6 @@ section,
 
 [dir="rtl"] .hero-content {
   text-align: right;
-}
-
-.hero-logo {
-  width: clamp(76px, 9vw, 112px);
-  height: auto;
-  display: block;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 0 20px rgba(34, 211, 238, 0.16));
 }
 
 .eyebrow,
@@ -1388,8 +1380,8 @@ footer {
 
   .hero {
     min-height: auto;
-    padding-top: calc(var(--nav-height) + 70px);
-    padding-bottom: 70px;
+    padding-top: calc(var(--nav-height) + 48px);
+    padding-bottom: 56px;
   }
 
   .capability-strip ul {
