@@ -10,39 +10,39 @@
   const THEME_KEY = 'theme';
 
   READY(() => {
-    // Navigation hardening: keep top nav and language switcher stable across cached/RTL pages.
-    try {
-      const topNav = document.querySelector('.nav-menu ul');
-      if (topNav) {
-        Array.from(topNav.querySelectorAll('a')).forEach((link) => {
-          const text = (link.textContent || '').trim().toLowerCase();
-          if (text === 'ai business control center') {
-            const item = link.closest('li');
-            if (item) item.remove();
-          }
-        });
-      }
+    document.documentElement.classList.add('js');
 
-      const langSelector = document.getElementById('language-selector');
-      if (langSelector) {
-        langSelector.style.direction = 'ltr';
-        langSelector.style.flexDirection = 'row';
-        langSelector.style.unicodeBidi = 'isolate';
-        const order = { en: 1, ru: 2, he: 3 };
-        Array.from(langSelector.querySelectorAll('.lang-btn')).forEach((btn) => {
-          const lang = btn.getAttribute('data-lang') || (btn.textContent || '').trim().toLowerCase();
-          btn.style.order = String(order[lang] || 99);
-        });
-      }
-    } catch (error) {
-      console.warn('Nav stability guard failed:', error);
+    // Mobile navigation drawer
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const closeMenu = () => {
+      if (!mobileToggle || !navMenu) return;
+      mobileToggle.setAttribute('aria-expanded', 'false');
+      navMenu.classList.remove('open');
+      document.body.classList.remove('menu-open');
+    };
+
+    if (mobileToggle && navMenu) {
+      mobileToggle.addEventListener('click', () => {
+        const willOpen = mobileToggle.getAttribute('aria-expanded') !== 'true';
+        mobileToggle.setAttribute('aria-expanded', String(willOpen));
+        navMenu.classList.toggle('open', willOpen);
+        document.body.classList.toggle('menu-open', willOpen);
+      });
+      navMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 820) closeMenu();
+      }, { passive: true });
     }
 
     // Canvas background network
     try {
       const canvas = document.getElementById('neural-bg');
-      if (canvas) {
-        // ... (existing canvas code logic is kept implicitly safe by wrapping the block)
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (canvas && !reduceMotion) {
         const ctx = canvas.getContext('2d');
         let nodes = [];
         let dpr = 1;
@@ -53,9 +53,9 @@
           constructor(x, y) {
             this.x = x;
             this.y = y;
-            this.vx = (Math.random() - 0.5) * 0.5;
-            this.vy = (Math.random() - 0.5) * 0.5;
-            this.radius = Math.random() * 3 + 1;
+            this.vx = (Math.random() - 0.5) * 0.18;
+            this.vy = (Math.random() - 0.5) * 0.18;
+            this.radius = Math.random() * 1.2 + 0.45;
           }
           update() {
             this.x += this.vx;
@@ -66,7 +66,7 @@
           draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = '#00ffff';
+            ctx.fillStyle = 'rgba(34, 211, 238, 0.45)';
             ctx.fill();
           }
         }
@@ -95,8 +95,8 @@
         const initNodes = () => {
           nodes = [];
           const area = width * height;
-          const suggested = Math.round(area / 18000);
-          const count = Math.max(100, Math.min(220, suggested));
+          const suggested = Math.round(area / 42000);
+          const count = Math.max(35, Math.min(90, suggested));
           for (let i = 0; i < count; i++) {
             nodes.push(new Node(Math.random() * width, Math.random() * height));
           }
@@ -108,12 +108,12 @@
               const dx = nodes[i].x - nodes[j].x;
               const dy = nodes[i].y - nodes[j].y;
               const distance = Math.sqrt(dx * dx + dy * dy);
-              if (distance < 150) {
+              if (distance < 130) {
                 ctx.beginPath();
                 ctx.moveTo(nodes[i].x, nodes[i].y);
                 ctx.lineTo(nodes[j].x, nodes[j].y);
-                ctx.strokeStyle = `rgba(0, 255, 255, ${1 - distance / 150})`;
-                ctx.lineWidth = 0.5;
+                ctx.strokeStyle = `rgba(34, 211, 238, ${(1 - distance / 130) * 0.16})`;
+                ctx.lineWidth = 0.4;
                 ctx.stroke();
               }
             }
@@ -134,7 +134,7 @@
 
         resizeCanvas();
         initNodes();
-        animate();
+        requestAnimationFrame(animate);
 
         document.addEventListener('visibilitychange', () => {
           running = !document.hidden;
@@ -152,10 +152,6 @@
 
         window.addEventListener('resize', handleResize, { passive: true });
 
-        if ('ResizeObserver' in window) {
-          const bodyObserver = new ResizeObserver(() => handleResize());
-          bodyObserver.observe(document.body);
-        }
       }
     } catch (err) {
       console.warn('Canvas init failed:', err);
@@ -170,7 +166,8 @@
         const target = document.querySelector(href);
         if (!target) return;
         event.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+        target.scrollIntoView({ behavior, block: 'start' });
       });
     });
 
@@ -214,17 +211,13 @@
       const io = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.remove('hidden-initially'); // Remove hiding class
             entry.target.classList.add('visible');
             observer.unobserve(entry.target);
           }
         });
       }, { threshold: 0.2 });
       
-      sections.forEach((section) => {
-        section.classList.add('hidden-initially'); // Hide only when JS is ready
-        io.observe(section);
-      });
+      sections.forEach((section) => io.observe(section));
     } else if (sections.length) {
       const reveal = () => {
         const vh = window.innerHeight;

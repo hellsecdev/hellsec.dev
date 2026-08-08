@@ -38,16 +38,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://sender.hellsec.dev" crossorigin>
 
-  <style id="critical-css">
-    html,body{margin:0;padding:0;background:#0a0a0a;color:#ffffff;font-family:'Exo 2',system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
-    #navbar{position:fixed;top:0;left:0;right:0;padding:15px 50px;background:rgba(10,10,10,0.9);border-bottom:1px solid rgba(0,255,255,0.2);z-index:1000}
-    #navbar .nav-container{display:flex;align-items:center;justify-content:center;max-width:1400px;margin:0 auto;padding:0 48px;gap:16px}
-    #navbar .nav-menu ul{list-style:none;margin:0;padding:0;display:flex;gap:40px}
-    #navbar .nav-menu a{color:#ffffff;text-decoration:none;font-family:'Audiowide',sans-serif;letter-spacing:1px;font-size:0.85rem;text-transform:uppercase;position:relative;padding:5px 0;transition:color 0.3s ease}
-    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding-top:calc(var(--nav-height,80px) - 10px);padding-bottom:30px}
-    .hero-content{text-align:center}
-    .glitch{font-family:'Orbitron',system-ui,sans-serif;font-size:5rem;letter-spacing:8px}
-  </style>
+  <style id="critical-css">html,body{margin:0;padding:0;background:#050608;color:#f4f7fb;font-family:Inter,system-ui,sans-serif}#navbar{position:fixed;inset:0 0 auto;height:72px;background:rgba(5,6,8,.9);z-index:1000}.hero{min-height:min(82vh,740px);padding-top:126px}</style>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -72,8 +63,8 @@
   <meta name="twitter:image" content="https://hellsec.dev/assets/favicon.png">
   <meta name="twitter:image:alt" content="HellSec logo">
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Exo+2:wght@300;400;500;600;700&family=Audiowide&display=swap" rel="stylesheet">
-  <link href="style.css?v=hefaq-arrow-20260808" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="style.css?v=premium-20260808" rel="stylesheet">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -156,24 +147,7 @@
     }]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SiteNavigationElement",
-    "@id": "https://hellsec.dev/#navigation",
-    "name": ["Home","About","Team","Services","We Build","Partners","FAQ","Contact"],
-    "url": [
-      "https://hellsec.dev/#home",
-      "https://hellsec.dev/#about",
-      "https://hellsec.dev/#team",
-      "https://hellsec.dev/#services",
-      "https://hellsec.dev/#build",
-      "https://hellsec.dev/#partners",
-      "https://hellsec.dev/#faq",
-      "https://hellsec.dev/#contact"
-    ]
-  }
-  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SiteNavigationElement","@id":"https://hellsec.dev/#navigation","name":["Services","AI Control","Process","About","Contact"],"url":["https://hellsec.dev/#services","https://hellsec.dev/services/ai-business-control-center/","https://hellsec.dev/#process","https://hellsec.dev/#about","https://hellsec.dev/#contact"]}</script>
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -191,410 +165,29 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "@id":"https://hellsec.dev/#faq-schema",
-    "mainEntity":[
-      {
-        "@type":"Question",
-        "name":"What services do you offer?",
-        "acceptedAnswer":{"@type":"Answer","text":"We provide product development, UI/UX design, AI integration, cybersecurity, ongoing support, and technology consulting for entrepreneurs and startups."}
-      },
-      {
-        "@type":"Question",
-        "name":"Do you work with early-stage startups?",
-        "acceptedAnswer":{"@type":"Answer","text":"Yes. We frequently help founders validate ideas and ship MVPs quickly while laying a scalable foundation for growth."}
-      },
-      {
-        "@type":"Question",
-        "name":"How do you handle cybersecurity?",
-        "acceptedAnswer":{"@type":"Answer","text":"Security is built-in from day one: secure coding practices, encryption, dependency hygiene, automated checks, and periodic reviews."}
-      },
-      {
-        "@type":"Question",
-        "name":"How can I get started?",
-        "acceptedAnswer":{"@type":"Answer","text":"Share your goals via the contact form — we’ll reply with next steps, a rough approach and timeline."}
-      },
-      {
-        "@type":"Question",
-        "name":"What is a typical timeline for an MVP?",
-        "acceptedAnswer":{"@type":"Answer","text":"Most MVPs are delivered within 4–8 weeks depending on scope, integrations and compliance requirements."}
-      },
-      {
-        "@type":"Question",
-        "name":"What tech stack do you use?",
-        "acceptedAnswer":{"@type":"Answer","text":"We choose the stack to fit your goals; common choices include modern web frameworks, cloud-native infrastructure, and proven security tooling."}
-      },
-      {
-        "@type":"Question",
-        "name":"How do you price projects?",
-        "acceptedAnswer":{"@type":"Answer","text":"We offer both fixed-price for well-defined scopes and time-and-materials for iterative work; after a short discovery we provide a transparent estimate."}
-      },
-      {
-        "@type":"Question",
-        "name":"Who owns the IP and source code?",
-        "acceptedAnswer":{"@type":"Answer","text":"You retain 100% ownership of the IP and source code; we hand over repositories, documentation and access at each milestone."}
-      },
-      {
-        "@type":"Question",
-        "name":"Do you sign an NDA?",
-        "acceptedAnswer":{"@type":"Answer","text":"Yes — we can sign a mutual NDA before discussing details."}
-      },
-      {
-        "@type":"Question",
-        "name":"Do you provide ongoing support and SLAs?",
-        "acceptedAnswer":{"@type":"Answer","text":"Yes — we offer maintenance and support plans with response-time SLAs aligned to your needs."}
-      }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "@id":"https://hellsec.dev/#breadcrumbs",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Home","item":"https://hellsec.dev/#home"},
-      {"@type":"ListItem","position":2,"name":"About","item":"https://hellsec.dev/#about"},
-      {"@type":"ListItem","position":3,"name":"Team","item":"https://hellsec.dev/#team"},
-      {"@type":"ListItem","position":4,"name":"Services","item":"https://hellsec.dev/#services"},
-      {"@type":"ListItem","position":5,"name":"We Build","item":"https://hellsec.dev/#build"},
-      {"@type":"ListItem","position":6,"name":"Partners","item":"https://hellsec.dev/#partners"},
-      {"@type":"ListItem","position":7,"name":"FAQ","item":"https://hellsec.dev/#faq"},
-      {"@type":"ListItem","position":8,"name":"Contact","item":"https://hellsec.dev/#contact"}
-    ]
-  }
-  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://hellsec.dev/#faq-schema","mainEntity":[{"@type":"Question","name":"What does HellSec build?","acceptedAnswer":{"@type":"Answer","text":"Secure products, AI control systems, internal tools, automation and intelligence workflows for businesses and high-stakes teams."}},{"@type":"Question","name":"Do you work with early-stage companies?","acceptedAnswer":{"@type":"Answer","text":"Yes. We can validate a narrow scope and build a secure first version without over-engineering the foundation."}},{"@type":"Question","name":"How do you approach cybersecurity?","acceptedAnswer":{"@type":"Answer","text":"Security is part of architecture, implementation and review — not an add-on after launch."}},{"@type":"Question","name":"How do we get started?","acceptedAnswer":{"@type":"Answer","text":"Send the business goal, current workflow and the point where it breaks. We will reply with a practical next step."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","@id":"https://hellsec.dev/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://hellsec.dev/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://hellsec.dev/#services"},{"@type":"ListItem","position":3,"name":"Process","item":"https://hellsec.dev/#process"},{"@type":"ListItem","position":4,"name":"About","item":"https://hellsec.dev/#about"},{"@type":"ListItem","position":5,"name":"Contact","item":"https://hellsec.dev/#contact"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#home">Skip to content</a>
-  <canvas id="neural-bg"></canvas>
-
-  <nav id="navbar">
-    <div class="nav-container">
-      <button id="theme-toggle" class="theme-icon-btn" aria-label="Switch to light theme" type="button" title="Toggle theme">
-        <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 0l1.79-1.8 1.41 1.41-1.8 1.79-1.4-1.4zM12 4V1h0v3h0zm0 19v-3h0v3h0zM4 12H1v0h3v0zm19 0h-3v0h3v0zM6.76 19.16l-1.42 1.42-1.79-1.8 1.41-1.41 1.8 1.79zm12.03-1.8l1.41 1.41-1.79 1.8-1.41-1.42 1.79-1.79zM12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
-        <span class="sr-only">Toggle theme</span>
-      </button>
-
-      <div class="nav-menu" id="nav-menu">
-        <ul>
-          <li><a href="#home">HOME</a></li>
-          <li><a href="#about">ABOUT</a></li>
-          <li><a href="#team">TEAM</a></li>
-          <li><a href="#services">SERVICES</a></li>
-          <li><a href="#build">WE BUILD</a></li>
-          <li><a href="#partners">PARTNERS</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact">CONTACT</a></li>
-        </ul>
-      </div>
-
-      <div class="language-selector" id="language-selector">
-        <a href="/" class="lang-btn active" data-lang="en" aria-label="English">EN</a>
-        <a href="/ru/" class="lang-btn" data-lang="ru" aria-label="Русский">RU</a>
-        <a href="/he/" class="lang-btn" data-lang="he" aria-label="עברית">HE</a>
-      </div>
-    </div>
-  </nav>
-
-  <main id="main" role="main">
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <div class="hero-logo-wrapper">
-          <img src="assets/HellSecLogo.png" alt="HellSec Logo" class="hero-logo">
-        </div>
-        <h1 class="glitch" data-text="HellSec">HellSec</h1>
-        <p class="subtitle">Product R&D / Cybersecurity for Entrepreneurs & Startups</p>
-        <div class="hero-actions" role="group" aria-label="Primary actions">
-          <a class="neural-btn hero-btn" href="#contact">START A PROJECT</a>
-          <a class="ghost-btn hero-btn" href="/services/ai-business-control-center/">AI BUSINESS CONTROL CENTER</a>
-        </div>
-      </div>
-      <a href="#about" class="scroll-btn">
-        <div class="scroll-btn-inner">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-          </svg>
-        </div>
-      </a>
-    </section>
-
-    <section id="about" class="fade-in">
-      <h2 class="section-title">ABOUT US</h2>
-      <div class="about-container">
-        <div class="about-image">
-          <div class="profile-img-wrapper">
-            <div class="profile-img">
-              <span>AI</span>
-            </div>
-          </div>
-        </div>
-        <div class="about-content">
-          <h3>Innovate with Confidence</h3>
-          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
-            HellSec provides comprehensive support for entrepreneurs and startups at every stage of product development. We help turn ideas into reality, from initial concept and design to full-scale development and long-term support.
-          </p>
-          <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);">
-            We don’t just build high-quality products, we prioritize data security to protect your projects from cyber threats. Innovation is at the heart of everything we do, and we strive to deliver every project with maximum efficiency and security.
-          </p>
-          <div class="about-stats">
-            <div class="stat-card">
-              <div class="stat-number">100+</div>
-              <div class="stat-label">Projects</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">6+</div>
-              <div class="stat-label">Years Exp</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">80+</div>
-              <div class="stat-label">Clients</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="team" class="fade-in">
-      <h2 class="section-title">OUR TEAM</h2>
-      <div class="team-grid">
-        <div class="glass-card team-card">
-          <div class="team-avatar">
-            <img src="assets/team/vladimir.jpg" alt="Vladimir B." class="team-photo" loading="lazy" decoding="async">
-          </div>
-          <h3 class="team-name">Vladimir B.</h3>
-          <p class="team-role">CEO / CIO</p>
-        </div>
-        <div class="glass-card team-card">
-          <div class="team-avatar">
-            <img src="assets/team/igor.jpg" alt="Igor R." class="team-photo" loading="lazy" decoding="async">
-          </div>
-          <h3 class="team-name">Igor R.</h3>
-          <p class="team-role">CTO</p>
-        </div>
-        <div class="glass-card team-card">
-          <div class="team-avatar">
-            <img src="assets/team/matan.jpg" alt="Matan D." class="team-photo" loading="lazy" decoding="async">
-          </div>
-          <h3 class="team-name">Matan D.</h3>
-          <p class="team-role">CMO</p>
-        </div>
-        <div class="glass-card team-card">
-          <div class="team-avatar">
-            <img src="assets/team/timofey.jpg" alt="Timofey K." class="team-photo" loading="lazy" decoding="async">
-          </div>
-          <h3 class="team-name">Timofey K.</h3>
-          <p class="team-role">CFO</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="services" class="fade-in">
-      <h2 class="section-title">SERVICES</h2>
-      <div class="projects-grid">
-        <div class="glass-card project-card">
-          <h3 style="color: var(--primary);">Product Development</h3>
-          <p style="color: var(--text-secondary);">From idea to launch, products are built to scale with a focus on speed, reliability, and startup flexibility.</p>
-        </div>
-        <div class="glass-card project-card">
-          <h3 style="color: var(--secondary);">UI and UX Design</h3>
-          <p style="color: var(--text-secondary);">Clear, functional interfaces that reflect your brand and optimize the user journey.</p>
-        </div>
-        <div class="glass-card project-card">
-          <h3 style="color: var(--accent);">AI Integration</h3>
-          <p style="color: var(--text-secondary);">Enhance your product with automation, prediction, and personalization powered by machine learning.</p>
-        </div>
-        <div class="glass-card project-card">
-          <h3 style="color: var(--primary);">Cybersecurity</h3>
-          <p style="color: var(--text-secondary);">Built-in protection for your product, including encryption, secure coding, and threat prevention from day one.</p>
-        </div>
-        <div class="glass-card project-card">
-          <h3 style="color: var(--secondary);">Ongoing Support</h3>
-          <p style="color: var(--text-secondary);">Post-launch maintenance, updates, and performance monitoring to keep your product growing.</p>
-        </div>
-        <div class="glass-card project-card">
-          <h3 style="color: var(--accent);">Tech Consulting</h3>
-          <p style="color: var(--text-secondary);">Expert guidance on architecture, tech stack, and development strategy tailored to your business goals.</p>
-        </div>
-        <a class="glass-card project-card service-link-card featured-service" href="/services/ai-business-control-center/" aria-label="AI Business Control Center service page">
-          <div class="featured-service-copy">
-            <span class="service-kicker">FEATURED SERVICE</span>
-            <h3>AI Business Control Center</h3>
-            <p>A practical AI operating layer for small businesses in Israel: CRM, lead intake, follow-up automation, AI summaries and daily owner reports.</p>
-            <div class="featured-service-actions" aria-hidden="true">
-              <span>View service</span>
-              <span>Start with audit</span>
-            </div>
-          </div>
-          <div class="featured-service-stats" role="group" aria-label="AI Business Control Center highlights">
-            <span><strong>7 days</strong>first working system</span>
-            <span><strong>from ₪1,500</strong>starter implementation</span>
-            <span><strong>EN / RU / HE</strong>client communication</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section id="build" class="fade-in">
-      <h2 class="section-title">We Build</h2>
-      <div class="skills-container">
-        <div class="skill-node"><span>MVP</span></div>
-        <div class="skill-node"><span>WEB</span></div>
-        <div class="skill-node"><span>BOTS</span></div>
-        <div class="skill-node"><span>AI</span></div>
-        <div class="skill-node"><span>SECURITY</span></div>
-        <div class="skill-node"><span>ADMIN</span></div>
-      </div>
-    </section>
-
-    <section id="partners" class="fade-in">
-      <h2 class="section-title">PARTNERS</h2>
-      <div class="skills-container">
-        <div class="glass-card project-card">
-          <a href="https://m.do.co/c/9fe481cfbee3" target="_blank" rel="sponsored noopener noreferrer">
-            <img src="assets/partners/2.png" alt="Digital Ocean" class="partner-logo" loading="lazy" decoding="async" width="100">
-          </a>
-        </div>
-        <div class="glass-card project-card">
-          <a href="https://go.getproton.me/SH1ue" target="_blank" rel="sponsored noopener noreferrer">
-            <img src="assets/partners/7.png" alt="Proton VPN" class="partner-logo" loading="lazy" decoding="async" width="100">
-          </a>
-        </div>
-        <div class="glass-card project-card">
-          <a href="https://download.getneema.com/kaopaNDCvFb" target="_blank" rel="sponsored noopener noreferrer">
-            <img src="assets/partners/8.png" alt="Neema Bank" class="partner-logo" loading="lazy" decoding="async" width="100">
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="fade-in">
-      <h2 class="section-title">FAQ</h2>
-      <div class="glass-card">
-        <details class="faq-item" id="q-services" open>
-          <summary>What services do you offer?</summary>
-          <p>We provide product development, UI/UX design, AI integration, cybersecurity, ongoing support, and technology consulting for entrepreneurs and startups.</p>
-        </details>
-        <details class="faq-item" id="q-startups">
-          <summary>Do you work with early-stage startups?</summary>
-          <p>Yes. We frequently help founders validate ideas and ship MVPs quickly while laying a scalable foundation for growth.</p>
-        </details>
-        <details class="faq-item" id="q-security">
-          <summary>How do you handle cybersecurity?</summary>
-          <p>Security is built-in from day one: secure coding practices, encryption, dependency hygiene, automated checks, and periodic reviews.</p>
-        </details>
-        <details class="faq-item" id="q-get-started">
-          <summary>How can I get started?</summary>
-          <p>Share your goals via the contact form — we’ll reply with next steps, a rough approach, and timeline.</p>
-        </details>
-        <details class="faq-item" id="q-timeline">
-          <summary>What is a typical timeline for an MVP?</summary>
-          <p>Most MVPs are delivered within 4–8 weeks depending on scope, integrations, and compliance requirements.</p>
-        </details>
-        <details class="faq-item" id="q-stack">
-          <summary>What tech stack do you use?</summary>
-          <p>We choose the stack to fit your goals; common choices include modern web frameworks, cloud-native infrastructure, and proven security tooling.</p>
-        </details>
-        <details class="faq-item" id="q-pricing">
-          <summary>How do you price projects?</summary>
-          <p>We offer both fixed-price for well-defined scopes and time-and-materials for iterative work; after a short discovery we provide a transparent estimate.</p>
-        </details>
-        <details class="faq-item" id="q-ip">
-          <summary>Who owns the IP and source code?</summary>
-          <p>You retain 100% ownership of the IP and source code; we hand over repositories, documentation, and access at each milestone.</p>
-        </details>
-        <details class="faq-item" id="q-nda">
-          <summary>Do you sign an NDA?</summary>
-          <p>Yes — we can sign a mutual NDA before discussing details.</p>
-        </details>
-        <details class="faq-item" id="q-sla">
-          <summary>Do you provide ongoing support and SLAs?</summary>
-          <p>Yes — we offer maintenance and support plans with response-time SLAs aligned to your needs.</p>
-        </details>
-      </div>
-    </section>
-
-    <section id="contact" class="fade-in">
-      <h2 class="section-title">CONTACT</h2>
-      <form class="contact-form glass-card" novalidate>
-        <div class="form-group">
-          <label class="sr-only" for="contact-name">Your Name</label>
-          <input type="text" id="contact-name" name="name" placeholder="Your Name" required autocomplete="name" inputmode="text" aria-describedby="error-name">
-          <p class="field-error" id="error-name" aria-live="polite"></p>
-        </div>
-        <div class="form-group">
-          <label class="sr-only" for="contact-email">Your Email</label>
-          <input type="email" id="contact-email" name="email" placeholder="Your Email" required autocomplete="email" inputmode="email" aria-describedby="error-email">
-          <p class="field-error" id="error-email" aria-live="polite"></p>
-        </div>
-        <div class="form-group">
-          <label class="sr-only" for="contact-message">Your Message</label>
-          <textarea id="contact-message" rows="5" name="message" placeholder="Your Message" required maxlength="500" aria-describedby="error-message message-counter"></textarea>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px;">
-            <p class="field-error" id="error-message" aria-live="polite"></p>
-            <span id="message-counter" style="color: var(--text-secondary); font-size: 0.85rem; margin-left: auto;">0/500</span>
-          </div>
-        </div>
-        <div class="form-group" hidden>
-          <label for="contact-honey" class="sr-only">Leave blank</label>
-          <input type="text" id="contact-honey" name="honey" tabindex="-1" autocomplete="off">
-        </div>
-        <button type="submit" class="neural-btn">SEND MESSAGE</button>
-        <p class="form-status" aria-live="polite" aria-atomic="true"></p>
-      </form>
-    </section>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="neural-bg" aria-hidden="true"></canvas>
+  <nav id="navbar" aria-label="Primary navigation"><div class="nav-container"><a class="nav-brand" href="/" aria-label="HellSec home"><img src="/assets/favicon.png" alt=""><span>HELLSEC</span></a><div class="nav-menu" id="nav-menu"><ul><li><a href="#services">Services</a></li><li><a href="/services/ai-business-control-center/">AI Control</a></li><li><a href="#process">Process</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul></div><div class="nav-actions"><button id="theme-toggle" class="theme-icon-btn" aria-label="Toggle theme" type="button"><svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg><span class="sr-only">Toggle theme</span></button><div class="language-selector" id="language-selector"><a href="/" class="lang-btn active" data-lang="en" aria-label="English">EN</a><a href="/ru/" class="lang-btn" data-lang="ru" aria-label="Русский">RU</a><a href="/he/" class="lang-btn" data-lang="he" aria-label="עברית">HE</a></div><button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-controls="nav-menu" aria-expanded="false" type="button"><span></span><span></span><span></span></button></div></div></nav>
+  <main id="main">
+    <section id="home" class="hero"><div class="hero-content"><img class="hero-logo" src="/assets/HellSecLogo.png" alt="HellSec logo"><span class="eyebrow">SECURE PRODUCT & AI SYSTEMS</span><h1>Secure AI systems, automation and product infrastructure for <span class="accent">serious businesses.</span></h1><p class="hero-lead">HellSec builds practical software, cyber-resilient workflows and AI control systems for startups, SMBs and high-stakes teams.</p><div class="hero-actions"><a class="neural-btn" href="#contact">Start a Project</a><a class="ghost-btn" href="/services/ai-business-control-center/">View AI Control Center</a></div></div></section>
+    <div class="capability-strip" role="region" aria-label="CAPABILITIES"><ul><li>Secure MVPs</li><li>AI Automation</li><li>Cybersecurity</li><li>Internal Dashboards</li><li>OSINT / Threat Intel</li></ul></div>
+    <section id="services" class="fade-in"><div class="section-heading"><span class="section-label">CAPABILITIES</span><h2 class="section-title">Systems that move the business forward.</h2><p class="section-intro">Focused engineering across product, automation and security — designed around your operating reality.</p></div><div class="services-grid"><article class="glass-card service-card"><h3>Secure Product R&D</h3><p>MVPs, platforms and customer-facing products engineered for speed, ownership and resilience.</p></article><article class="glass-card service-card"><span class="service-kicker">FEATURED PRODUCT</span><h3>AI Business Control Center</h3><p>A practical operating layer for intake, CRM, follow-up, summaries and owner visibility.</p></article><article class="glass-card service-card"><h3>Cybersecurity & Hardening</h3><p>Security review, secure architecture and hardening built into the product lifecycle.</p></article><article class="glass-card service-card"><h3>Automation & Internal Tools</h3><p>Dashboards, workflows and integrations that reduce repetitive work and operating friction.</p></article><article class="glass-card service-card"><h3>OSINT / Intelligence Systems</h3><p>Purpose-built research and threat-intelligence workflows for high-signal decisions.</p></article></div></section>
+    <section class="glass-card featured-service fade-in"><div><span class="service-kicker">FEATURED PRODUCT</span><h2>AI Business Control Center</h2><p>Turn scattered leads and daily follow-up into one controlled workflow. Start lean, prove the process, then automate what matters.</p><ul class="feature-tags"><li>CRM</li><li>Intake</li><li>Follow-up</li><li>AI summaries</li><li>Owner report</li><li>Dashboard</li></ul><a class="neural-btn" href="/services/ai-business-control-center/">Explore AI Control Center</a></div><div class="product-console" role="group" aria-label="AI Business Control Center"><div class="product-console-row"><span>New leads</span><strong>Captured</strong></div><div class="product-console-row"><span>Follow-up</span><strong>Prioritized</strong></div><div class="product-console-row"><span>AI summary</span><strong>Ready</strong></div><div class="product-console-row"><span>Owner report</span><strong>Daily</strong></div></div></section>
+    <section id="process" class="fade-in"><div class="section-heading"><span class="section-label">DELIVERY</span><h2 class="section-title">A clear path from risk to working system.</h2></div><div class="process-grid"><article class="process-step"><span class="step-number">01</span><h3>Diagnose</h3><p>Map the business goal, workflow, exposure and constraints.</p></article><article class="process-step"><span class="step-number">02</span><h3>Design</h3><p>Define the smallest useful system and secure architecture.</p></article><article class="process-step"><span class="step-number">03</span><h3>Build first version</h3><p>Ship a focused implementation into real operations.</p></article><article class="process-step"><span class="step-number">04</span><h3>Secure, automate, improve</h3><p>Harden, measure and expand only where value is proven.</p></article></div></section>
+    <section id="trust" class="fade-in"><div class="section-heading"><span class="section-label">HOW WE WORK</span><h2 class="section-title">Built for ownership, clarity and resilience.</h2></div><div class="trust-grid"><article class="glass-card trust-card"><h3>Security by design</h3><p>Threats and failure modes are considered from architecture through deployment.</p></article><article class="glass-card trust-card"><h3>Practical scope</h3><p>We prioritize the smallest system that creates operational value.</p></article><article class="glass-card trust-card"><h3>Direct collaboration</h3><p>Decision-makers work directly with the people designing and building.</p></article><article class="glass-card trust-card"><h3>Transferable ownership</h3><p>Your business retains its source code, access and operating knowledge.</p></article></div></section>
+    <section id="tools" class="fade-in"><div class="section-heading"><span class="section-label">INFRASTRUCTURE & TOOLS</span><h2 class="section-title">Tools used across secure delivery.</h2></div><div class="tools-grid"><a class="glass-card tool-card" href="https://m.do.co/c/9fe481cfbee3" target="_blank" rel="sponsored noopener noreferrer"><img src="assets/partners/2.png" alt="DigitalOcean" class="partner-logo" loading="lazy"></a><a class="glass-card tool-card" href="https://go.getproton.me/SH1ue" target="_blank" rel="sponsored noopener noreferrer"><img src="assets/partners/7.png" alt="Proton" class="partner-logo" loading="lazy"></a><a class="glass-card tool-card" href="https://download.getneema.com/kaopaNDCvFb" target="_blank" rel="sponsored noopener noreferrer"><img src="assets/partners/8.png" alt="Neema" class="partner-logo" loading="lazy"></a></div></section>
+    <section id="team" class="fade-in"><div class="section-heading"><span class="section-label">TEAM</span><h2 class="section-title">A cross-functional leadership team.</h2></div><div class="team-grid"><article class="glass-card team-card"><div class="team-avatar"><img src="assets/team/vladimir.jpg" alt="Vladimir B." class="team-photo" loading="lazy" decoding="async"></div><div class="team-copy"><h3 class="team-name">Vladimir B.</h3><p class="team-role">CEO / CIO</p><p class="team-focus">Strategy, information systems and security direction.</p></div></article><article class="glass-card team-card"><div class="team-avatar"><img src="assets/team/igor.jpg" alt="Igor R." class="team-photo" loading="lazy" decoding="async"></div><div class="team-copy"><h3 class="team-name">Igor R.</h3><p class="team-role">CTO</p><p class="team-focus">Architecture, engineering and technical delivery.</p></div></article><article class="glass-card team-card"><div class="team-avatar"><img src="assets/team/matan.jpg" alt="Matan D." class="team-photo" loading="lazy" decoding="async"></div><div class="team-copy"><h3 class="team-name">Matan D.</h3><p class="team-role">CMO</p><p class="team-focus">Positioning, customer insight and go-to-market.</p></div></article><article class="glass-card team-card"><div class="team-avatar"><img src="assets/team/timofey.jpg" alt="Timofey K." class="team-photo" loading="lazy" decoding="async"></div><div class="team-copy"><h3 class="team-name">Timofey K.</h3><p class="team-role">CFO</p><p class="team-focus">Commercial structure and financial operations.</p></div></article></div></section>
+    <section id="about" class="fade-in"><div class="glass-card about-panel"><div><div class="section-heading"><span class="section-label">ABOUT HELLSEC</span><h2 class="section-title">A product and security studio for complex business systems.</h2></div></div><div><p class="section-intro">We combine product engineering, AI automation and cybersecurity to build software that is useful on day one and durable as the business grows.</p><ul class="about-points"><li>Business-first technical decisions</li><li>Secure implementation and handover</li><li>Multilingual delivery across EN, RU and HE</li></ul></div></div></section>
+    <section id="faq" class="fade-in"><div class="section-heading"><span class="section-label">FAQ</span><h2 class="section-title">Frequently asked questions</h2></div><div class="faq-list"><details class="faq-item" open><summary>What does HellSec build?</summary><p>Secure products, AI control systems, internal tools, automation and intelligence workflows for businesses and high-stakes teams.</p></details><details class="faq-item"><summary>Do you work with early-stage companies?</summary><p>Yes. We can validate a narrow scope and build a secure first version without over-engineering the foundation.</p></details><details class="faq-item"><summary>How do you approach cybersecurity?</summary><p>Security is part of architecture, implementation and review — not an add-on after launch.</p></details><details class="faq-item"><summary>How do we get started?</summary><p>Send the business goal, current workflow and the point where it breaks. We will reply with a practical next step.</p></details></div></section>
+    <section id="contact" class="fade-in"><div class="contact-layout"><div><div class="section-heading"><span class="section-label">START A CONVERSATION</span><h2 class="section-title">Bring us the workflow, risk or product you need to solve.</h2><p class="section-intro">We will review the context and respond with focused questions, a likely approach and the next decision.</p></div><p class="contact-note">No inflated pitch. Your message goes directly to the team.</p></div><form class="contact-form glass-card" novalidate><div class="form-group"><label class="sr-only" for="contact-name">Your name</label><input type="text" id="contact-name" name="name" placeholder="Your name" required autocomplete="name" inputmode="text" aria-describedby="error-name"><p class="field-error" id="error-name" aria-live="polite"></p></div><div class="form-group"><label class="sr-only" for="contact-email">Work email</label><input type="email" id="contact-email" name="email" placeholder="Work email" required autocomplete="email" inputmode="email" aria-describedby="error-email"><p class="field-error" id="error-email" aria-live="polite"></p></div><div class="form-group"><label class="sr-only" for="contact-message">Tell us about the product, workflow or security challenge</label><textarea id="contact-message" rows="5" name="message" placeholder="Tell us about the product, workflow or security challenge" required maxlength="500" aria-describedby="error-message message-counter"></textarea><div class="message-meta"><p class="field-error" id="error-message" aria-live="polite"></p><span id="message-counter" class="message-counter">0/500</span></div></div><div class="form-group" hidden><label for="contact-honey" class="sr-only">Leave blank</label><input type="text" id="contact-honey" name="honey" tabindex="-1" autocomplete="off"></div><button type="submit" class="neural-btn">Send message</button><p class="form-status" aria-live="polite" aria-atomic="true"></p></form></div></section>
   </main>
-
-  <footer role="contentinfo">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h2 style="font-family:'Audiowide', sans-serif; color: var(--primary); margin-bottom: 20px; font-size: 1.1rem; letter-spacing: 2px;">Navigation</h2>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="/services/ai-business-control-center/">AI Business Control Center</a></li>
-          <li><a href="#build">We Build</a></li>
-          <li><a href="#partners">Partners</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="/privacy.html">Privacy</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h2 style="font-family:'Audiowide', sans-serif; color: var(--primary); margin-bottom: 20px; font-size: 1.1rem; letter-spacing: 2px;">Connect</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 10px;">Let's build something amazing together</p>
-        <div class="social-links">
-          <a href="https://github.com/hellsecdev" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/company/hellsec" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; <span id="current-year">2025</span> HellSec. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <noscript>
-    <div style="max-width:1200px;margin:20px auto;padding:15px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);border-radius:8px;color:#fff;">
-      JavaScript is disabled in your browser. Some interactive effects (animations, smooth scrolling, contact form) are limited.
-    </div>
-  </noscript>
-
-  <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M18 15l-6-6-6 6"/>
-    </svg>
-  </button>
-
-  <script src="scripts.js?v=hefaq-arrow-20260808"></script>
+  <footer role="contentinfo"><div class="footer-content"><div class="footer-brand"><a class="nav-brand" href="/"><img src="/assets/favicon.png" alt=""><span>HELLSEC</span></a><p>Secure product, AI and cyber systems built for real operations.</p></div><div class="footer-section"><h2>Navigation</h2><ul><li><a href="#services">Services</a></li><li><a href="/services/ai-business-control-center/">AI Control</a></li><li><a href="#process">Process</a></li><li><a href="#faq">FAQ</a></li><li><a href="/privacy.html">Privacy</a></li></ul></div><div class="footer-section"><h2>Connect</h2><p>No inflated pitch. Your message goes directly to the team.</p><div class="social-links"><a href="https://github.com/hellsecdev" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg></a><a href="https://www.linkedin.com/company/hellsec" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a></div></div></div><div class="footer-bottom"><p>&copy; <span id="current-year">2026</span> HellSec. All rights reserved.</p></div></footer>
+  <noscript><div class="glass-card" style="margin:20px auto;padding:15px;max-width:1180px">Content remains available; interactive effects and form submission require JavaScript.</div></noscript>
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg></button>
+  <script src="scripts.js?v=premium-20260808"></script>
 </body>
 </html>

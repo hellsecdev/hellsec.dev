@@ -38,16 +38,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://sender.hellsec.dev" crossorigin>
 
-  <style id="critical-css">
-    html,body{margin:0;padding:0;background:#0a0a0a;color:#ffffff;font-family:'Exo 2',system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
-    #navbar{position:fixed;top:0;left:0;right:0;padding:15px 50px;background:rgba(10,10,10,0.9);border-bottom:1px solid rgba(0,255,255,0.2);z-index:1000}
-    #navbar .nav-container{display:flex;align-items:center;justify-content:center;max-width:1400px;margin:0 auto;padding:0 48px;gap:16px}
-    #navbar .nav-menu ul{list-style:none;margin:0;padding:0;display:flex;gap:40px}
-    #navbar .nav-menu a{color:#ffffff;text-decoration:none;font-family:'Audiowide',sans-serif;letter-spacing:1px;font-size:0.85rem;text-transform:uppercase;position:relative;padding:5px 0;transition:color 0.3s ease}
-    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding-top:calc(var(--nav-height,80px) - 10px);padding-bottom:30px}
-    .hero-content{text-align:center}
-    .glitch{font-family:'Orbitron',system-ui,sans-serif;font-size:5rem;letter-spacing:8px}
-  </style>
+  <style id="critical-css">html,body{margin:0;padding:0;background:#050608;color:#f4f7fb;font-family:Inter,system-ui,sans-serif}#navbar{position:fixed;inset:0 0 auto;height:72px;background:rgba(5,6,8,.9);z-index:1000}.hero{min-height:min(82vh,740px);padding-top:126px}</style>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -72,8 +63,8 @@
   <meta name="twitter:image" content="https://hellsec.dev/assets/favicon.png">
   <meta name="twitter:image:alt" content="HellSec logo">
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Exo+2:wght@300;400;500;600;700&family=Audiowide&display=swap" rel="stylesheet">
-  <link href="../style.css?v=hefaq-arrow-20260808" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="../style.css?v=premium-20260808" rel="stylesheet">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -156,24 +147,7 @@
     }]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SiteNavigationElement",
-    "@id": "https://hellsec.dev/ru/#navigation",
-    "name": ["Главная","О нас","Команда","Услуги","Мы создаём","Партнёры","FAQ","Контакты"],
-    "url": [
-      "https://hellsec.dev/ru/#home",
-      "https://hellsec.dev/ru/#about",
-      "https://hellsec.dev/ru/#team",
-      "https://hellsec.dev/ru/#services",
-      "https://hellsec.dev/ru/#build",
-      "https://hellsec.dev/ru/#partners",
-      "https://hellsec.dev/ru/#faq",
-      "https://hellsec.dev/ru/#contact"
-    ]
-  }
-  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SiteNavigationElement","@id":"https://hellsec.dev/ru/#navigation","name":["Услуги","AI-центр","Процесс","О нас","Контакты"],"url":["https://hellsec.dev/ru/#services","https://hellsec.dev/ru/services/ai-business-control-center/","https://hellsec.dev/ru/#process","https://hellsec.dev/ru/#about","https://hellsec.dev/ru/#contact"]}</script>
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -187,416 +161,33 @@
       { "@type":"Service","name":"Кибербезопасность","serviceType":"Security","description":"Встроенная защита: шифрование, безопасное программирование и проактивное предотвращение угроз." },
       { "@type":"Service","name":"Постоянная поддержка","serviceType":"Maintenance","description":"Техническое обслуживание после запуска, обновления и мониторинг производительности." },
       { "@type":"Service","name":"Техническое консультирование","serviceType":"Consulting","description":"Архитектура, стек и стратегия разработки, адаптированные под ваши бизнес-цели." },
-      { "@type":"Service","name":"AI Business Control Center","serviceType":"AI automation implementation","url":"https://hellsec.dev/services/ai-business-control-center/","description":"CRM, сбор заявок, follow-up, AI-резюме и ежедневные отчёты владельцу для малого бизнеса в Израиле." }
+      { "@type":"Service","name":"AI Business Control Center","serviceType":"AI automation implementation","url":"https://hellsec.dev/ru/services/ai-business-control-center/","description":"CRM, сбор заявок, follow-up, AI-резюме и ежедневные отчёты владельцу для малого бизнеса в Израиле." }
     ]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "@id":"https://hellsec.dev/ru/#faq-schema",
-    "mainEntity":[
-      {
-        "@type":"Question",
-        "name":"Какие услуги вы предоставляете?",
-        "acceptedAnswer":{"@type":"Answer","text":"Мы предоставляем разработку продуктов, дизайн UI/UX, интеграцию ИИ, кибербезопасность, постоянную поддержку и технологическое консультирование для предпринимателей и стартапов."}
-      },
-      {
-        "@type":"Question",
-        "name":"Работаете ли вы с ранними стартапами?",
-        "acceptedAnswer":{"@type":"Answer","text":"Да. Мы часто помогаем основателям валидировать идеи и быстро запускать MVP, закладывая масштабируемый фундамент для роста."}
-      },
-      {
-        "@type":"Question",
-        "name":"Как вы обеспечиваете кибербезопасность?",
-        "acceptedAnswer":{"@type":"Answer","text":"Безопасность встроена с первого дня: практики безопасного программирования, шифрование, гигиена зависимостей, автоматизированные проверки и периодические обзоры."}
-      },
-      {
-        "@type":"Question",
-        "name":"Как начать работу?",
-        "acceptedAnswer":{"@type":"Answer","text":"Поделитесь своими целями через форму обратной связи — мы ответим с следующими шагами, примерным подходом и временными рамками."}
-      },
-      {
-        "@type":"Question",
-        "name":"Каковы типичные сроки для MVP?",
-        "acceptedAnswer":{"@type":"Answer","text":"Большинство MVP доставляются в течение 4–8 недель в зависимости от объёма, интеграций и требований соответствия."}
-      },
-      {
-        "@type":"Question",
-        "name":"Какой технологический стек вы используете?",
-        "acceptedAnswer":{"@type":"Answer","text":"Мы выбираем стек в соответствии с вашими целями; распространённые варианты включают современные веб-фреймворки, облачную инфраструктуру и проверенные инструменты безопасности."}
-      },
-      {
-        "@type":"Question",
-        "name":"Как вы оцениваете проекты?",
-        "acceptedAnswer":{"@type":"Answer","text":"Мы предлагаем как фиксированную цену для чётко определённых объёмов, так и оплату по времени и материалам для итеративной работы; после короткого исследования мы предоставляем прозрачную оценку."}
-      },
-      {
-        "@type":"Question",
-        "name":"Кому принадлежат IP и исходный код?",
-        "acceptedAnswer":{"@type":"Answer","text":"Вы сохраняете 100% владение IP и исходным кодом; мы передаём репозитории, документацию и доступ на каждом этапе."}
-      },
-      {
-        "@type":"Question",
-        "name":"Подписываете ли вы NDA?",
-        "acceptedAnswer":{"@type":"Answer","text":"Да — мы можем подписать взаимное NDA перед обсуждением деталей."}
-      },
-      {
-        "@type":"Question",
-        "name":"Предоставляете ли вы постоянную поддержку и SLA?",
-        "acceptedAnswer":{"@type":"Answer","text":"Да — мы предлагаем планы обслуживания и поддержки с SLA по времени отклика, адаптированными под ваши потребности."}
-      }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "@id":"https://hellsec.dev/ru/#breadcrumbs",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Главная","item":"https://hellsec.dev/ru/#home"},
-      {"@type":"ListItem","position":2,"name":"О нас","item":"https://hellsec.dev/ru/#about"},
-      {"@type":"ListItem","position":3,"name":"Команда","item":"https://hellsec.dev/ru/#team"},
-      {"@type":"ListItem","position":4,"name":"Услуги","item":"https://hellsec.dev/ru/#services"},
-      {"@type":"ListItem","position":5,"name":"Мы создаём","item":"https://hellsec.dev/ru/#build"},
-      {"@type":"ListItem","position":6,"name":"Партнёры","item":"https://hellsec.dev/ru/#partners"},
-      {"@type":"ListItem","position":7,"name":"FAQ","item":"https://hellsec.dev/ru/#faq"},
-      {"@type":"ListItem","position":8,"name":"Контакты","item":"https://hellsec.dev/ru/#contact"}
-    ]
-  }
-  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://hellsec.dev/ru/#faq-schema","mainEntity":[{"@type":"Question","name":"Что создаёт HellSec?","acceptedAnswer":{"@type":"Answer","text":"Безопасные продукты, AI-системы контроля, внутренние инструменты, автоматизацию и intelligence-процессы."}},{"@type":"Question","name":"Вы работаете с компаниями на ранней стадии?","acceptedAnswer":{"@type":"Answer","text":"Да. Мы можем проверить узкий объём и создать безопасную первую версию без лишнего усложнения."}},{"@type":"Question","name":"Как вы подходите к кибербезопасности?","acceptedAnswer":{"@type":"Answer","text":"Безопасность входит в архитектуру, реализацию и проверку, а не добавляется после запуска."}},{"@type":"Question","name":"Как начать?","acceptedAnswer":{"@type":"Answer","text":"Опишите бизнес-цель, текущий процесс и точку сбоя. Мы ответим с практичным следующим шагом."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","@id":"https://hellsec.dev/ru/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://hellsec.dev/ru/"},{"@type":"ListItem","position":2,"name":"Услуги","item":"https://hellsec.dev/ru/#services"},{"@type":"ListItem","position":3,"name":"Процесс","item":"https://hellsec.dev/ru/#process"},{"@type":"ListItem","position":4,"name":"О нас","item":"https://hellsec.dev/ru/#about"},{"@type":"ListItem","position":5,"name":"Контакты","item":"https://hellsec.dev/ru/#contact"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#home">Перейти к содержимому</a>
-  <canvas id="neural-bg"></canvas>
-
-  <nav id="navbar">
-    <div class="nav-container">
-      <button id="theme-toggle" class="theme-icon-btn" aria-label="Переключить на светлую тему" type="button" title="Переключить тему">
-        <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 0l1.79-1.8 1.41 1.41-1.8 1.79-1.4-1.4zM12 4V1h0v3h0zm0 19v-3h0v3h0zM4 12H1v0h3v0zm19 0h-3v0h3v0zM6.76 19.16l-1.42 1.42-1.79-1.8 1.41-1.41 1.8 1.79zm12.03-1.8l1.41 1.41-1.79 1.8-1.41-1.42 1.79-1.79zM12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
-        <span class="sr-only">Переключить тему</span>
-      </button>
-
-      <div class="nav-menu" id="nav-menu">
-        <ul>
-          <li><a href="#home">ГЛАВНАЯ</a></li>
-          <li><a href="#about">О НАС</a></li>
-          <li><a href="#team">КОМАНДА</a></li>
-          <li><a href="#services">УСЛУГИ</a></li>
-          <li><a href="#build">МЫ СОЗДАЁМ</a></li>
-          <li><a href="#partners">ПАРТНЁРЫ</a></li>
-          <li><a href="#faq">ЧЗВ</a></li>
-          <li><a href="#contact">Контакты</a></li>
-        </ul>
-      </div>
-
-      <div class="language-selector" id="language-selector">
-        <a href="/" class="lang-btn" data-lang="en" aria-label="English">EN</a>
-        <a href="/ru/" class="lang-btn active" data-lang="ru" aria-label="Русский">RU</a>
-        <a href="/he/" class="lang-btn" data-lang="he" aria-label="עברית">HE</a>
-      </div>
-    </div>
-  </nav>
-
-  <main id="main" role="main">
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <div class="hero-logo-wrapper">
-          <img src="../assets/HellSecLogo.png" alt="HellSec Logo" class="hero-logo">
-        </div>
-        <h1 class="glitch" data-text="HellSec">HellSec</h1>
-        <p class="subtitle">Разработка продуктов / Кибербезопасность для предпринимателей и стартапов</p>
-        <div class="hero-actions" role="group" aria-label="Основные действия">
-          <a class="neural-btn hero-btn" href="#contact">НАЧАТЬ ПРОЕКТ</a>
-          <a class="ghost-btn hero-btn" href="/ru/services/ai-business-control-center/">ЦЕНТР ИИ-КОНТРОЛЯ БИЗНЕСА</a>
-        </div>
-      </div>
-      <a href="#about" class="scroll-btn">
-        <div class="scroll-btn-inner">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-          </svg>
-        </div>
-      </a>
-    </section>
-
-    <section id="about" class="fade-in">
-      <h2 class="section-title">О НАС</h2>
-      <div class="about-container">
-        <div class="about-image">
-          <div class="profile-img-wrapper">
-            <div class="profile-img">
-              <span>AI</span>
-            </div>
-          </div>
-        </div>
-        <div class="about-content">
-          <h3>Инновации с уверенностью</h3>
-          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
-            HellSec предоставляет комплексную поддержку предпринимателям и стартапам на каждом этапе разработки продукта. Мы помогаем превращать идеи в реальность, от первоначальной концепции и дизайна до полномасштабной разработки и долгосрочной поддержки.
-          </p>
-          <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);">
-            Мы не просто создаём качественные продукты, мы приоритезируем безопасность данных для защиты ваших проектов от киберугроз. Инновации лежат в основе всего, что мы делаем, и мы стремимся выполнять каждый проект с максимальной эффективностью и безопасностью.
-          </p>
-          <div class="about-stats">
-            <div class="stat-card">
-              <div class="stat-number">100+</div>
-              <div class="stat-label">Проектов</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">6+</div>
-              <div class="stat-label">Лет опыта</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">80+</div>
-              <div class="stat-label">Клиентов</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="team" class="fade-in">
-      <h2 class="section-title">НАША КОМАНДА</h2>
-      <div class="team-grid">
-        <div class="glass-card team-card">
-          <div class="team-avatar">
-            <img src="../assets/team/vladimir.jpg" alt="Vladimir B." class="team-photo" loading="lazy" decoding="async">
-          </div>
-          <h3 class="team-name">Vladimir B.</h3>
-          <p class="team-role">Генеральный директор / Директор по информационным технологиям</p>
-        </div>
-        <div class="glass-card team-card">
-          <div class="team-avatar">
-            <img src="../assets/team/igor.jpg" alt="Igor R." class="team-photo" loading="lazy" decoding="async">
-          </div>
-          <h3 class="team-name">Igor R.</h3>
-          <p class="team-role">Технический директор</p>
-        </div>
-        <div class="glass-card team-card">
-          <div class="team-avatar">
-            <img src="../assets/team/matan.jpg" alt="Matan D." class="team-photo" loading="lazy" decoding="async">
-          </div>
-          <h3 class="team-name">Matan D.</h3>
-          <p class="team-role">Директор по маркетингу</p>
-        </div>
-        <div class="glass-card team-card">
-          <div class="team-avatar">
-            <img src="../assets/team/timofey.jpg" alt="Timofey K." class="team-photo" loading="lazy" decoding="async">
-          </div>
-          <h3 class="team-name">Timofey K.</h3>
-          <p class="team-role">Финансовый директор</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="services" class="fade-in">
-      <h2 class="section-title">УСЛУГИ</h2>
-      <div class="projects-grid">
-        <div class="glass-card project-card">
-          <h3 style="color: var(--primary);">Разработка продуктов</h3>
-          <p style="color: var(--text-secondary);">От идеи до запуска, продукты создаются с учётом масштабируемости, с фокусом на скорость, надёжность и гибкость стартапа.</p>
-        </div>
-        <div class="glass-card project-card">
-          <h3 style="color: var(--secondary);">UI и UX дизайн</h3>
-          <p style="color: var(--text-secondary);">Понятные, функциональные интерфейсы, отражающие ваш бренд и оптимизирующие пользовательский опыт.</p>
-        </div>
-        <div class="glass-card project-card">
-          <h3 style="color: var(--accent);">Интеграция ИИ</h3>
-          <p style="color: var(--text-secondary);">Улучшите свой продукт с помощью автоматизации, прогнозирования и персонализации на основе машинного обучения.</p>
-        </div>
-        <div class="glass-card project-card">
-          <h3 style="color: var(--primary);">Кибербезопасность</h3>
-          <p style="color: var(--text-secondary);">Встроенная защита для вашего продукта, включая шифрование, безопасное программирование и предотвращение угроз с первого дня.</p>
-        </div>
-        <div class="glass-card project-card">
-          <h3 style="color: var(--secondary);">Постоянная поддержка</h3>
-          <p style="color: var(--text-secondary);">Техническое обслуживание после запуска, обновления и мониторинг производительности для роста вашего продукта.</p>
-        </div>
-        <div class="glass-card project-card">
-          <h3 style="color: var(--accent);">Техническое консультирование</h3>
-          <p style="color: var(--text-secondary);">Экспертное руководство по архитектуре, технологическому стеку и стратегии разработки, адаптированное под ваши бизнес-цели.</p>
-        </div>
-        <a class="glass-card project-card service-link-card featured-service" href="/ru/services/ai-business-control-center/" aria-label="Страница услуги AI Business Control Center">
-          <div class="featured-service-copy">
-            <span class="service-kicker">КЛЮЧЕВАЯ УСЛУГА</span>
-            <h3>AI Business Control Center</h3>
-            <p>Практичный AI-штаб для малого бизнеса в Израиле: CRM, сбор заявок, follow-up, AI-резюме и ежедневный отчёт владельцу.</p>
-            <div class="featured-service-actions" aria-hidden="true">
-              <span>Открыть услугу</span>
-              <span>Начать с аудита</span>
-            </div>
-          </div>
-          <div class="featured-service-stats" role="group" aria-label="Преимущества AI Business Control Center">
-            <span><strong>7 дней</strong>до первой рабочей системы</span>
-            <span><strong>от ₪1,500</strong>стартовое внедрение</span>
-            <span><strong>EN / RU / HE</strong>коммуникация с клиентами</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section id="build" class="fade-in">
-      <h2 class="section-title">МЫ СОЗДАЁМ</h2>
-      <div class="skills-container">
-        <div class="skill-node"><span>MVP</span></div>
-        <div class="skill-node"><span>WEB</span></div>
-        <div class="skill-node"><span>BOTS</span></div>
-        <div class="skill-node"><span>AI</span></div>
-        <div class="skill-node"><span>SECURITY</span></div>
-        <div class="skill-node"><span>ADMIN</span></div>
-      </div>
-    </section>
-
-    <section id="partners" class="fade-in">
-      <h2 class="section-title">ПАРТНЁРЫ</h2>
-      <div class="skills-container">
-        <div class="glass-card project-card">
-          <a href="https://m.do.co/c/9fe481cfbee3" target="_blank" rel="sponsored noopener noreferrer">
-            <img src="../assets/partners/2.png" alt="Digital Ocean" class="partner-logo" loading="lazy" decoding="async" width="100">
-          </a>
-        </div>
-        <div class="glass-card project-card">
-          <a href="https://go.getproton.me/SH1ue" target="_blank" rel="sponsored noopener noreferrer">
-            <img src="../assets/partners/7.png" alt="Proton VPN" class="partner-logo" loading="lazy" decoding="async" width="100">
-          </a>
-        </div>
-        <div class="glass-card project-card">
-          <a href="https://download.getneema.com/kaopaNDCvFb" target="_blank" rel="sponsored noopener noreferrer">
-            <img src="../assets/partners/8.png" alt="Neema Bank" class="partner-logo" loading="lazy" decoding="async" width="100">
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="fade-in">
-      <h2 class="section-title">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</h2>
-      <div class="glass-card">
-        <details class="faq-item" id="q-services" open>
-          <summary>Какие услуги вы предоставляете?</summary>
-          <p>Мы предоставляем разработку продуктов, дизайн UI/UX, интеграцию ИИ, кибербезопасность, постоянную поддержку и технологическое консультирование для предпринимателей и стартапов.</p>
-        </details>
-        <details class="faq-item" id="q-startups">
-          <summary>Работаете ли вы с ранними стартапами?</summary>
-          <p>Да. Мы часто помогаем основателям валидировать идеи и быстро запускать MVP, закладывая масштабируемый фундамент для роста.</p>
-        </details>
-        <details class="faq-item" id="q-security">
-          <summary>Как вы обеспечиваете кибербезопасность?</summary>
-          <p>Безопасность встроена с первого дня: практики безопасного программирования, шифрование, гигиена зависимостей, автоматизированные проверки и периодические обзоры.</p>
-        </details>
-        <details class="faq-item" id="q-get-started">
-          <summary>Как начать работу?</summary>
-          <p>Поделитесь своими целями через форму обратной связи — мы ответим с следующими шагами, примерным подходом и временными рамками.</p>
-        </details>
-        <details class="faq-item" id="q-timeline">
-          <summary>Каковы типичные сроки для MVP?</summary>
-          <p>Большинство MVP доставляются в течение 4–8 недель в зависимости от объёма, интеграций и требований соответствия.</p>
-        </details>
-        <details class="faq-item" id="q-stack">
-          <summary>Какой технологический стек вы используете?</summary>
-          <p>Мы выбираем стек в соответствии с вашими целями; распространённые варианты включают современные веб-фреймворки, облачную инфраструктуру и проверенные инструменты безопасности.</p>
-        </details>
-        <details class="faq-item" id="q-pricing">
-          <summary>Как вы оцениваете проекты?</summary>
-          <p>Мы предлагаем как фиксированную цену для чётко определённых объёмов, так и оплату по времени и материалам для итеративной работы; после короткого исследования мы предоставляем прозрачную оценку.</p>
-        </details>
-        <details class="faq-item" id="q-ip">
-          <summary>Кому принадлежат IP и исходный код?</summary>
-          <p>Вы сохраняете 100% владение IP и исходным кодом; мы передаём репозитории, документацию и доступ на каждом этапе.</p>
-        </details>
-        <details class="faq-item" id="q-nda">
-          <summary>Подписываете ли вы NDA?</summary>
-          <p>Да — мы можем подписать взаимное NDA перед обсуждением деталей.</p>
-        </details>
-        <details class="faq-item" id="q-sla">
-          <summary>Предоставляете ли вы постоянную поддержку и SLA?</summary>
-          <p>Да — мы предлагаем планы обслуживания и поддержки с SLA по времени отклика, адаптированными под ваши потребности.</p>
-        </details>
-      </div>
-    </section>
-
-    <section id="contact" class="fade-in">
-      <h2 class="section-title">КОНТАКТЫ</h2>
-      <form class="contact-form glass-card" novalidate>
-        <div class="form-group">
-          <label class="sr-only" for="contact-name">Ваше имя</label>
-          <input type="text" id="contact-name" name="name" placeholder="Ваше имя" required autocomplete="name" inputmode="text" aria-describedby="error-name">
-          <p class="field-error" id="error-name" aria-live="polite"></p>
-        </div>
-        <div class="form-group">
-          <label class="sr-only" for="contact-email">Ваш email</label>
-          <input type="email" id="contact-email" name="email" placeholder="Ваш email" required autocomplete="email" inputmode="email" aria-describedby="error-email">
-          <p class="field-error" id="error-email" aria-live="polite"></p>
-        </div>
-        <div class="form-group">
-          <label class="sr-only" for="contact-message">Ваше сообщение</label>
-          <textarea id="contact-message" rows="5" name="message" placeholder="Ваше сообщение" required maxlength="500" aria-describedby="error-message message-counter"></textarea>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px;">
-            <p class="field-error" id="error-message" aria-live="polite"></p>
-            <span id="message-counter" style="color: var(--text-secondary); font-size: 0.85rem; margin-left: auto;">0/500</span>
-          </div>
-        </div>
-        <div class="form-group" hidden>
-          <label for="contact-honey" class="sr-only">Leave blank</label>
-          <input type="text" id="contact-honey" name="honey" tabindex="-1" autocomplete="off">
-        </div>
-        <button type="submit" class="neural-btn">ОТПРАВИТЬ СООБЩЕНИЕ</button>
-        <p class="form-status" aria-live="polite" aria-atomic="true"></p>
-      </form>
-    </section>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <canvas id="neural-bg" aria-hidden="true"></canvas>
+  <nav id="navbar" aria-label="Primary navigation"><div class="nav-container"><a class="nav-brand" href="/ru/" aria-label="HellSec home"><img src="/assets/favicon.png" alt=""><span>HELLSEC</span></a><div class="nav-menu" id="nav-menu"><ul><li><a href="#services">Услуги</a></li><li><a href="/ru/services/ai-business-control-center/">AI-центр</a></li><li><a href="#process">Процесс</a></li><li><a href="#about">О нас</a></li><li><a href="#contact">Контакты</a></li></ul></div><div class="nav-actions"><button id="theme-toggle" class="theme-icon-btn" aria-label="Переключить тему" type="button"><svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg><span class="sr-only">Переключить тему</span></button><div class="language-selector" id="language-selector"><a href="/" class="lang-btn" data-lang="en" aria-label="English">EN</a><a href="/ru/" class="lang-btn active" data-lang="ru" aria-label="Русский">RU</a><a href="/he/" class="lang-btn" data-lang="he" aria-label="עברית">HE</a></div><button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Открыть меню" aria-controls="nav-menu" aria-expanded="false" type="button"><span></span><span></span><span></span></button></div></div></nav>
+  <main id="main">
+    <section id="home" class="hero"><div class="hero-content"><img class="hero-logo" src="/assets/HellSecLogo.png" alt="Логотип HellSec"><span class="eyebrow">БЕЗОПАСНЫЕ ПРОДУКТЫ И AI-СИСТЕМЫ</span><h1>Безопасные AI-системы, автоматизация и продуктовая инфраструктура для <span class="accent">серьёзного бизнеса.</span></h1><p class="hero-lead">HellSec создаёт практичное ПО, устойчивые к киберугрозам процессы и системы AI-контроля для стартапов, малого и среднего бизнеса и команд с высокой ответственностью.</p><div class="hero-actions"><a class="neural-btn" href="#contact">Начать проект</a><a class="ghost-btn" href="/ru/services/ai-business-control-center/">Открыть AI-центр</a></div></div></section>
+    <div class="capability-strip" role="region" aria-label="ВОЗМОЖНОСТИ"><ul><li>Безопасные MVP</li><li>AI-автоматизация</li><li>Кибербезопасность</li><li>Внутренние панели</li><li>OSINT / Threat Intel</li></ul></div>
+    <section id="services" class="fade-in"><div class="section-heading"><span class="section-label">ВОЗМОЖНОСТИ</span><h2 class="section-title">Системы, которые двигают бизнес вперёд.</h2><p class="section-intro">Продуктовая разработка, автоматизация и безопасность с учётом реальных процессов вашей компании.</p></div><div class="services-grid"><article class="glass-card service-card"><h3>Безопасная разработка продуктов</h3><p>MVP, платформы и клиентские продукты с фокусом на скорость, контроль и устойчивость.</p></article><article class="glass-card service-card"><span class="service-kicker">КЛЮЧЕВОЙ ПРОДУКТ</span><h3>AI Business Control Center</h3><p>Практичный операционный слой для заявок, CRM, follow-up, резюме и контроля владельца.</p></article><article class="glass-card service-card"><h3>Кибербезопасность и hardening</h3><p>Аудит, безопасная архитектура и укрепление защиты на всём жизненном цикле продукта.</p></article><article class="glass-card service-card"><h3>Автоматизация и внутренние инструменты</h3><p>Панели, процессы и интеграции, которые сокращают ручную работу.</p></article><article class="glass-card service-card"><h3>OSINT / системы разведки</h3><p>Специализированные исследовательские процессы и threat intelligence для точных решений.</p></article></div></section>
+    <section class="glass-card featured-service fade-in"><div><span class="service-kicker">КЛЮЧЕВОЙ ПРОДУКТ</span><h2>AI Business Control Center</h2><p>Объедините разрозненные заявки и ежедневный follow-up в один управляемый процесс. Начните с простого, проверьте процесс и автоматизируйте главное.</p><ul class="feature-tags"><li>CRM</li><li>Заявки</li><li>Follow-up</li><li>AI-резюме</li><li>Отчёт владельцу</li><li>Dashboard</li></ul><a class="neural-btn" href="/ru/services/ai-business-control-center/">Открыть AI-центр</a></div><div class="product-console" role="group" aria-label="AI Business Control Center"><div class="product-console-row"><span>Новые заявки</span><strong>Собраны</strong></div><div class="product-console-row"><span>Follow-up</span><strong>В приоритете</strong></div><div class="product-console-row"><span>AI-резюме</span><strong>Готово</strong></div><div class="product-console-row"><span>Отчёт владельцу</span><strong>Ежедневно</strong></div></div></section>
+    <section id="process" class="fade-in"><div class="section-heading"><span class="section-label">ПОДХОД</span><h2 class="section-title">Понятный путь от риска к рабочей системе.</h2></div><div class="process-grid"><article class="process-step"><span class="step-number">01</span><h3>Диагностика</h3><p>Определяем бизнес-цель, процесс, риски и ограничения.</p></article><article class="process-step"><span class="step-number">02</span><h3>Проектирование</h3><p>Формируем минимальную полезную систему и безопасную архитектуру.</p></article><article class="process-step"><span class="step-number">03</span><h3>Первая версия</h3><p>Запускаем сфокусированное решение в реальную работу.</p></article><article class="process-step"><span class="step-number">04</span><h3>Защита, автоматизация, развитие</h3><p>Укрепляем, измеряем и расширяем только доказанную ценность.</p></article></div></section>
+    <section id="trust" class="fade-in"><div class="section-heading"><span class="section-label">КАК МЫ РАБОТАЕМ</span><h2 class="section-title">Контроль, ясность и устойчивость.</h2></div><div class="trust-grid"><article class="glass-card trust-card"><h3>Безопасность по умолчанию</h3><p>Угрозы и сбои учитываются от архитектуры до развёртывания.</p></article><article class="glass-card trust-card"><h3>Практичный объём</h3><p>Приоритет — минимальная система, создающая операционную ценность.</p></article><article class="glass-card trust-card"><h3>Прямое взаимодействие</h3><p>Лица, принимающие решения, работают напрямую с командой разработки.</p></article><article class="glass-card trust-card"><h3>Контроль у клиента</h3><p>Исходный код, доступы и знания остаются у вашего бизнеса.</p></article></div></section>
+    <section id="tools" class="fade-in"><div class="section-heading"><span class="section-label">ИНФРАСТРУКТУРА И ИНСТРУМЕНТЫ</span><h2 class="section-title">Инструменты для безопасной разработки.</h2></div><div class="tools-grid"><a class="glass-card tool-card" href="https://m.do.co/c/9fe481cfbee3" target="_blank" rel="sponsored noopener noreferrer"><img src="../assets/partners/2.png" alt="DigitalOcean" class="partner-logo" loading="lazy"></a><a class="glass-card tool-card" href="https://go.getproton.me/SH1ue" target="_blank" rel="sponsored noopener noreferrer"><img src="../assets/partners/7.png" alt="Proton" class="partner-logo" loading="lazy"></a><a class="glass-card tool-card" href="https://download.getneema.com/kaopaNDCvFb" target="_blank" rel="sponsored noopener noreferrer"><img src="../assets/partners/8.png" alt="Neema" class="partner-logo" loading="lazy"></a></div></section>
+    <section id="team" class="fade-in"><div class="section-heading"><span class="section-label">КОМАНДА</span><h2 class="section-title">Междисциплинарная команда руководителей.</h2></div><div class="team-grid"><article class="glass-card team-card"><div class="team-avatar"><img src="../assets/team/vladimir.jpg" alt="Vladimir B." class="team-photo" loading="lazy" decoding="async"></div><div class="team-copy"><h3 class="team-name">Vladimir B.</h3><p class="team-role">CEO / CIO</p><p class="team-focus">Стратегия, информационные системы и направление безопасности.</p></div></article><article class="glass-card team-card"><div class="team-avatar"><img src="../assets/team/igor.jpg" alt="Igor R." class="team-photo" loading="lazy" decoding="async"></div><div class="team-copy"><h3 class="team-name">Igor R.</h3><p class="team-role">CTO</p><p class="team-focus">Архитектура, инженерия и техническая реализация.</p></div></article><article class="glass-card team-card"><div class="team-avatar"><img src="../assets/team/matan.jpg" alt="Matan D." class="team-photo" loading="lazy" decoding="async"></div><div class="team-copy"><h3 class="team-name">Matan D.</h3><p class="team-role">CMO</p><p class="team-focus">Позиционирование, понимание клиентов и выход на рынок.</p></div></article><article class="glass-card team-card"><div class="team-avatar"><img src="../assets/team/timofey.jpg" alt="Timofey K." class="team-photo" loading="lazy" decoding="async"></div><div class="team-copy"><h3 class="team-name">Timofey K.</h3><p class="team-role">CFO</p><p class="team-focus">Коммерческая структура и финансовые операции.</p></div></article></div></section>
+    <section id="about" class="fade-in"><div class="glass-card about-panel"><div><div class="section-heading"><span class="section-label">О HELLSEC</span><h2 class="section-title">Студия продуктов и безопасности для сложных бизнес-систем.</h2></div></div><div><p class="section-intro">Мы объединяем продуктовую инженерию, AI-автоматизацию и кибербезопасность, чтобы создавать полезное с первого дня и устойчивое к росту ПО.</p><ul class="about-points"><li>Технические решения от бизнес-задачи</li><li>Безопасное внедрение и передача</li><li>Работа на EN, RU и HE</li></ul></div></div></section>
+    <section id="faq" class="fade-in"><div class="section-heading"><span class="section-label">ВОПРОСЫ</span><h2 class="section-title">Частые вопросы</h2></div><div class="faq-list"><details class="faq-item" open><summary>Что создаёт HellSec?</summary><p>Безопасные продукты, AI-системы контроля, внутренние инструменты, автоматизацию и intelligence-процессы.</p></details><details class="faq-item"><summary>Вы работаете с компаниями на ранней стадии?</summary><p>Да. Мы можем проверить узкий объём и создать безопасную первую версию без лишнего усложнения.</p></details><details class="faq-item"><summary>Как вы подходите к кибербезопасности?</summary><p>Безопасность входит в архитектуру, реализацию и проверку, а не добавляется после запуска.</p></details><details class="faq-item"><summary>Как начать?</summary><p>Опишите бизнес-цель, текущий процесс и точку сбоя. Мы ответим с практичным следующим шагом.</p></details></div></section>
+    <section id="contact" class="fade-in"><div class="contact-layout"><div><div class="section-heading"><span class="section-label">НАЧАТЬ ДИАЛОГ</span><h2 class="section-title">Расскажите о процессе, риске или продукте, который нужно решить.</h2><p class="section-intro">Мы изучим контекст и ответим предметными вопросами, вероятным подходом и следующим решением.</p></div><p class="contact-note">Без громких обещаний. Сообщение попадёт напрямую команде.</p></div><form class="contact-form glass-card" novalidate><div class="form-group"><label class="sr-only" for="contact-name">Ваше имя</label><input type="text" id="contact-name" name="name" placeholder="Ваше имя" required autocomplete="name" inputmode="text" aria-describedby="error-name"><p class="field-error" id="error-name" aria-live="polite"></p></div><div class="form-group"><label class="sr-only" for="contact-email">Рабочий email</label><input type="email" id="contact-email" name="email" placeholder="Рабочий email" required autocomplete="email" inputmode="email" aria-describedby="error-email"><p class="field-error" id="error-email" aria-live="polite"></p></div><div class="form-group"><label class="sr-only" for="contact-message">Опишите продукт, процесс или задачу безопасности</label><textarea id="contact-message" rows="5" name="message" placeholder="Опишите продукт, процесс или задачу безопасности" required maxlength="500" aria-describedby="error-message message-counter"></textarea><div class="message-meta"><p class="field-error" id="error-message" aria-live="polite"></p><span id="message-counter" class="message-counter">0/500</span></div></div><div class="form-group" hidden><label for="contact-honey" class="sr-only">Leave blank</label><input type="text" id="contact-honey" name="honey" tabindex="-1" autocomplete="off"></div><button type="submit" class="neural-btn">Отправить сообщение</button><p class="form-status" aria-live="polite" aria-atomic="true"></p></form></div></section>
   </main>
-
-  <footer role="contentinfo">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h2 style="font-family:'Audiowide', sans-serif; color: var(--primary); margin-bottom: 20px; font-size: 1.1rem; letter-spacing: 2px;">Навигация</h2>
-        <ul>
-          <li><a href="#home">Главная</a></li>
-          <li><a href="#about">О нас</a></li>
-          <li><a href="#team">Команда</a></li>
-          <li><a href="#services">Услуги</a></li>
-          <li><a href="/services/ai-business-control-center/">AI Business Control Center</a></li>
-          <li><a href="#build">Мы создаём</a></li>
-          <li><a href="#partners">Партнёры</a></li>
-          <li><a href="#faq">ЧЗВ</a></li>
-          <li><a href="#contact">Контакты</a></li>
-          <li><a href="/privacy.html">Конфиденциальность</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h2 style="font-family:'Audiowide', sans-serif; color: var(--primary); margin-bottom: 20px; font-size: 1.1rem; letter-spacing: 2px;">Связь</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 10px;">Давайте создадим что-то удивительное вместе</p>
-        <div class="social-links">
-          <a href="https://github.com/hellsecdev" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/company/hellsec" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; <span id="current-year">2025</span> HellSec. Все права защищены.</p>
-    </div>
-  </footer>
-
-  <noscript>
-    <div style="max-width:1200px;margin:20px auto;padding:15px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);border-radius:8px;color:#fff;">
-      JavaScript отключён в вашем браузере. Некоторые интерактивные эффекты (анимации, плавная прокрутка, форма обратной связи) ограничены.
-    </div>
-  </noscript>
-
-  <button id="back-to-top" class="back-to-top" aria-label="Наверх" title="Наверх">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M18 15l-6-6-6 6"/>
-    </svg>
-  </button>
-
-  <script src="../scripts.js?v=hefaq-arrow-20260808"></script>
+  <footer role="contentinfo"><div class="footer-content"><div class="footer-brand"><a class="nav-brand" href="/ru/"><img src="/assets/favicon.png" alt=""><span>HELLSEC</span></a><p>Безопасные продуктовые, AI- и киберсистемы для реальной работы.</p></div><div class="footer-section"><h2>Навигация</h2><ul><li><a href="#services">Услуги</a></li><li><a href="/ru/services/ai-business-control-center/">AI-центр</a></li><li><a href="#process">Процесс</a></li><li><a href="#faq">Вопросы</a></li><li><a href="/privacy.html">Конфиденциальность</a></li></ul></div><div class="footer-section"><h2>Связь</h2><p>Без громких обещаний. Сообщение попадёт напрямую команде.</p><div class="social-links"><a href="https://github.com/hellsecdev" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg></a><a href="https://www.linkedin.com/company/hellsec" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg></a></div></div></div><div class="footer-bottom"><p>&copy; <span id="current-year">2026</span> HellSec. Все права защищены.</p></div></footer>
+  <noscript><div class="glass-card" style="margin:20px auto;padding:15px;max-width:1180px">Контент доступен; интерактивные эффекты и отправка формы требуют JavaScript.</div></noscript>
+  <button id="back-to-top" class="back-to-top" aria-label="Наверх"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg></button>
+  <script src="../scripts.js?v=premium-20260808"></script>
 </body>
 </html>
-
