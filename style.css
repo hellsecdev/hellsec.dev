@@ -1920,8 +1920,9 @@ button:focus-visible,
 .service-kicker { display: inline-block; font-family: 'Audiowide', sans-serif; font-size: .72rem; letter-spacing: 2px; color: var(--accent); margin-bottom: 14px; text-transform: uppercase; }
 .service-card-cta { display: inline-block; margin-top: 18px; color: var(--primary); font-family: 'Audiowide', sans-serif; font-size: .82rem; letter-spacing: 1px; }
 .service-page main { padding-top: var(--nav-height); }
-.service-hero { min-height: calc(100vh - var(--nav-height)); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr); gap: 42px; align-items: center; max-width: 1280px; margin: 0 auto; padding: 82px 40px 60px; position: relative; z-index: 2; }
-.service-hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(3.2rem, 8vw, 7.4rem); line-height: .92; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; text-shadow: 0 0 26px rgba(0,255,255,.22); }
+.service-hero { min-height: calc(100vh - var(--nav-height)); display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 430px); gap: clamp(34px, 6vw, 78px); align-items: center; max-width: 1280px; margin: 0 auto; padding: 82px 40px 60px; position: relative; z-index: 2; }
+.service-hero-content { min-width: 0; }
+.service-hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(3rem, 6.15vw, 5.85rem); line-height: .96; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; text-shadow: 0 0 26px rgba(0,255,255,.22); max-width: 760px; }
 .service-eyebrow { font-family: 'Audiowide', sans-serif; color: var(--primary); letter-spacing: 3px; text-transform: uppercase; font-size: .82rem; margin-bottom: 18px; }
 .service-lead { font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--text-secondary); max-width: 780px; }
 .service-actions { display: flex; gap: 16px; flex-wrap: wrap; margin: 34px 0; }
