@@ -205,29 +205,22 @@
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
-    // Section fade-in reveal
+    // Section entrance animation (progressive enhancement).
+    // Content is fully visible by default. The observer only adds a one-shot
+    // `.reveal` animation whose end-state matches the default, so a JS or
+    // observer failure (or a full-page render) never leaves the page blank.
     const sections = Array.from(document.querySelectorAll('.fade-in'));
-    if ('IntersectionObserver' in window && sections.length) {
+    const reduceMotionReveal = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (sections.length && !reduceMotionReveal && 'IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add('reveal');
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.2 });
-      
+      }, { threshold: 0.15 });
       sections.forEach((section) => io.observe(section));
-    } else if (sections.length) {
-      const reveal = () => {
-        const vh = window.innerHeight;
-        sections.forEach((section) => {
-          const rect = section.getBoundingClientRect();
-          if (rect.top < vh * 0.8) section.classList.add('visible');
-        });
-      };
-      window.addEventListener('scroll', reveal, { passive: true });
-      reveal();
     }
 
     // Contact form validation + submission

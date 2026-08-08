@@ -302,9 +302,9 @@ section,
 }
 
 .hero {
-  min-height: min(82vh, 740px);
-  padding-top: calc(var(--nav-height) + 54px);
-  padding-bottom: 64px;
+  min-height: min(72vh, 640px);
+  padding-top: calc(var(--nav-height) + 40px);
+  padding-bottom: 48px;
   display: grid;
   align-items: center;
 }
@@ -959,15 +959,23 @@ footer {
   transform: none;
 }
 
-.js .fade-in {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+/* Content is always visible by default. When JS is available, sections below
+   the fold get a gentle one-shot entrance animation via .fade-in.reveal, but
+   the visible end-state is identical to the default, so a JS/observer failure
+   or a full-page render never leaves content hidden. */
+.js .fade-in.reveal {
+  animation: fadeInUp 0.55s ease both;
 }
 
-.js .fade-in.visible {
-  opacity: 1;
-  transform: none;
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .fade-in.reveal {
+    animation: none;
+  }
 }
 
 .service-page main {
