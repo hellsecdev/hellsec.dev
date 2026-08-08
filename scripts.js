@@ -66,7 +66,7 @@
           draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(34, 211, 238, 0.45)';
+            ctx.fillStyle = 'rgba(109, 74, 255, 0.45)';
             ctx.fill();
           }
         }
@@ -112,7 +112,7 @@
                 ctx.beginPath();
                 ctx.moveTo(nodes[i].x, nodes[i].y);
                 ctx.lineTo(nodes[j].x, nodes[j].y);
-                ctx.strokeStyle = `rgba(34, 211, 238, ${(1 - distance / 130) * 0.16})`;
+                ctx.strokeStyle = `rgba(109, 74, 255, ${(1 - distance / 130) * 0.16})`;
                 ctx.lineWidth = 0.4;
                 ctx.stroke();
               }
