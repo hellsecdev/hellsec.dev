@@ -238,6 +238,16 @@ html[data-theme="light"] .theme-icon-btn {
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
+  direction: ltr;
+  flex-direction: row;
+  unicode-bidi: isolate;
+}
+
+[dir="rtl"] .language-selector {
+  right: 0;
+  left: auto;
+  direction: ltr;
+  flex-direction: row;
 }
 
 .lang-btn {
@@ -531,7 +541,7 @@ html[data-theme="light"] .glitch::after {
   font-size: 1.3rem;
   font-weight: 300;
   margin-top: 20px;
-  margin-bottom: 120px;
+  margin-bottom: 65px;
   letter-spacing: 3px;
   background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
   -webkit-background-clip: text;
@@ -545,7 +555,7 @@ html[data-theme="light"] .subtitle {
 
 .scroll-btn {
   position: absolute;
-  bottom: 40px;
+  bottom: -34px;
   left: 50%;
   transform: translateX(-50%);
   display: inline-flex;
@@ -1967,3 +1977,22 @@ html[data-theme="light"] .featured-service, html[data-theme="light"] .control-pa
 html[data-theme="light"] .service-link-card::before { background: radial-gradient(circle at 20% 0%, rgba(0,93,255,.14), transparent 38%), radial-gradient(circle at 85% 0%, rgba(138,33,214,.12), transparent 42%); }
 @media (max-width: 980px) { .featured-service, .service-hero, .split-section { grid-template-columns: 1fr; } .service-proof-grid { grid-template-columns: 1fr; } .package-card.featured { transform: none; } }
 @media (max-width: 620px) { .hero-actions { flex-direction: column; align-items: center; } .hero-btn { width: min(100%, 320px); } .featured-service { gap: 18px; } .featured-service-actions { flex-direction: column; } .featured-service-actions span { text-align: center; } .service-hero, .service-section { padding-left: 20px; padding-right: 20px; } .service-actions { flex-direction: column; } .service-actions a, .service-btn, .ghost-btn { width: 100%; } .mini-pipeline { grid-template-columns: repeat(2, 1fr); } .service-hero h1 { font-size: clamp(2.55rem, 15vw, 4.2rem); } }
+
+/* Final nav/hero stability fixes */
+.language-selector,
+[dir="rtl"] .language-selector {
+  direction: ltr !important;
+  flex-direction: row !important;
+  unicode-bidi: isolate !important;
+}
+
+.hero .scroll-btn {
+  bottom: -34px;
+  z-index: 3;
+}
+
+@media (max-height: 680px) and (min-width: 769px) {
+  .hero .scroll-btn {
+    bottom: -40px;
+  }
+}
