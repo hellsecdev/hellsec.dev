@@ -4,9 +4,9 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#0a0a0a",
-  "description": "Product R&D and cybersecurity services for entrepreneurs and startups.",
+  "background_color": "#050608",
+  "theme_color": "#050608",
+  "description": "Secure AI systems, automation and cybersecurity for serious businesses.",
   "icons": [
     {
       "src": "/assets/favicon.png",

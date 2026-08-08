@@ -333,51 +333,49 @@
       // Обработчик для фильтрации символов в поле сообщения
       const messageField = contactForm.querySelector('#contact-message');
       const messageCounter = contactForm.querySelector('#message-counter');
-      
+
+      const updateCounter = () => {
+        if (!messageField || !messageCounter) return;
+        const length = messageField.value.length;
+        messageCounter.textContent = `${length}/500`;
+        if (length > 450) {
+          messageCounter.style.color = 'var(--accent)';
+        } else if (length > 400) {
+          messageCounter.style.color = 'var(--secondary)';
+        } else {
+          messageCounter.style.color = 'var(--text-secondary)';
+        }
+      };
+
       if (messageField) {
         // Remove only unsupported control characters; keep normal punctuation, currency signs, URLs and project details.
         const sanitizeMessage = (value) => value.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '');
-        
-        // Обновление счетчика символов
-        const updateCounter = () => {
-          const length = messageField.value.length;
-          if (messageCounter) {
-            messageCounter.textContent = `${length}/500`;
-            if (length > 450) {
-              messageCounter.style.color = 'var(--accent)';
-            } else if (length > 400) {
-              messageCounter.style.color = 'var(--secondary)';
-            } else {
-              messageCounter.style.color = 'var(--text-secondary)';
-            }
-          }
-        };
-        
+
         // Фильтрация при вводе
         messageField.addEventListener('input', (e) => {
           const originalValue = e.target.value;
           const sanitized = sanitizeMessage(originalValue);
-          
+
           if (originalValue !== sanitized) {
             const cursorPos = e.target.selectionStart;
             e.target.value = sanitized;
             // Восстанавливаем позицию курсора
             e.target.setSelectionRange(cursorPos - 1, cursorPos - 1);
           }
-          
+
           // Ограничение до 500 символов
           if (e.target.value.length > 500) {
             e.target.value = e.target.value.substring(0, 500);
           }
-          
+
           updateCounter();
           validateForm(contactForm);
         });
-        
+
         // Инициализация счетчика
         updateCounter();
       }
-      
+
       contactForm.addEventListener('input', () => validateForm(contactForm));
       contactForm.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -407,11 +405,12 @@
 
         // Санитизация сообщения перед отправкой: убираем только служебные символы, оставляя нормальную пунктуацию и валюты.
         const sanitizeMessage = (value) => value.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').substring(0, 500);
-        
+
         const payload = {
           name: data.get('name'),
           email: data.get('email'),
-          message: sanitizeMessage(data.get('message') || '')
+          message: sanitizeMessage(data.get('message') || ''),
+          lang
         };
 
         try {
@@ -427,6 +426,7 @@
               statusEl.classList.add('success');
             }
             form.reset();
+            updateCounter();
           } else {
             const text = await response.text().catch(() => '');
             const messageText = t.error + (text ? ` ${t.errorDetails}${text}` : '');
@@ -503,28 +503,21 @@
     // Back to top button
     (function initBackToTop() {
       const backToTopBtn = document.getElementById('back-to-top');
-      const aboutSection = document.getElementById('about');
-      
-      if (!backToTopBtn || !aboutSection) return;
-      
+      if (!backToTopBtn) return;
+
       const toggleButton = () => {
-        const aboutRect = aboutSection.getBoundingClientRect();
-        const aboutBottom = aboutRect.bottom;
-        
-        if (aboutBottom < window.innerHeight) {
+        if (window.scrollY > 600) {
           backToTopBtn.classList.add('visible');
         } else {
           backToTopBtn.classList.remove('visible');
         }
       };
-      
+
       backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+        const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+        window.scrollTo({ top: 0, behavior });
       });
-      
+
       window.addEventListener('scroll', toggleButton, { passive: true });
       toggleButton();
     })();
