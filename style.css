@@ -1996,3 +1996,35 @@ html[data-theme="light"] .service-link-card::before { background: radial-gradien
     bottom: -40px;
   }
 }
+
+/* FORCE 2026-08 nav stability patch */
+.language-selector,
+[dir="rtl"] .language-selector {
+  direction: ltr !important;
+  flex-direction: row !important;
+  unicode-bidi: isolate !important;
+}
+.language-selector .lang-btn[data-lang="en"] { order: 1 !important; }
+.language-selector .lang-btn[data-lang="ru"] { order: 2 !important; }
+.language-selector .lang-btn[data-lang="he"] { order: 3 !important; }
+
+.hero {
+  margin-bottom: 96px;
+}
+.hero .scroll-btn,
+[dir="rtl"] .hero .scroll-btn {
+  bottom: -92px !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  z-index: 4;
+}
+@media (max-width: 768px) {
+  .hero {
+    margin-bottom: 72px;
+  }
+  .hero .scroll-btn,
+  [dir="rtl"] .hero .scroll-btn {
+    bottom: -68px !important;
+  }
+}

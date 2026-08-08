@@ -10,6 +10,34 @@
   const THEME_KEY = 'theme';
 
   READY(() => {
+    // Navigation hardening: keep top nav and language switcher stable across cached/RTL pages.
+    try {
+      const topNav = document.querySelector('.nav-menu ul');
+      if (topNav) {
+        Array.from(topNav.querySelectorAll('a')).forEach((link) => {
+          const text = (link.textContent || '').trim().toLowerCase();
+          if (text === 'ai business control center') {
+            const item = link.closest('li');
+            if (item) item.remove();
+          }
+        });
+      }
+
+      const langSelector = document.getElementById('language-selector');
+      if (langSelector) {
+        langSelector.style.direction = 'ltr';
+        langSelector.style.flexDirection = 'row';
+        langSelector.style.unicodeBidi = 'isolate';
+        const order = { en: 1, ru: 2, he: 3 };
+        Array.from(langSelector.querySelectorAll('.lang-btn')).forEach((btn) => {
+          const lang = btn.getAttribute('data-lang') || (btn.textContent || '').trim().toLowerCase();
+          btn.style.order = String(order[lang] || 99);
+        });
+      }
+    } catch (error) {
+      console.warn('Nav stability guard failed:', error);
+    }
+
     // Canvas background network
     try {
       const canvas = document.getElementById('neural-bg');
