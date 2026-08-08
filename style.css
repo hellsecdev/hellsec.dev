@@ -2028,3 +2028,8 @@ html[data-theme="light"] .service-link-card::before { background: radial-gradien
     bottom: -68px !important;
   }
 }
+
+/* Hebrew hero has a shorter visual stack after RTL mirroring; keep arrow between CTA and next section. */
+[dir="rtl"] .hero .scroll-btn {
+  bottom: -44px !important;
+}
