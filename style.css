@@ -303,8 +303,8 @@ section,
 
 .hero {
   min-height: min(72vh, 640px);
-  padding-top: calc(var(--nav-height) + 28px);
-  padding-bottom: 48px;
+  padding-top: calc(var(--nav-height) + 56px);
+  padding-bottom: 80px;
   display: grid;
   align-items: center;
 }
@@ -1380,8 +1380,8 @@ footer {
 
   .hero {
     min-height: auto;
-    padding-top: calc(var(--nav-height) + 48px);
-    padding-bottom: 56px;
+    padding-top: calc(var(--nav-height) + 64px);
+    padding-bottom: 72px;
   }
 
   .capability-strip ul {
