@@ -856,6 +856,15 @@ html[data-theme="light"] .product-console {
   background: rgba(255, 255, 255, 0.04);
 }
 
+.tool-logo-text {
+  color: var(--text-primary);
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, rgba(109, 74, 255, 0.18), rgba(167, 139, 250, 0.08));
+}
+
 .partner-logo {
   max-width: 36px;
   max-height: 36px;
@@ -905,6 +914,30 @@ html[data-theme="light"] .tool-logo-wrap {
   overflow: hidden;
   background: #11151c;
   border-bottom: 1px solid var(--border);
+}
+
+.team-monogram {
+  min-height: 156px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(109, 74, 255, 0.32), transparent 36%),
+    linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+}
+
+.team-monogram span {
+  display: grid;
+  place-items: center;
+  width: 74px;
+  height: 74px;
+  border: 1px solid var(--border-strong);
+  border-radius: 22px;
+  color: var(--text-primary);
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  box-shadow: var(--glow-primary);
 }
 
 .team-photo {
