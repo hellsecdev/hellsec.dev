@@ -1156,37 +1156,45 @@ html[data-theme="light"] .tool-logo-wrap {
   overflow: hidden;
   display: grid;
   grid-template-rows: auto 1fr;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.018)),
+    var(--surface);
 }
 
 .team-avatar {
+  position: relative;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: #11151c;
-  border-bottom: 1px solid var(--border);
-}
-
-.team-monogram {
-  min-height: 156px;
-  display: grid;
-  place-items: center;
   background:
-    radial-gradient(circle at 30% 20%, rgba(109, 74, 255, 0.32), transparent 36%),
-    linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    radial-gradient(circle at 28% 18%, rgba(109, 74, 255, 0.22), transparent 38%),
+    #0f1117;
+  border-bottom: 1px solid var(--border);
+  isolation: isolate;
 }
 
-.team-monogram span {
-  display: grid;
-  place-items: center;
-  width: 74px;
-  height: 74px;
-  border: 1px solid var(--border-strong);
-  border-radius: 22px;
-  color: var(--text-primary);
-  font-family: "Space Grotesk", "Inter", sans-serif;
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  box-shadow: var(--glow-primary);
+.team-avatar::before,
+.team-avatar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.team-avatar::before {
+  background:
+    radial-gradient(circle at 28% 16%, rgba(109, 74, 255, 0.24), transparent 36%),
+    linear-gradient(180deg, transparent 46%, rgba(5, 6, 10, 0.46));
+  mix-blend-mode: screen;
+  opacity: 0.82;
+}
+
+.team-avatar::after {
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(180deg, transparent, rgba(5, 6, 10, 0.24));
+  background-size: 34px 100%, 100% 100%;
+  opacity: 0.28;
 }
 
 .team-photo {
@@ -1194,8 +1202,15 @@ html[data-theme="light"] .tool-logo-wrap {
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center top;
-  filter: none;
+  object-position: center 28%;
+  filter: saturate(0.92) contrast(1.08) brightness(0.92);
+  transform: scale(1.018);
+  transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.team-card:hover .team-photo {
+  filter: saturate(1.08) contrast(1.08) brightness(0.98);
+  transform: scale(1.045);
 }
 
 .team-copy {
