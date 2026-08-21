@@ -1638,6 +1638,192 @@ footer {
   font-size: clamp(2.1rem, 3.8vw, 3.6rem);
 }
 
+.abcc-hero {
+  min-height: min(88vh, 820px);
+  grid-template-columns: minmax(0, 0.96fr) minmax(420px, 1.04fr);
+}
+
+.abcc-hero h1 {
+  max-width: 980px;
+  font-size: clamp(2.05rem, 4.3vw, 4.15rem);
+  line-height: 1.03;
+  letter-spacing: -0.055em;
+}
+
+.abcc-dashboard {
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(167, 139, 250, 0.38);
+  background:
+    radial-gradient(circle at 80% 0%, rgba(109, 74, 255, 0.2), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+    rgba(5, 6, 10, 0.95);
+}
+
+.abcc-dashboard::before {
+  content: "";
+  position: absolute;
+  inset: 42px 0 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.82), transparent 76%);
+  pointer-events: none;
+}
+
+.abcc-dashboard-body {
+  position: relative;
+  padding: clamp(18px, 3vw, 26px);
+  display: grid;
+  gap: 14px;
+}
+
+.abcc-sources,
+.abcc-kanban {
+  display: grid;
+  gap: 10px;
+}
+
+.abcc-sources {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.abcc-sources span,
+.abcc-kanban article,
+.abcc-ai-card,
+.abcc-main-metric {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.abcc-sources span {
+  padding: 10px;
+  color: var(--text-secondary);
+  font-size: 0.74rem;
+  text-align: center;
+}
+
+.abcc-main-metric {
+  padding: clamp(18px, 4vw, 30px);
+  background:
+    linear-gradient(135deg, rgba(109, 74, 255, 0.18), transparent 62%),
+    rgba(255, 255, 255, 0.04);
+}
+
+.abcc-main-metric span,
+.abcc-ai-card span,
+.abcc-leak-grid article span,
+.abcc-flow-line article span {
+  color: var(--primary);
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.abcc-main-metric strong {
+  display: block;
+  margin: 8px 0 4px;
+  color: var(--text-primary);
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(3.4rem, 8vw, 5.4rem);
+  line-height: 0.9;
+}
+
+.abcc-main-metric p,
+.abcc-ai-card p {
+  color: var(--text-secondary);
+}
+
+.abcc-kanban {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.abcc-kanban article {
+  padding: 14px;
+}
+
+.abcc-kanban b {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.abcc-kanban strong {
+  display: block;
+  margin-top: 9px;
+  color: var(--text-primary);
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.65rem;
+}
+
+.abcc-ai-card {
+  padding: 18px;
+  border-color: rgba(109, 74, 255, 0.32);
+  background:
+    linear-gradient(135deg, rgba(109, 74, 255, 0.16), transparent 66%),
+    rgba(255, 255, 255, 0.04);
+}
+
+.abcc-ai-card p {
+  margin-top: 9px;
+}
+
+.abcc-leak-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.abcc-leak-grid article {
+  padding: 28px;
+}
+
+.abcc-flow-line {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.abcc-flow-line article {
+  position: relative;
+  padding: 24px 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.032);
+}
+
+.abcc-flow-line article:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  inset-inline-end: -13px;
+  width: 13px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+.abcc-flow-line h3,
+.abcc-leak-grid h3 {
+  margin: 12px 0 8px;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: 1.08rem;
+}
+
+.abcc-flow-line p,
+.abcc-leak-grid p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.abcc-packages .package-card {
+  min-height: 250px;
+}
+
 .service-proof-grid {
   max-width: 720px;
   margin-top: 30px;
@@ -1823,8 +2009,18 @@ footer {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .service-hero {
+  .service-hero,
+  .abcc-hero {
     grid-template-columns: 1fr;
+  }
+
+  .abcc-flow-line,
+  .abcc-leak-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .abcc-flow-line article:not(:last-child)::after {
+    display: none;
   }
 
   .hero-v2 .hero-layout,
@@ -1998,8 +2194,23 @@ footer {
   .tools-grid,
   .team-grid,
   .service-proof-grid,
-  .command-metrics {
+  .command-metrics,
+  .abcc-sources,
+  .abcc-kanban {
     grid-template-columns: 1fr;
+  }
+
+  .abcc-hero h1 {
+    font-size: clamp(1.75rem, 8vw, 2.55rem);
+    letter-spacing: -0.04em;
+  }
+
+  .abcc-dashboard-body {
+    padding: 14px;
+  }
+
+  .abcc-main-metric strong {
+    font-size: 3.4rem;
   }
 
   .command-console {
