@@ -425,7 +425,7 @@ section,
 .hero-lead,
 .service-lead {
   max-width: 760px;
-  margin-top: 28px;
+  margin-top: 24px;
   color: var(--text-secondary);
   font-size: clamp(1.04rem, 2vw, 1.25rem);
 }
@@ -445,7 +445,7 @@ section,
   background: rgba(255, 255, 255, 0.025);
   color: var(--text-secondary);
   font-family: "Space Grotesk", "Inter", sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 600;
   letter-spacing: 0.03em;
 }
@@ -1054,7 +1054,7 @@ html[data-theme="light"] .product-console {
 
 .cta-band-inner .section-heading {
   margin-bottom: 0;
-  max-width: 560px;
+  max-width: 500px;
 }
 
 .cta-band-inner .hero-actions {
@@ -1639,25 +1639,64 @@ footer {
 }
 
 .abcc-hero {
-  min-height: min(88vh, 820px);
-  grid-template-columns: minmax(0, 0.96fr) minmax(420px, 1.04fr);
+  width: min(100% - 40px, 1360px);
+  min-height: min(72vh, 680px);
+  padding-top: 44px;
+  padding-bottom: 34px;
+  grid-template-columns: minmax(0, 0.96fr) minmax(390px, 0.9fr);
+  gap: clamp(42px, 6.4vw, 86px);
 }
 
 .abcc-hero h1 {
-  max-width: 980px;
-  font-size: clamp(2.05rem, 4.3vw, 4.15rem);
-  line-height: 1.03;
+  max-width: 690px;
+  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+  font-size: clamp(2.35rem, 3.82vw, 3.62rem);
+  font-weight: 600;
+  line-height: 1.01;
+  letter-spacing: -0.06em;
+}
+
+[lang="ru"] .abcc-hero h1,
+[lang="he"] .abcc-hero h1 {
+  font-family: "Inter", "Space Grotesk", system-ui, sans-serif;
+  font-size: clamp(2.05rem, 3.45vw, 3.2rem);
+  font-weight: 760;
+  line-height: 1.04;
   letter-spacing: -0.055em;
+}
+
+.abcc-hero .service-lead {
+  max-width: 590px;
+  margin-top: 20px;
+  color: rgba(208, 214, 224, 0.82);
+  font-size: clamp(1rem, 1.35vw, 1.13rem);
+  line-height: 1.65;
+}
+
+.abcc-hero .service-actions {
+  margin-top: 28px;
 }
 
 .abcc-dashboard {
   position: relative;
   overflow: hidden;
-  border-color: rgba(167, 139, 250, 0.38);
+  width: min(100%, 500px);
+  max-width: 500px;
+  justify-self: end;
+  border-color: rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
   background:
-    radial-gradient(circle at 80% 0%, rgba(109, 74, 255, 0.2), transparent 32%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
-    rgba(5, 6, 10, 0.95);
+    radial-gradient(circle at 78% 0%, rgba(109, 74, 255, 0.13), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+    rgba(10, 11, 16, 0.96);
+  box-shadow:
+    0 0 0 1px rgba(109, 74, 255, 0.18),
+    0 22px 62px rgba(0, 0, 0, 0.46),
+    0 0 44px rgba(109, 74, 255, 0.14);
+}
+
+[dir="rtl"] .abcc-dashboard {
+  justify-self: start;
 }
 
 .abcc-dashboard::before {
@@ -1674,15 +1713,15 @@ footer {
 
 .abcc-dashboard-body {
   position: relative;
-  padding: clamp(18px, 3vw, 26px);
+  padding: 16px 18px 18px;
   display: grid;
-  gap: 14px;
+  gap: 10px;
 }
 
 .abcc-sources,
 .abcc-kanban {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .abcc-sources {
@@ -1693,23 +1732,23 @@ footer {
 .abcc-kanban article,
 .abcc-ai-card,
 .abcc-main-metric {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.028);
 }
 
 .abcc-sources span {
-  padding: 10px;
-  color: var(--text-secondary);
-  font-size: 0.74rem;
+  padding: 8px 9px;
+  color: rgba(208, 214, 224, 0.72);
+  font-size: 0.72rem;
   text-align: center;
 }
 
 .abcc-main-metric {
-  padding: clamp(18px, 4vw, 30px);
+  padding: 20px 24px 22px;
   background:
-    linear-gradient(135deg, rgba(109, 74, 255, 0.18), transparent 62%),
-    rgba(255, 255, 255, 0.04);
+    linear-gradient(135deg, rgba(109, 74, 255, 0.115), transparent 62%),
+    rgba(255, 255, 255, 0.035);
 }
 
 .abcc-main-metric span,
@@ -1717,25 +1756,27 @@ footer {
 .abcc-leak-grid article span,
 .abcc-flow-line article span {
   color: var(--primary);
-  font-family: "Orbitron", sans-serif;
+  font-family: "Space Grotesk", "Inter", sans-serif;
   font-size: 0.68rem;
   font-weight: 650;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
 .abcc-main-metric strong {
   display: block;
-  margin: 8px 0 4px;
+  margin: 6px 0 3px;
   color: var(--text-primary);
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(3.4rem, 8vw, 5.4rem);
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: clamp(2.8rem, 5.8vw, 3.9rem);
+  font-weight: 600;
   line-height: 0.9;
 }
 
 .abcc-main-metric p,
 .abcc-ai-card p {
   color: var(--text-secondary);
+  font-size: 0.92rem;
 }
 
 .abcc-kanban {
@@ -1743,7 +1784,7 @@ footer {
 }
 
 .abcc-kanban article {
-  padding: 14px;
+  padding: 11px 12px;
 }
 
 .abcc-kanban b {
@@ -1755,22 +1796,23 @@ footer {
 
 .abcc-kanban strong {
   display: block;
-  margin-top: 9px;
+  margin-top: 6px;
   color: var(--text-primary);
-  font-family: "Orbitron", sans-serif;
-  font-size: 1.65rem;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: 1.32rem;
+  font-weight: 600;
 }
 
 .abcc-ai-card {
-  padding: 18px;
-  border-color: rgba(109, 74, 255, 0.32);
+  padding: 14px 16px;
+  border-color: rgba(109, 74, 255, 0.22);
   background:
-    linear-gradient(135deg, rgba(109, 74, 255, 0.16), transparent 66%),
-    rgba(255, 255, 255, 0.04);
+    linear-gradient(135deg, rgba(109, 74, 255, 0.105), transparent 66%),
+    rgba(255, 255, 255, 0.033);
 }
 
 .abcc-ai-card p {
-  margin-top: 9px;
+  margin-top: 7px;
 }
 
 .abcc-leak-grid {
@@ -1826,24 +1868,25 @@ footer {
 
 .service-proof-grid {
   max-width: 720px;
-  margin-top: 30px;
+  margin-top: 22px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 12px;
 }
 
 .service-proof-grid div {
-  padding: 15px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--surface);
+  padding: 13px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .service-proof-grid strong {
   display: block;
   color: var(--primary);
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.92rem;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
 }
 
 .service-proof-grid span {
@@ -2012,6 +2055,18 @@ footer {
   .service-hero,
   .abcc-hero {
     grid-template-columns: 1fr;
+  }
+
+  .abcc-hero {
+    min-height: auto;
+    padding-top: 48px;
+    gap: 40px;
+  }
+
+  .abcc-dashboard,
+  [dir="rtl"] .abcc-dashboard {
+    justify-self: stretch;
+    max-width: 720px;
   }
 
   .abcc-flow-line,
