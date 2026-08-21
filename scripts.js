@@ -223,6 +223,19 @@
       sections.forEach((section) => io.observe(section));
     }
 
+    // Premium pointer glow for elevated cards. Desktop only; mobile keeps static, fast UI.
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.querySelectorAll('.glass-card, .command-console, .control-panel, .abcc-dashboard, .product-frame').forEach((card) => {
+        card.addEventListener('pointermove', (event) => {
+          const rect = card.getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / Math.max(rect.width, 1)) * 100;
+          const y = ((event.clientY - rect.top) / Math.max(rect.height, 1)) * 100;
+          card.style.setProperty('--mx', `${x.toFixed(1)}%`);
+          card.style.setProperty('--my', `${y.toFixed(1)}%`);
+        });
+      });
+    }
+
     // Contact form validation + submission
     const contactForm = document.querySelector('.contact-form');
     const setFieldError = (input, message) => {
