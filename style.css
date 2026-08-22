@@ -3758,3 +3758,40 @@ html[data-theme="light"] .loop-panel {
 .case-reading li::before { content: ""; position: absolute; inset-inline-start: 0; top: .72em; width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 14px rgba(52,211,153,.38); }
 @media (max-width: 920px) { .case-index-hero { grid-template-columns: 1fr; padding-top: calc(var(--nav-height) + 46px); } .case-index-grid { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .case-index-hero, .case-index-list, .case-reading { width: min(100% - 28px, 1260px); } .case-index-card { min-height: 0; } }
+
+/* Human-polish pass: decorative pre-heading labels were removed from HTML.
+   Keep spacing balanced when section headings now start directly with the real title. */
+.section-heading .section-title:first-child,
+.methodology-claim .section-title:first-child,
+.case-index-list .section-title:first-child {
+  margin-top: 0;
+}
+.case-index-link {
+  display: inline-flex;
+  margin-top: 16px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 800;
+  border-bottom: 1px solid rgba(109,74,255,.45);
+}
+.case-index-link:hover,
+.case-index-link:focus-visible { color: var(--primary); }
+
+/* Reduce AI-template shouting: product/interface labels use normal case now. */
+.command-topline span,
+.command-topline strong,
+.command-ai-note span,
+.story-ai span,
+.story-chrome strong,
+.outcome-board-head span,
+.outcome-metrics span,
+.service-kicker,
+.case-ledger-table article > span,
+.case-index-card span,
+.operator-card > span,
+.standards-grid article > span,
+.posture-card > span {
+  text-transform: none !important;
+  letter-spacing: 0.015em !important;
+  font-family: "Inter", system-ui, sans-serif !important;
+}
