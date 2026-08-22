@@ -232,7 +232,7 @@ main,
 
 .case-ledger-table dt {
   color: var(--text-muted);
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -535,13 +535,13 @@ html[data-theme="light"] nav#navbar.scrolled {
 .nav-menu ul {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 2.1vw, 30px);
+  gap: clamp(10px, 1.35vw, 20px);
   list-style: none;
 }
 
 .nav-menu a {
   color: var(--text-secondary);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   text-decoration: none;
@@ -3994,12 +3994,12 @@ html[dir="rtl"] .fit-card li::before { left: auto; right: 0; }
   align-items: center;
   justify-content: center;
   min-height: 34px;
-  padding: 0 13px;
+  padding: 0 14px;
   border: 1px solid rgba(109,74,255,.48);
   border-radius: 11px;
   background: linear-gradient(135deg, rgba(109,74,255,.20), rgba(255,255,255,.045));
   color: var(--text-primary);
-  font-size: .76rem;
+  font-size: .74rem;
   font-weight: 750;
   letter-spacing: .02em;
   text-decoration: none;
