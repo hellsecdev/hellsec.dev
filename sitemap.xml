@@ -61,6 +61,36 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hellsec.dev/services/ai-business-control-center/" />
   </url>
   <url>
+    <loc>https://hellsec.dev/cases/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-08-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hellsec.dev/cases/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hellsec.dev/ru/cases/" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://hellsec.dev/he/cases/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hellsec.dev/cases/" />
+  </url>
+  <url>
+    <loc>https://hellsec.dev/ru/cases/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-08-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hellsec.dev/cases/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hellsec.dev/ru/cases/" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://hellsec.dev/he/cases/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hellsec.dev/cases/" />
+  </url>
+  <url>
+    <loc>https://hellsec.dev/he/cases/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-08-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hellsec.dev/cases/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hellsec.dev/ru/cases/" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://hellsec.dev/he/cases/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hellsec.dev/cases/" />
+  </url>
+  <url>
     <loc>https://hellsec.dev/privacy.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
