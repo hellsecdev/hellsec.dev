@@ -2385,7 +2385,9 @@ footer {
 .js .fade-in.reveal .service-grid > *,
 .js .fade-in.reveal .package-grid > *,
 .js .fade-in.reveal .abcc-flow-line > *,
-.js .fade-in.reveal .abcc-leak-grid > * {
+.js .fade-in.reveal .abcc-leak-grid > *,
+.js .fade-in.reveal .owner-brief-grid > *,
+.js .fade-in.reveal .loop-panel > * {
   animation: premiumRise 0.68s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -2402,7 +2404,9 @@ footer {
 .js .fade-in.reveal .operator-grid > *:nth-child(1),
 .js .fade-in.reveal .package-grid > *:nth-child(1),
 .js .fade-in.reveal .abcc-flow-line > *:nth-child(1),
-.js .fade-in.reveal .abcc-leak-grid > *:nth-child(1) { animation-delay: 0.04s; }
+.js .fade-in.reveal .abcc-leak-grid > *:nth-child(1),
+.js .fade-in.reveal .owner-brief-grid > *:nth-child(1),
+.js .fade-in.reveal .loop-panel > *:nth-child(1) { animation-delay: 0.04s; }
 
 .js .fade-in.reveal .services-grid > *:nth-child(2),
 .js .fade-in.reveal .trust-grid > *:nth-child(2),
@@ -2417,7 +2421,9 @@ footer {
 .js .fade-in.reveal .operator-grid > *:nth-child(2),
 .js .fade-in.reveal .package-grid > *:nth-child(2),
 .js .fade-in.reveal .abcc-flow-line > *:nth-child(2),
-.js .fade-in.reveal .abcc-leak-grid > *:nth-child(2) { animation-delay: 0.10s; }
+.js .fade-in.reveal .abcc-leak-grid > *:nth-child(2),
+.js .fade-in.reveal .owner-brief-grid > *:nth-child(2),
+.js .fade-in.reveal .loop-panel > *:nth-child(2) { animation-delay: 0.10s; }
 
 .js .fade-in.reveal .services-grid > *:nth-child(3),
 .js .fade-in.reveal .trust-grid > *:nth-child(3),
@@ -2431,7 +2437,8 @@ footer {
 .js .fade-in.reveal .operator-grid > *:nth-child(3),
 .js .fade-in.reveal .package-grid > *:nth-child(3),
 .js .fade-in.reveal .abcc-flow-line > *:nth-child(3),
-.js .fade-in.reveal .abcc-leak-grid > *:nth-child(3) { animation-delay: 0.16s; }
+.js .fade-in.reveal .abcc-leak-grid > *:nth-child(3),
+.js .fade-in.reveal .loop-panel > *:nth-child(3) { animation-delay: 0.16s; }
 
 .js .fade-in.reveal .services-grid > *:nth-child(4),
 .js .fade-in.reveal .trust-grid > *:nth-child(4),
@@ -2440,10 +2447,14 @@ footer {
 .js .fade-in.reveal .team-grid > *:nth-child(4),
 .js .fade-in.reveal .service-grid > *:nth-child(4),
 .js .fade-in.reveal .operator-grid > *:nth-child(4),
-.js .fade-in.reveal .abcc-flow-line > *:nth-child(4) { animation-delay: 0.22s; }
+.js .fade-in.reveal .abcc-flow-line > *:nth-child(4),
+.js .fade-in.reveal .loop-panel > *:nth-child(4) { animation-delay: 0.22s; }
 
 .js .fade-in.reveal .services-grid > *:nth-child(5),
-.js .fade-in.reveal .abcc-flow-line > *:nth-child(5) { animation-delay: 0.28s; }
+.js .fade-in.reveal .abcc-flow-line > *:nth-child(5),
+.js .fade-in.reveal .loop-panel > *:nth-child(5) { animation-delay: 0.28s; }
+
+.js .fade-in.reveal .loop-panel > *:nth-child(6) { animation-delay: 0.34s; }
 
 .js .command-panel,
 .js .command-console,
@@ -2451,7 +2462,8 @@ footer {
 .js .abcc-dashboard,
 .js .product-frame,
 .js .story-screen,
-.js .outcome-board {
+.js .outcome-board,
+.js .brief-console {
   animation: premiumFloat 7s ease-in-out infinite;
 }
 
@@ -2482,6 +2494,15 @@ footer {
 }
 
 @media (max-width: 820px) {
+
+  .owner-brief-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brief-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .methodology-section,
   .posture-grid {
     grid-template-columns: 1fr;
@@ -2511,7 +2532,8 @@ footer {
   .js .abcc-dashboard,
   .js .product-frame,
   .js .story-screen,
-  .js .outcome-board {
+  .js .outcome-board,
+.js .brief-console {
     animation-duration: 9s;
   }
 
@@ -2545,6 +2567,7 @@ footer {
   .js .product-frame,
   .js .story-screen,
   .js .outcome-board,
+  .js .brief-console,
   .js .command-status i,
   .js .status-dot,
   .js .hero-proof-list li::before {
@@ -2686,6 +2709,263 @@ footer {
 
 .abcc-main-metric span,
 .abcc-ai-card span,
+
+.abcc-owner-brief {
+  position: relative;
+}
+
+.owner-brief-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+  gap: clamp(20px, 3.6vw, 42px);
+  align-items: stretch;
+}
+
+.brief-console {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(109, 74, 255, 0.28);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(109, 74, 255, 0.18), transparent 34%),
+    radial-gradient(circle at 88% 14%, rgba(52, 211, 153, 0.09), transparent 30%),
+    linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.014)),
+    rgba(7, 8, 13, 0.92);
+  box-shadow: var(--shadow), 0 0 72px rgba(109, 74, 255, 0.14);
+}
+
+.brief-console::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(circle at 50% 0%, rgba(0,0,0,0.72), transparent 70%);
+  pointer-events: none;
+}
+
+.brief-console > * {
+  position: relative;
+  z-index: 1;
+}
+
+.brief-topbar {
+  min-height: 58px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.075);
+  background: rgba(255,255,255,0.035);
+}
+
+.brief-topbar span,
+.brief-action span {
+  color: var(--primary);
+  font-family: "Orbitron", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.brief-topbar strong {
+  padding: 6px 10px;
+  border: 1px solid rgba(52,211,153,0.24);
+  border-radius: 999px;
+  color: #34d399;
+  background: rgba(52,211,153,0.06);
+  font-size: 0.78rem;
+}
+
+.brief-metrics {
+  padding: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.brief-metrics div {
+  min-height: 94px;
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,0.075);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.032);
+}
+
+.brief-metrics span,
+.brief-list p span {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.brief-metrics strong {
+  display: block;
+  margin-top: 12px;
+  color: var(--text-primary);
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.brief-list {
+  padding: 0 18px 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.brief-list div {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 15px;
+  background: rgba(255,255,255,0.026);
+}
+
+.brief-list i {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #34d399;
+  box-shadow: 0 0 16px rgba(52,211,153,0.42);
+}
+
+.brief-list p {
+  margin: 0;
+}
+
+.brief-list p strong,
+.brief-list p span {
+  display: block;
+}
+
+.brief-list p strong {
+  color: var(--text-primary);
+  font-size: 0.96rem;
+}
+
+.brief-list p span {
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+.brief-list em {
+  padding: 6px 9px;
+  border: 1px solid rgba(109,74,255,0.26);
+  border-radius: 999px;
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  font-style: normal;
+  white-space: nowrap;
+  background: rgba(109,74,255,0.08);
+}
+
+.brief-action {
+  margin: 0 18px 18px;
+  padding: 18px;
+  border: 1px solid rgba(109,74,255,0.22);
+  border-radius: 16px;
+  background:
+    linear-gradient(145deg, rgba(109,74,255,0.12), rgba(52,211,153,0.045)),
+    rgba(255,255,255,0.026);
+}
+
+.brief-action p {
+  margin-top: 10px;
+  color: var(--text-primary);
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  line-height: 1.55;
+}
+
+.loop-panel {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.075);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.012)),
+    rgba(8, 9, 13, 0.78);
+  box-shadow: 0 18px 58px rgba(0,0,0,0.26);
+}
+
+.loop-panel div {
+  position: relative;
+  min-height: 92px;
+  padding: 16px 16px 16px 64px;
+  border: 1px solid rgba(255,255,255,0.065);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.026);
+}
+
+[dir="rtl"] .loop-panel div {
+  padding: 16px 64px 16px 16px;
+}
+
+.loop-panel div::before {
+  content: "";
+  position: absolute;
+  left: 37px;
+  top: 52px;
+  bottom: -16px;
+  width: 1px;
+  background: linear-gradient(rgba(109,74,255,0.5), transparent);
+}
+
+[dir="rtl"] .loop-panel div::before {
+  left: auto;
+  right: 37px;
+}
+
+.loop-panel div:last-child::before {
+  display: none;
+}
+
+.loop-panel span {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(109,74,255,0.34);
+  border-radius: 12px;
+  color: var(--primary);
+  font-family: "Orbitron", monospace;
+  font-size: 0.72rem;
+  background: rgba(109,74,255,0.08);
+}
+
+[dir="rtl"] .loop-panel span {
+  left: auto;
+  right: 16px;
+}
+
+.loop-panel strong {
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.loop-panel p {
+  margin-top: 5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-size: 0.92rem;
+}
+
+html[data-theme="light"] .brief-console,
+html[data-theme="light"] .loop-panel {
+  background: rgba(255,255,255,0.86);
+}
+
 .abcc-leak-grid article span,
 .abcc-flow-line article span {
   color: var(--primary);
@@ -3187,6 +3467,31 @@ footer {
 }
 
 @media (max-width: 560px) {
+
+  .brief-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 14px;
+  }
+
+  .brief-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .brief-list div {
+    grid-template-columns: auto 1fr;
+  }
+
+  .brief-list em {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .loop-panel div {
+    min-height: auto;
+  }
+
   .methodology-section,
   .case-ledger,
   .security-posture,
@@ -3310,6 +3615,38 @@ footer {
 
   .footer-brand {
     grid-column: auto;
+  }
+}
+
+@media (max-width: 820px) {
+  .owner-brief-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brief-console,
+  .loop-panel {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .brief-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .brief-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .brief-list div {
+    grid-template-columns: auto 1fr;
+    align-items: start;
+  }
+
+  .brief-list em {
+    grid-column: 2;
+    justify-self: start;
   }
 }
 
