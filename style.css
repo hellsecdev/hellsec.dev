@@ -99,6 +99,312 @@ html[data-theme="light"] body::after {
 }
 
 main,
+
+.methodology-section,
+.case-ledger,
+.security-posture,
+.operating-standards,
+.operator-team {
+  width: min(100% - 40px, var(--page-width));
+  margin: 0 auto;
+}
+
+.methodology-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(520px, 1.08fr);
+  gap: clamp(24px, 4vw, 52px);
+  align-items: stretch;
+}
+
+.methodology-claim {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(28px, 4vw, 48px);
+  border: 1px solid rgba(109, 74, 255, 0.24);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(109, 74, 255, 0.18), transparent 42%),
+    linear-gradient(180deg, rgba(255,255,255,0.052), rgba(255,255,255,0.014)),
+    rgba(7, 8, 12, 0.86);
+  box-shadow: var(--shadow), 0 0 62px rgba(109, 74, 255, 0.10);
+}
+
+.methodology-claim .section-title {
+  font-size: clamp(2rem, 4.2vw, 4.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.075em;
+}
+
+.methodology-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.methodology-grid article,
+.standards-grid article,
+.posture-card,
+.posture-checklist,
+.operator-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.075);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.048), rgba(255,255,255,0.014)),
+    rgba(8, 9, 13, 0.78);
+  box-shadow: 0 14px 48px rgba(0, 0, 0, 0.22);
+}
+
+.methodology-grid article {
+  min-height: 150px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 18px;
+  align-content: start;
+}
+
+.methodology-grid article span,
+.standards-grid article span,
+.case-ledger-table article > span,
+.posture-card > span,
+.operator-card > span {
+  color: var(--primary);
+  font-family: "Orbitron", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.methodology-grid article h3 {
+  margin: 0;
+}
+
+.methodology-grid article p {
+  grid-column: 2;
+  margin-top: 8px;
+  color: var(--text-secondary);
+  line-height: 1.62;
+}
+
+.case-ledger-table {
+  display: grid;
+  border: 1px solid rgba(255,255,255,0.075);
+  border-radius: 22px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(109, 74, 255, 0.11), transparent 36%),
+    rgba(6, 7, 11, 0.78);
+  box-shadow: var(--shadow);
+}
+
+.case-ledger-table article {
+  display: grid;
+  grid-template-columns: 0.38fr 0.72fr 1.15fr;
+  gap: clamp(16px, 3vw, 34px);
+  padding: clamp(22px, 3.4vw, 34px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.case-ledger-table article:last-child {
+  border-bottom: 0;
+}
+
+.case-ledger-table h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(1.05rem, 1.55vw, 1.38rem);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.case-ledger-table dl {
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.case-ledger-table dl div {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 16px;
+}
+
+.case-ledger-table dt {
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-ledger-table dd {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.56;
+}
+
+.posture-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+  gap: clamp(18px, 3vw, 28px);
+}
+
+.posture-card.primary {
+  padding: clamp(28px, 4vw, 46px);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(52, 211, 153, 0.10), transparent 38%),
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.014)),
+    rgba(7, 8, 12, 0.88);
+}
+
+.posture-card h3 {
+  margin-top: 16px;
+  font-size: clamp(1.55rem, 2.4vw, 2.45rem);
+  letter-spacing: -0.055em;
+}
+
+.posture-card p {
+  margin-top: 16px;
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.posture-checklist {
+  padding: 12px;
+}
+
+.posture-checklist ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  list-style: none;
+}
+
+.posture-checklist li {
+  min-height: 74px;
+  padding: 16px 16px 16px 42px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,0.065);
+  border-radius: 14px;
+  color: var(--text-secondary);
+  background: rgba(255,255,255,0.024);
+}
+
+[dir="rtl"] .posture-checklist li {
+  padding: 16px 42px 16px 16px;
+}
+
+.posture-checklist li::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #34d399;
+  box-shadow: 0 0 16px rgba(52, 211, 153, 0.42);
+}
+
+[dir="rtl"] .posture-checklist li::before {
+  left: auto;
+  right: 16px;
+}
+
+.standards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.standards-grid article {
+  padding: 26px;
+  min-height: 230px;
+}
+
+.standards-grid h3 {
+  margin-top: 34px;
+}
+
+.standards-grid p {
+  margin-top: 12px;
+  color: var(--text-secondary);
+  line-height: 1.62;
+}
+
+.standards-note {
+  margin-top: 18px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.operator-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.operator-card {
+  min-height: 230px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+}
+
+.operator-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(109,74,255,0.62), transparent);
+}
+
+.operator-mark {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(109, 74, 255, 0.35);
+  border-radius: 16px;
+  color: var(--text-primary);
+  font-family: "Orbitron", monospace;
+  letter-spacing: 0.08em;
+  background:
+    radial-gradient(circle at 35% 20%, rgba(109,74,255,0.20), transparent 56%),
+    rgba(255,255,255,0.035);
+}
+
+.operator-card h3 {
+  margin: 0;
+}
+
+.operator-card p {
+  margin-top: 8px;
+  color: var(--text-secondary);
+  line-height: 1.58;
+}
+
+.operator-card > span {
+  grid-column: 2;
+  align-self: end;
+  color: var(--text-muted);
+}
+
+html[data-theme="light"] .methodology-claim,
+html[data-theme="light"] .methodology-grid article,
+html[data-theme="light"] .case-ledger-table,
+html[data-theme="light"] .posture-card,
+html[data-theme="light"] .posture-checklist,
+html[data-theme="light"] .standards-grid article,
+html[data-theme="light"] .operator-card {
+  background: rgba(255,255,255,0.82);
+}
+
 footer {
   position: relative;
   z-index: 1;
@@ -2071,6 +2377,11 @@ footer {
 .js .fade-in.reveal .control-compare > *,
 .js .fade-in.reveal .story-grid > *,
 .js .fade-in.reveal .outcome-grid > *,
+.js .fade-in.reveal .methodology-grid > *,
+.js .fade-in.reveal .case-ledger-table > *,
+.js .fade-in.reveal .posture-grid > *,
+.js .fade-in.reveal .standards-grid > *,
+.js .fade-in.reveal .operator-grid > *,
 .js .fade-in.reveal .service-grid > *,
 .js .fade-in.reveal .package-grid > *,
 .js .fade-in.reveal .abcc-flow-line > *,
@@ -2084,6 +2395,11 @@ footer {
 .js .fade-in.reveal .tools-grid > *:nth-child(1),
 .js .fade-in.reveal .team-grid > *:nth-child(1),
 .js .fade-in.reveal .service-grid > *:nth-child(1),
+.js .fade-in.reveal .methodology-grid > *:nth-child(1),
+.js .fade-in.reveal .case-ledger-table > *:nth-child(1),
+.js .fade-in.reveal .posture-grid > *:nth-child(1),
+.js .fade-in.reveal .standards-grid > *:nth-child(1),
+.js .fade-in.reveal .operator-grid > *:nth-child(1),
 .js .fade-in.reveal .package-grid > *:nth-child(1),
 .js .fade-in.reveal .abcc-flow-line > *:nth-child(1),
 .js .fade-in.reveal .abcc-leak-grid > *:nth-child(1) { animation-delay: 0.04s; }
@@ -2094,6 +2410,11 @@ footer {
 .js .fade-in.reveal .tools-grid > *:nth-child(2),
 .js .fade-in.reveal .team-grid > *:nth-child(2),
 .js .fade-in.reveal .service-grid > *:nth-child(2),
+.js .fade-in.reveal .methodology-grid > *:nth-child(2),
+.js .fade-in.reveal .case-ledger-table > *:nth-child(2),
+.js .fade-in.reveal .posture-grid > *:nth-child(2),
+.js .fade-in.reveal .standards-grid > *:nth-child(2),
+.js .fade-in.reveal .operator-grid > *:nth-child(2),
 .js .fade-in.reveal .package-grid > *:nth-child(2),
 .js .fade-in.reveal .abcc-flow-line > *:nth-child(2),
 .js .fade-in.reveal .abcc-leak-grid > *:nth-child(2) { animation-delay: 0.10s; }
@@ -2104,6 +2425,10 @@ footer {
 .js .fade-in.reveal .tools-grid > *:nth-child(3),
 .js .fade-in.reveal .team-grid > *:nth-child(3),
 .js .fade-in.reveal .service-grid > *:nth-child(3),
+.js .fade-in.reveal .methodology-grid > *:nth-child(3),
+.js .fade-in.reveal .case-ledger-table > *:nth-child(3),
+.js .fade-in.reveal .standards-grid > *:nth-child(3),
+.js .fade-in.reveal .operator-grid > *:nth-child(3),
 .js .fade-in.reveal .package-grid > *:nth-child(3),
 .js .fade-in.reveal .abcc-flow-line > *:nth-child(3),
 .js .fade-in.reveal .abcc-leak-grid > *:nth-child(3) { animation-delay: 0.16s; }
@@ -2114,6 +2439,7 @@ footer {
 .js .fade-in.reveal .tools-grid > *:nth-child(4),
 .js .fade-in.reveal .team-grid > *:nth-child(4),
 .js .fade-in.reveal .service-grid > *:nth-child(4),
+.js .fade-in.reveal .operator-grid > *:nth-child(4),
 .js .fade-in.reveal .abcc-flow-line > *:nth-child(4) { animation-delay: 0.22s; }
 
 .js .fade-in.reveal .services-grid > *:nth-child(5),
@@ -2156,6 +2482,29 @@ footer {
 }
 
 @media (max-width: 820px) {
+  .methodology-section,
+  .posture-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-ledger-table article {
+    grid-template-columns: 1fr;
+  }
+
+  .case-ledger-table dl div {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .standards-grid,
+  .operator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .posture-checklist ul {
+    grid-template-columns: 1fr;
+  }
+
   .js .command-panel,
   .js .command-console,
   .js .control-panel,
@@ -2838,6 +3187,35 @@ footer {
 }
 
 @media (max-width: 560px) {
+  .methodology-section,
+  .case-ledger,
+  .security-posture,
+  .operating-standards,
+  .operator-team {
+    width: min(100% - 28px, var(--page-width));
+  }
+
+  .methodology-claim,
+  .standards-grid article,
+  .operator-card {
+    padding: 20px;
+  }
+
+  .methodology-grid article,
+  .operator-card {
+    grid-template-columns: 1fr;
+  }
+
+  .methodology-grid article p,
+  .operator-card > span {
+    grid-column: auto;
+  }
+
+  .operator-mark {
+    width: 50px;
+    height: 50px;
+  }
+
   .language-selector {
     gap: 1px;
   }
