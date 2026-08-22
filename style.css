@@ -3988,3 +3988,35 @@ html[dir="rtl"] .fit-card li::before { left: auto; right: 0; }
   letter-spacing: .01em;
   font-family: Inter, system-ui, sans-serif;
 }
+
+.nav-product-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 13px;
+  border: 1px solid rgba(109,74,255,.48);
+  border-radius: 11px;
+  background: linear-gradient(135deg, rgba(109,74,255,.20), rgba(255,255,255,.045));
+  color: var(--text-primary);
+  font-size: .76rem;
+  font-weight: 750;
+  letter-spacing: .02em;
+  text-decoration: none;
+  box-shadow: 0 0 22px rgba(109,74,255,.14);
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+.nav-product-link:hover,
+.nav-product-link:focus-visible,
+.nav-product-link[aria-current="page"] {
+  border-color: rgba(146,112,255,.72);
+  background: linear-gradient(135deg, rgba(109,74,255,.28), rgba(255,255,255,.07));
+  transform: translateY(-1px);
+}
+@media (max-width: 760px) {
+  .nav-product-link {
+    min-height: 38px;
+    padding-inline: 12px;
+    font-size: .72rem;
+  }
+}
