@@ -3795,3 +3795,85 @@ html[data-theme="light"] .loop-panel {
   letter-spacing: 0.015em !important;
   font-family: "Inter", system-ui, sans-serif !important;
 }
+
+.founder-principles {
+  width: min(100% - 40px, 1180px);
+  margin: clamp(70px, 10vw, 130px) auto;
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  gap: 22px;
+  align-items: stretch;
+}
+.founder-note {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 22px;
+  padding: clamp(24px, 3vw, 34px);
+  background: radial-gradient(circle at 0% 0%, rgba(109,74,255,.16), transparent 34%), rgba(255,255,255,.035);
+}
+.founder-mark {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(109,74,255,.42);
+  background: rgba(109,74,255,.12);
+  color: var(--text-primary);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+.founder-note h2,
+.principles-panel h2 {
+  color: var(--text-primary);
+  font-size: clamp(1.65rem, 2.6vw, 2.35rem);
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+.founder-note p {
+  margin-top: 16px;
+  color: var(--text-secondary);
+  line-height: 1.72;
+  font-size: 1.02rem;
+}
+.founder-signature {
+  color: var(--text-primary) !important;
+  font-weight: 750;
+}
+.principles-panel {
+  border: 1px solid rgba(255,255,255,.085);
+  border-radius: 24px;
+  padding: clamp(24px, 3vw, 34px);
+  background: rgba(255,255,255,.026);
+}
+.principles-grid {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.principles-grid article {
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(255,255,255,.03);
+}
+.principles-grid h3 {
+  color: var(--text-primary);
+  font-size: 1rem;
+  letter-spacing: -.02em;
+}
+.principles-grid p {
+  margin-top: 10px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  font-size: .95rem;
+}
+@media (max-width: 900px) {
+  .founder-principles { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .founder-principles { width: min(100% - 28px, 1180px); margin-block: 60px; }
+  .founder-note { grid-template-columns: 1fr; }
+  .principles-grid { grid-template-columns: 1fr; }
+}
