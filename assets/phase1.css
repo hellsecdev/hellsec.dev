@@ -38,28 +38,32 @@ html { scroll-padding-top: calc(var(--nav-height) + 16px); }
   .merged-trust-principles .merge-grid { grid-template-columns: 1fr; }
 }
 
-/* HE mobile nav RTL (Designer spec) */
-html[dir="rtl"] .nav-menu{
+/* HE mobile nav: beat .nav-container { direction: ltr } */
+html[dir="rtl"] .nav-container .nav-menu,
+html[dir="rtl"] .nav-container .nav-menu.open,
+html[dir="rtl"] #navbar .nav-menu,
+html[dir="rtl"] #navbar .nav-menu.open {
+  direction: rtl !important;
+  text-align: right !important;
   inset-inline: 0 0;
-  text-align: right;
-  direction: rtl;
-}
-html[dir="rtl"] .nav-menu.open,
-html[dir="rtl"] .nav-menu.open ul{
-  inset-inline: 0 0;
+  left: 0;
+  right: 0;
   width: 100%;
-  max-width: none;
-  margin: 0;
-  text-align: right;
-  direction: rtl;
 }
-html[dir="rtl"] .nav-menu.open li{
-  text-align: right;
+html[dir="rtl"] .nav-container .nav-menu ul,
+html[dir="rtl"] .nav-container .nav-menu.open ul {
+  direction: rtl !important;
+  text-align: right !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  justify-items: stretch;
 }
-html[dir="rtl"] .nav-menu.open a{
-  display: block;
+html[dir="rtl"] .nav-container .nav-menu.open li,
+html[dir="rtl"] .nav-container .nav-menu.open a {
+  direction: rtl !important;
+  text-align: right !important;
   width: 100%;
-  text-align: right;
   justify-content: flex-end;
 }
 
