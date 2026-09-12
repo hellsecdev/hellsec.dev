@@ -37,3 +37,15 @@ html { scroll-padding-top: calc(var(--nav-height) + 16px); }
 @media (max-width: 900px) {
   .merged-trust-principles .merge-grid { grid-template-columns: 1fr; }
 }
+
+/* HE mobile nav: keep menu items RTL-aligned */
+html[dir="rtl"] .nav-menu ul{
+  direction:rtl;
+  text-align:right;
+}
+html[dir="rtl"] .nav-menu a{
+  text-align:right;
+}
+html[dir="rtl"] .nav-menu.open ul{
+  margin-inline:0 auto 0 0;
+}
