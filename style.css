@@ -509,6 +509,12 @@ html[data-theme="light"] nav#navbar.scrolled {
 [dir="rtl"] .nav-container {
   direction: ltr;
 }
+/* Keep navbar chrome LTR; mobile drawer follows html[dir] */
+html[dir="rtl"] .nav-container .nav-menu {
+  direction: rtl;
+  text-align: right;
+}
+
 
 .nav-brand {
   display: inline-flex;
