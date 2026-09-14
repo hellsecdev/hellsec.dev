@@ -4068,3 +4068,36 @@ html[dir="rtl"] .fit-card li::before { left: auto; right: 0; }
 @media (max-width: 900px) {
   .merged-trust-principles .merge-grid { grid-template-columns: 1fr; }
 }
+
+/* Corporate audit: clear hierarchy, restrained rhythm and readable navigation. */
+#main > section:not(.hero) { padding-block: 68px; }
+#main > #home { padding-bottom: 56px; }
+#services .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+a.service-card, a.service-card:hover, a.service-card:focus-visible {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+.service-card { display: flex; flex-direction: column; gap: 16px; }
+.service-card p { margin: 0; color: var(--text-secondary); line-height: 1.65; }
+.service-card .service-card-cta {
+  margin-top: auto;
+  padding-top: 12px;
+  color: var(--text-primary);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: var(--primary);
+}
+.service-card:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
+.operator-card { min-height: 190px; padding: 22px; }
+.product-context { margin-bottom: 24px; }
+#home .hero-visual { --text-primary: #f5f7ff; --text-secondary: #bdc7db; }
+#home .product-frame-title { font-family: Inter, system-ui, sans-serif; font-size: .8rem; text-transform: none; letter-spacing: .01em; color: var(--text-primary); white-space: normal; }
+@media (max-width: 820px) {
+  #main > section:not(.hero) { padding-block: 48px; }
+  #main > #home { padding-bottom: 36px; }
+  #services .services-grid { grid-template-columns: 1fr; }
+  .operator-card { min-height: 170px; }
+  #navbar .nav-menu { background: #090b12; backdrop-filter: blur(24px); border: 1px solid var(--border); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+  html[data-theme="light"] #navbar .nav-menu { background: #fafbff; box-shadow: 0 20px 50px rgba(15,23,42,.18); }
+}
