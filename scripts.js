@@ -38,6 +38,77 @@
       }, { passive: true });
     }
 
+    // Native details remains fully operable without JS. Animate measured heights,
+    // keeping [open] until collapse finishes so closing content is not removed early.
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    document.querySelectorAll('details.faq-item').forEach((item, index) => {
+      const summary = item.querySelector('summary');
+      if (!summary || !item.animate) return;
+      const answer = document.createElement('div');
+      answer.className = 'faq-answer';
+      answer.id = `faq-answer-${index}`;
+      while (summary.nextSibling) answer.append(summary.nextSibling);
+      item.append(answer);
+      summary.setAttribute('aria-controls', answer.id);
+      let expanded = item.open;
+      let animation;
+      let fade;
+      const settle = () => {
+        animation?.cancel();
+        fade?.cancel();
+        animation = fade = null;
+        item.open = expanded;
+        item.style.height = '';
+        item.style.overflow = '';
+      };
+      const sync = () => {
+        summary.setAttribute('aria-expanded', String(expanded));
+        answer.inert = !expanded;
+      };
+      const move = () => {
+        const from = item.getBoundingClientRect().height;
+        const opacity = item.open ? getComputedStyle(answer).opacity : '0';
+        animation?.cancel();
+        fade?.cancel();
+        item.open = true;
+        item.style.height = '';
+        const styles = getComputedStyle(item);
+        const border = parseFloat(styles.borderTopWidth) + parseFloat(styles.borderBottomWidth);
+        const to = summary.getBoundingClientRect().height + border + (expanded ? answer.getBoundingClientRect().height : 0);
+        if (motionPreference.matches) { settle(); return; }
+        item.style.overflow = 'clip';
+        const options = {duration: 300, easing: 'cubic-bezier(.22, 1, .36, 1)'};
+        animation = item.animate({height: [`${from}px`, `${to}px`]}, options);
+        fade = answer.animate({opacity: [opacity, expanded ? '1' : '0']}, options);
+        animation.onfinish = settle;
+      };
+      sync();
+      summary.addEventListener('pointerdown', () => summary.classList.add('pointer-focus'));
+      summary.addEventListener('keydown', () => summary.classList.remove('pointer-focus'));
+      summary.addEventListener('blur', () => summary.classList.remove('pointer-focus'));
+      summary.addEventListener('click', event => {
+        event.preventDefault();
+        expanded = !expanded;
+        sync();
+        move();
+      });
+      // Re-target from the current rendered height if wrapping/fonts/content change
+      // during motion; once settled the panel uses intrinsic auto height.
+      if ('ResizeObserver' in window) {
+        let lastSize = '';
+        const observer = new ResizeObserver(() => {
+          const size = `${answer.offsetWidth}:${answer.offsetHeight}:${summary.offsetHeight}`;
+          if (lastSize && size !== lastSize && animation) move();
+          lastSize = size;
+        });
+        observer.observe(answer);
+        observer.observe(summary);
+      }
+      motionPreference.addEventListener('change', () => {
+        if (motionPreference.matches) settle();
+      });
+    });
+
     // Canvas background network
     try {
       const canvas = document.getElementById('neural-bg');
@@ -209,7 +280,7 @@
     // Content is fully visible by default. The observer only adds a one-shot
     // `.reveal` animation whose end-state matches the default, so a JS or
     // observer failure (or a full-page render) never leaves the page blank.
-    const sections = Array.from(document.querySelectorAll('.fade-in'));
+    const sections = Array.from(document.querySelectorAll('.fade-in, .faq-item'));
     const reduceMotionReveal = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (sections.length) {
       if (reduceMotionReveal || !('IntersectionObserver' in window)) {

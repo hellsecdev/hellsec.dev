@@ -4,6 +4,8 @@
   "description": "Static website for HellSec (product R&D and cybersecurity)",
   "scripts": {
     "test": "echo \"No tests defined for static site\" && exit 0",
+    "test:motion": "node scripts/test-motion.cjs",
+    "test:copy": "node scripts/test-copy.mjs",
     "build": "node build.mjs",
     "validate:html": "node scripts/validate-html.mjs"
   },
