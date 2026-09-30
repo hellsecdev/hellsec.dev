@@ -7,7 +7,8 @@
     }
   };
 
-  const THEME_KEY = 'theme';
+  // New key: the old one auto-saved "dark" for every visitor before light became the default.
+  const THEME_KEY = 'hellsec-theme';
 
   READY(() => {
     document.documentElement.classList.add('js');
@@ -250,7 +251,7 @@
       if (!btn) return;
 
       const applyTheme = (theme) => {
-        const safeTheme = theme === 'light' ? 'light' : 'dark';
+        const safeTheme = theme === 'dark' ? 'dark' : 'light';
         root.setAttribute('data-theme', safeTheme);
         localStorage.setItem(THEME_KEY, safeTheme);
         const label = safeTheme === 'light' ? 'Switch to dark theme' : 'Switch to light theme';
@@ -259,7 +260,7 @@
       };
 
       const saved = localStorage.getItem(THEME_KEY);
-      applyTheme(saved === 'light' ? 'light' : 'dark');
+      applyTheme(saved === 'dark' ? 'dark' : 'light');
 
       btn.addEventListener('click', () => {
         const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
@@ -348,7 +349,7 @@
         messageMaxLength: 'Message should not exceed 500 characters.',
         messageInvalidChars: 'Message contains unsupported control characters.',
         sending: 'Sending...',
-        success: 'Message sent successfully!',
+        success: 'Message sent. We reply within 24 hours.',
         error: 'Failed to send message. Try again later.',
         errorDetails: 'Details: ',
         errorConnection: 'An error occurred. Please check your internet connection.'
@@ -360,22 +361,22 @@
         messageMaxLength: 'Сообщение не должно превышать 500 символов.',
         messageInvalidChars: 'Сообщение содержит неподдерживаемые служебные символы.',
         sending: 'Отправка...',
-        success: 'Сообщение успешно отправлено!',
+        success: 'Сообщение отправлено. Мы ответим в течение 24 часов.',
         error: 'Не удалось отправить сообщение. Попробуйте позже.',
-        errorDetails: 'Детали: ',
+        errorDetails: 'Подробности: ',
         errorConnection: 'Произошла ошибка. Проверьте подключение к интернету.'
       },
       he: {
-        nameRequired: 'אנא הזן את השם שלך.',
-        emailInvalid: 'הזן כתובת אימייל תקינה.',
+        nameRequired: 'הזינו את השם שלכם.',
+        emailInvalid: 'הזינו כתובת אימייל תקינה.',
         messageMinLength: 'ההודעה צריכה להכיל לפחות 10 תווים.',
         messageMaxLength: 'ההודעה לא צריכה לעלות על 500 תווים.',
         messageInvalidChars: 'ההודעה מכילה תווי בקרה שאינם נתמכים.',
-        sending: 'שולח...',
-        success: 'ההודעה נשלחה בהצלחה!',
-        error: 'שליחת ההודעה נכשלה. נסה שוב מאוחר יותר.',
+        sending: 'שולחים...',
+        success: 'ההודעה נשלחה. נחזור אליכם תוך 24 שעות.',
+        error: 'שליחת ההודעה נכשלה. נסו שוב מאוחר יותר.',
         errorDetails: 'פרטים: ',
-        errorConnection: 'אירעה שגיאה. אנא בדוק את חיבור האינטרנט שלך.'
+        errorConnection: 'אירעה שגיאה. בדקו את חיבור האינטרנט שלכם.'
       }
     };
 
@@ -544,8 +545,8 @@
         } finally {
           if (submitBtn) {
             submitBtn.disabled = false;
-            const submitTexts = { en: 'SEND MESSAGE', ru: 'ОТПРАВИТЬ СООБЩЕНИЕ', he: 'שלח הודעה' };
-            submitBtn.textContent = originalText || submitTexts[lang] || 'SEND MESSAGE';
+            const submitTexts = { en: 'Send message', ru: 'Отправить', he: 'שליחת הודעה' };
+            submitBtn.textContent = originalText || submitTexts[lang] || 'Send message';
           }
         }
       });
