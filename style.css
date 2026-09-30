@@ -5297,3 +5297,129 @@ footer .nav-brand span { display: inline; }
 }
 /* Nav target for the AI Center packages: land where the active-link check expects it. */
 #pricing { scroll-margin-top: 0; }
+
+/* ==========================================================================
+   Repositioning pass: secure development first.
+   ========================================================================== */
+
+/* Hero review card: highlight the risky tile, not whichever comes last. */
+.command-metrics > div:last-child strong { color: var(--text-primary); }
+.command-metrics > .is-risk strong { color: var(--danger); }
+
+.credibility-note {
+  margin-top: 22px;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+/* ---------- Service cards: larger glowing mark, checklist instead of pills ---------- */
+.services-grid .service-card::before {
+  width: 68px;
+  height: 68px;
+  margin: 10px 0 12px;
+  border-radius: 20px;
+  background-size: 30px 30px;
+  box-shadow:
+    0 0 0 10px rgba(109, 74, 255, 0.12),
+    0 0 0 22px rgba(109, 74, 255, 0.06),
+    0 0 56px rgba(109, 74, 255, 0.7);
+}
+.services-grid .service-outputs { gap: 12px; text-align: start; }
+.services-grid .service-outputs li {
+  padding: 0 0 0 28px;
+  border: 0;
+  border-radius: 0;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: start;
+}
+[dir="rtl"] .services-grid .service-outputs li { padding: 0 28px 0 0; }
+.services-grid .service-outputs li::before {
+  content: "";
+  top: 0.12em;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: rgba(185, 166, 255, 0.2);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D6CBFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E");
+}
+.services-grid .service-card .service-card-cta { margin-top: auto; padding-top: 18px; }
+
+/* ---------- AI Center teaser under the services ---------- */
+.product-teaser {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 22px;
+  padding: 22px 26px;
+  border: 1px solid rgba(109, 74, 255, 0.16);
+  border-radius: 20px;
+  background: linear-gradient(90deg, rgba(109, 74, 255, 0.08), rgba(109, 74, 255, 0.02));
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.product-teaser:hover,
+.product-teaser:focus-visible {
+  border-color: rgba(109, 74, 255, 0.36);
+  box-shadow: 0 18px 44px rgba(76, 44, 190, 0.12);
+}
+.product-teaser-label {
+  flex: 0 0 auto;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(109, 74, 255, 0.12);
+  color: var(--accent-text);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.product-teaser-body { display: grid; gap: 4px; flex: 1 1 auto; }
+.product-teaser-body strong { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; }
+.product-teaser-body span { color: var(--text-secondary); font-size: 0.93rem; line-height: 1.5; }
+.product-teaser-cta {
+  flex: 0 0 auto;
+  color: var(--accent-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+@media (max-width: 820px) {
+  /* Service cards become a swipeable row instead of a 2000px stack. */
+  #services .services-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(84%, 340px);
+    overflow-x: auto;
+    padding: 6px 2px 18px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+  }
+  #services .services-grid > .service-card { scroll-snap-align: start; }
+  .product-teaser { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+/* Team as a compact four-up strip. */
+#team .operator-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+#team .operator-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 0;
+  padding: 22px;
+}
+#team .operator-card h3 { font-size: 1.05rem; }
+#team .operator-card p { font-size: 0.9rem; line-height: 1.5; }
+#team .operator-card > span { margin-top: auto; }
+@media (max-width: 1050px) { #team .operator-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { #team .operator-grid { grid-template-columns: 1fr; } }

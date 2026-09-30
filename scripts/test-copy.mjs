@@ -10,7 +10,9 @@ for(const prefix of prefixes) for(const route of routes) {
  if(route==='index.html') {
   assert(/AI agents|AI-агент|סוכני AI/.test(html),file+': corporate positioning');
   assert(/OSINT/.test(html),file+': OSINT positioning');
-  assert(html.indexOf('id="services"') < html.indexOf('id="problem-abcc"'),file+': services precede product');
+  // The AI Center block is optional on home; when present it must follow the services.
+  const product=html.indexOf('id="problem-abcc"');
+  assert(product===-1 || html.indexOf('id="services"') < product,file+': services precede product');
   const hero=html.match(/<section\b[^>]*id="home"[^>]*>[\s\S]*?<\/section>/)[0];
   assert(!/hero-proof-list|1,500|1 500|20 минут|20 minutes|20 דקות/.test(hero),file+': corporate hero without product promises');
   assert.equal((hero.match(/product-frame-title/g)||[]).length,1,file+': one demo caption');
