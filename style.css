@@ -4262,8 +4262,15 @@ html[data-theme="light"] nav#navbar.scrolled,
 html[data-theme="light"] body.menu-open nav#navbar {
   background: rgba(247, 247, 250, 0.78);
 }
-/* The wordmark is Latin in every locale, so it always uses Syne. */
-.nav-brand { font-family: "Syne", "Inter", system-ui, sans-serif; font-weight: 800; letter-spacing: 0.06em; }
+/* Wordmark: same family as the headings, mixed case, brand purple on "Sec". */
+.nav-brand {
+  font-family: "Manrope", "Inter", system-ui, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.nav-brand .brand-accent { color: var(--primary); }
+footer .nav-brand .brand-accent { color: #b9a6ff; }
 .nav-menu a:hover,
 .nav-menu a:focus-visible { color: var(--text-primary); }
 .lang-btn:hover,
