@@ -502,10 +502,12 @@
         // Санитизация сообщения перед отправкой: убираем только служебные символы, оставляя нормальную пунктуацию и валюты.
         const sanitizeMessage = (value) => value.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').substring(0, 500);
 
+        // Service-page forms tag the request so the team sees which service it came from.
+        const context = form.dataset.context ? `[${form.dataset.context}] ` : '';
         const payload = {
           name: data.get('name'),
           email: data.get('email'),
-          message: sanitizeMessage(data.get('message') || ''),
+          message: sanitizeMessage(context + (data.get('message') || '')),
           lang
         };
 
