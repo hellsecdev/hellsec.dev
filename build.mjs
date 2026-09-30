@@ -183,6 +183,16 @@ async function localizeGoogleFonts() {
   const fontsDir = path.join(DIST, 'assets', 'fonts');
   await ensureDir(fontsDir);
 
+  // Preload only the Latin display/body faces; Cyrillic and Hebrew subsets
+  // still load on demand through unicode-range.
+  const preloadSources = new Set();
+  for (const block of css.matchAll(/\/\*\s*([\w-]+)\s*\*\/\s*@font-face\s*\{([^}]+)\}/g)) {
+    const [, subset, body] = block;
+    const family = body.match(/font-family:\s*['"]?([^;'"]+)/)?.[1];
+    const src = body.match(FONT_URL_REGEX.source)?.[1];
+    if (subset === 'latin' && ['Syne', 'Inter'].includes(family) && src) preloadSources.add(src);
+  }
+
   const mapping = {};
   const preloadHrefs = [];
 
@@ -199,7 +209,7 @@ async function localizeGoogleFonts() {
       }
     }
     mapping[url] = href;
-    preloadHrefs.push(href);
+    if (preloadSources.has(url)) preloadHrefs.push(href);
   }
 
   const localCss = mapRemoteFonts(css, mapping);

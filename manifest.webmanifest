@@ -4,8 +4,8 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#050608",
-  "theme_color": "#050608",
+  "background_color": "#07070f",
+  "theme_color": "#07070f",
   "description": "Secure AI systems, automation and cybersecurity for serious businesses.",
   "icons": [
     {

@@ -113,7 +113,8 @@
     try {
       const canvas = document.getElementById('neural-bg');
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (canvas && !reduceMotion) {
+      // The brand layer hides the canvas in favour of a static dot grid.
+      if (canvas && !reduceMotion && getComputedStyle(canvas).display !== 'none') {
         const ctx = canvas.getContext('2d');
         let nodes = [];
         let dpr = 1;
