@@ -5295,3 +5295,5 @@ footer .nav-brand span { display: inline; }
   html[lang="ru"] .hero-v2 h1,
   html[lang="ru"] .service-hero h1 { font-size: clamp(1.55rem, 7vw, 1.9rem); hyphens: auto; }
 }
+/* Nav target for the AI Center packages: land where the active-link check expects it. */
+#pricing { scroll-margin-top: 0; }
