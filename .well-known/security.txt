@@ -1,8 +1,6 @@
-Contact: mailto:security@pumalabs.io
-Policy: https://pumalabs.io/privacy.html
-Preferred-Languages: en
-Expires: 2026-12-31T23:59:59Z
-Contact: mailto:security@pumalabs.io
-Policy: https://pumalabs.io/privacy.html
-Preferred-Languages: en
-Expires: 2026-12-31T23:59:59Z
+Contact: mailto:security@hellsec.dev
+Contact: https://hellsec.dev/#contact
+Expires: 2027-10-01T23:59:59.000Z
+Preferred-Languages: en, ru, he
+Canonical: https://hellsec.dev/.well-known/security.txt
+Policy: https://hellsec.dev/privacy.html

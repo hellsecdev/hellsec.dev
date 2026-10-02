@@ -7,9 +7,6 @@
     }
   };
 
-  // New key: the old one auto-saved "dark" for every visitor before light became the default.
-  const THEME_KEY = 'hellsec-theme';
-
   READY(() => {
     document.documentElement.classList.add('js');
 
@@ -244,28 +241,46 @@
       });
     });
 
-    // Theme toggle dark/light
-    (function initThemeToggle() {
-      const root = document.documentElement;
-      const btn = document.getElementById('theme-toggle');
-      if (!btn) return;
-
-      const applyTheme = (theme) => {
-        const safeTheme = theme === 'dark' ? 'dark' : 'light';
-        root.setAttribute('data-theme', safeTheme);
-        localStorage.setItem(THEME_KEY, safeTheme);
-        const label = safeTheme === 'light' ? 'Switch to dark theme' : 'Switch to light theme';
-        btn.setAttribute('aria-label', label);
-        btn.setAttribute('title', label);
+    // Analytics consent banner. Google Analytics only loads after "Accept" (see /assets/analytics.js).
+    (function initConsentBanner() {
+      const KEY = 'hellsec-consent';
+      let choice = null;
+      try { choice = localStorage.getItem(KEY); } catch (e) { return; }
+      if (choice === 'granted' || choice === 'denied') return;
+      const lang = document.documentElement.lang || 'en';
+      const t = {
+        en: { text: 'We use Google Analytics cookies to understand how the site is used. Only with your consent.', accept: 'Accept', decline: 'Decline', more: 'Privacy Policy', href: '/privacy.html' },
+        ru: { text: 'Мы используем cookies Google Analytics, чтобы понимать, как пользуются сайтом. Только с вашего согласия.', accept: 'Принять', decline: 'Отклонить', more: 'Политика конфиденциальности', href: '/ru/privacy.html' },
+        he: { text: 'אנחנו משתמשים בעוגיות של Google Analytics כדי להבין איך משתמשים באתר. רק בהסכמתכם.', accept: 'אישור', decline: 'דחייה', more: 'מדיניות פרטיות', href: '/he/privacy.html' }
+      }[lang] || null;
+      if (!t) return;
+      const bar = document.createElement('div');
+      bar.className = 'consent-banner';
+      bar.setAttribute('role', 'region');
+      bar.setAttribute('aria-label', t.more);
+      const p = document.createElement('p');
+      p.textContent = t.text + ' ';
+      const link = document.createElement('a');
+      link.href = t.href;
+      link.textContent = t.more;
+      p.appendChild(link);
+      const actions = document.createElement('div');
+      actions.className = 'consent-actions';
+      const decide = (value) => {
+        try { localStorage.setItem(KEY, value); } catch (e) { /* ignore */ }
+        if (value === 'granted' && window.hellsecLoadAnalytics) window.hellsecLoadAnalytics();
+        bar.remove();
       };
-
-      const saved = localStorage.getItem(THEME_KEY);
-      applyTheme(saved === 'dark' ? 'dark' : 'light');
-
-      btn.addEventListener('click', () => {
-        const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        applyTheme(next);
+      [['decline', 'ghost-btn', 'denied'], ['accept', 'neural-btn', 'granted']].forEach(([label, cls, value]) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = cls;
+        b.textContent = t[label];
+        b.addEventListener('click', () => decide(value));
+        actions.appendChild(b);
       });
+      bar.append(p, actions);
+      document.body.appendChild(bar);
     })();
 
     // Navbar scrolled shadow

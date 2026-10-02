@@ -330,4 +330,34 @@
     <xhtml:link rel="alternate" hreflang="he" href="https://hellsec.dev/he/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hellsec.dev/privacy.html" />
   </url>
+  <url>
+    <loc>https://hellsec.dev/about/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hellsec.dev/about/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hellsec.dev/ru/about/" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://hellsec.dev/he/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hellsec.dev/about/" />
+  </url>
+  <url>
+    <loc>https://hellsec.dev/ru/about/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hellsec.dev/about/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hellsec.dev/ru/about/" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://hellsec.dev/he/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hellsec.dev/about/" />
+  </url>
+  <url>
+    <loc>https://hellsec.dev/he/about/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hellsec.dev/about/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hellsec.dev/ru/about/" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://hellsec.dev/he/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hellsec.dev/about/" />
+  </url>
 </urlset>
