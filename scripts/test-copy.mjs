@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 const prefixes = ['', 'ru/', 'he/'];
-const routes = ['index.html', 'about/index.html', 'services/ai-business-control-center/index.html', 'cases/index.html', ...['clinic-control-layer','service-follow-up-system','secure-handover-baseline'].map(x=>`cases/${x}/index.html`)];
+const routes = ['index.html', 'about/index.html', 'accessibility/index.html', 'services/ai-business-control-center/index.html', 'cases/index.html', ...['clinic-control-layer','service-follow-up-system','secure-handover-baseline'].map(x=>`cases/${x}/index.html`)];
 let checked=0;
 for(const prefix of prefixes) for(const route of routes) {
  const file=prefix+route, html=readFileSync(new URL('../'+file,import.meta.url),'utf8');

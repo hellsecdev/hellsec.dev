@@ -16,10 +16,12 @@ It is built with a small Node script and deployed to GitHub Pages behind Cloudfl
 | `about/` | About page. |
 | `services/<slug>/` | Service pages: `product-rd`, `cybersecurity`, `automation`, `osint`, `ai-business-control-center` (AI Center). |
 | `cases/` | Illustrative scenarios. They are examples, not client projects, and must stay labelled that way. |
-| `privacy.html`, `404.html` | Privacy policy and error page. |
+| `privacy.html`, `accessibility/`, `404.html` | Privacy policy, accessibility statement and error page. |
 | `style.css` | All styles. Later layers in the file override earlier ones. |
 | `scripts.js` | Navigation, forms, FAQ motion, cookie consent banner (reopened by "Cookie settings" in the footer). |
 | `assets/analytics.js` | Loads Google Analytics only after the visitor accepts cookies. |
+| `assets/accessibility.js` | Configures the accessibility toolbar and restyles it in the HellSec palette. |
+| `assets/vendor/` | Third-party files served from this site (open-nagish toolbar, OpenDyslexic font). See `assets/vendor/README.md`. |
 | `assets/` | Logo, icons, social preview images, fonts, team avatars. |
 | `.well-known/security.txt` | Security contact ([RFC 9116](https://www.rfc-editor.org/rfc/rfc9116)). Renew `Expires` before it passes. |
 | `sitemap.xml`, `robots.txt`, `manifest.webmanifest` | SEO and app metadata. |
@@ -56,6 +58,7 @@ npm run sync:chrome
 - No inline `<script>` code (JSON-LD data blocks are fine). The Content Security Policy only allows scripts from this site and Google Tag Manager.
 - Do not use the em dash character in page copy; the copy test rejects it.
 - Do not replace the HellSec logo or other brand assets without the owner's approval.
+- Every page loads the accessibility toolbar (`assets/accessibility.js` then `assets/vendor/open-nagish/open-nagish.min.js`, both `defer`, in that order). Keep the accessibility statement (`accessibility/` in all three languages) true to what the site and toolbar do, and update its date after an accessibility review.
 
 ## Tests
 

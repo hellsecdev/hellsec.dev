@@ -2,6 +2,13 @@
 
 Notable changes to hellsec.dev. Newest first. Commit history has the details.
 
+## 2026-10-04 – Accessibility toolbar and statement
+
+- Accessibility toolbar on every page: open-nagish 1.1.5 (MIT), the same toolbar as stageofstars.com, restyled in the HellSec palette and served from this site together with the OpenDyslexic font. All 32 controls checked under the site CSP.
+- Accessibility statement in EN/RU/HE (`/accessibility/`): standard (SI 5568 AA, WCAG), what is implemented, toolbar guide, known limitations, how it was checked, coordinator contact. Linked from the footer and the toolbar.
+- "Skip to content" and other in-page links now move keyboard focus, not only the scroll position.
+- Privacy policy explains that toolbar preferences stay in the browser.
+
 ## 2026-10-03 – Cleanup and cookie settings
 
 - About 37 KB of unreachable CSS removed from `style.css` (rules for retired sections and the dark theme); all pages verified pixel-identical before and after.

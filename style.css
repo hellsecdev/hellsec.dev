@@ -4051,3 +4051,20 @@ html[data-theme="light"] .service-cta .case-mini-form .neural-btn { width: 100%;
 
 /* "Ready" badge in the AI Center demo: darker green for 4.5:1 on the light card. */
 .brief-topbar strong { color: #047857; border-color: rgba(4, 120, 87, 0.25); }
+
+/* Accessibility statement */
+.statement .statement-lead { max-width: 68ch; margin: 0 0 28px; color: var(--text-secondary); font-size: 1.05rem; }
+.statement .glass-card { max-width: 900px; }
+.statement .glass-card h2 { margin-top: 30px; }
+.statement .glass-card h2:first-child { margin-top: 0; }
+.statement .glass-card p,
+.statement .glass-card li { color: var(--text-secondary); line-height: 1.7; }
+.statement .glass-card ul { display: grid; gap: 8px; margin: 12px 0; padding-inline-start: 22px; }
+.statement-contact { display: grid; gap: 10px; margin-top: 16px; padding: 18px 20px; border-radius: 16px; background: var(--band-bg); }
+.statement-contact div { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.statement-contact dt { min-width: 13em; color: var(--text-primary); font-weight: 600; }
+.statement-contact dd { margin: 0; color: var(--text-secondary); }
+.statement-updated { margin-top: 22px; font-size: 0.9rem; }
+/* Sections focused by in-page links do not need a focus ring of their own. */
+main[tabindex="-1"]:focus,
+section[tabindex="-1"]:focus { outline: none; }

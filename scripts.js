@@ -238,6 +238,9 @@
         event.preventDefault();
         const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
         target.scrollIntoView({ behavior, block: 'start' });
+        // Move keyboard focus too, so "Skip to content" and section links work for keyboard and screen reader users.
+        if (!target.matches('a, button, input, select, textarea, [tabindex]')) target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
       });
     });
 
