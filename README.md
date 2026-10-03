@@ -18,7 +18,7 @@ It is built with a small Node script and deployed to GitHub Pages behind Cloudfl
 | `cases/` | Illustrative scenarios. They are examples, not client projects, and must stay labelled that way. |
 | `privacy.html`, `404.html` | Privacy policy and error page. |
 | `style.css` | All styles. Later layers in the file override earlier ones. |
-| `scripts.js` | Navigation, forms, FAQ motion, cookie consent banner. |
+| `scripts.js` | Navigation, forms, FAQ motion, cookie consent banner (reopened by "Cookie settings" in the footer). |
 | `assets/analytics.js` | Loads Google Analytics only after the visitor accepts cookies. |
 | `assets/` | Logo, icons, social preview images, fonts, team avatars. |
 | `.well-known/security.txt` | Security contact ([RFC 9116](https://www.rfc-editor.org/rfc/rfc9116)). Renew `Expires` before it passes. |

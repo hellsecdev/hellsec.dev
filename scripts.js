@@ -242,45 +242,71 @@
     });
 
     // Analytics consent banner. Google Analytics only loads after "Accept" (see /assets/analytics.js).
+    // The footer "Cookie settings" button reopens it so visitors can change their choice.
     (function initConsentBanner() {
       const KEY = 'hellsec-consent';
-      let choice = null;
-      try { choice = localStorage.getItem(KEY); } catch (e) { return; }
-      if (choice === 'granted' || choice === 'denied') return;
       const lang = document.documentElement.lang || 'en';
       const t = {
         en: { text: 'We use Google Analytics cookies to understand how the site is used. Only with your consent.', accept: 'Accept', decline: 'Decline', more: 'Privacy Policy', href: '/privacy.html' },
         ru: { text: 'Мы используем cookies Google Analytics, чтобы понимать, как пользуются сайтом. Только с вашего согласия.', accept: 'Принять', decline: 'Отклонить', more: 'Политика конфиденциальности', href: '/ru/privacy.html' },
         he: { text: 'אנחנו משתמשים בעוגיות של Google Analytics כדי להבין איך משתמשים באתר. רק בהסכמתכם.', accept: 'אישור', decline: 'דחייה', more: 'מדיניות פרטיות', href: '/he/privacy.html' }
-      }[lang] || null;
+      }[lang];
       if (!t) return;
-      const bar = document.createElement('div');
-      bar.className = 'consent-banner';
-      bar.setAttribute('role', 'region');
-      bar.setAttribute('aria-label', t.more);
-      const p = document.createElement('p');
-      p.textContent = t.text + ' ';
-      const link = document.createElement('a');
-      link.href = t.href;
-      link.textContent = t.more;
-      p.appendChild(link);
-      const actions = document.createElement('div');
-      actions.className = 'consent-actions';
-      const decide = (value) => {
-        try { localStorage.setItem(KEY, value); } catch (e) { /* ignore */ }
-        if (value === 'granted' && window.hellsecLoadAnalytics) window.hellsecLoadAnalytics();
-        bar.remove();
+      const read = () => { try { return localStorage.getItem(KEY); } catch (e) { return 'unavailable'; } };
+      // Declining after an earlier "Accept" also removes the Google Analytics cookies already set.
+      const clearAnalyticsCookies = () => {
+        document.cookie.split(';').map((c) => c.split('=')[0].trim()).filter((name) => /^_ga/.test(name)).forEach((name) => {
+          [location.hostname, '.' + location.hostname.replace(/^www\./, '')].forEach((domain) => {
+            document.cookie = `${name}=; Max-Age=0; path=/; domain=${domain}`;
+          });
+          document.cookie = `${name}=; Max-Age=0; path=/`;
+        });
       };
-      [['decline', 'ghost-btn', 'denied'], ['accept', 'neural-btn', 'granted']].forEach(([label, cls, value]) => {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = cls;
-        b.textContent = t[label];
-        b.addEventListener('click', () => decide(value));
-        actions.appendChild(b);
+      let bar = null;
+      const show = (focus) => {
+        if (bar) return;
+        bar = document.createElement('div');
+        bar.className = 'consent-banner';
+        bar.setAttribute('role', 'region');
+        bar.setAttribute('aria-label', t.more);
+        const p = document.createElement('p');
+        p.textContent = t.text + ' ';
+        const link = document.createElement('a');
+        link.href = t.href;
+        link.textContent = t.more;
+        p.appendChild(link);
+        const actions = document.createElement('div');
+        actions.className = 'consent-actions';
+        const decide = (value) => {
+          const previous = read();
+          try { localStorage.setItem(KEY, value); } catch (e) { /* ignore */ }
+          if (value === 'granted' && window.hellsecLoadAnalytics) window.hellsecLoadAnalytics();
+          if (value === 'denied') {
+            clearAnalyticsCookies();
+            // Analytics may already be running on this page; a reload stops it.
+            if (previous === 'granted') { location.reload(); return; }
+          }
+          bar.remove();
+          bar = null;
+        };
+        [['decline', 'ghost-btn', 'denied'], ['accept', 'neural-btn', 'granted']].forEach(([label, cls, value]) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = cls;
+          b.textContent = t[label];
+          b.addEventListener('click', () => decide(value));
+          actions.appendChild(b);
+        });
+        bar.append(p, actions);
+        document.body.appendChild(bar);
+        if (focus === true) actions.lastChild.focus({ preventScroll: true });
+      };
+      document.querySelectorAll('.cookie-settings').forEach((btn) => {
+        btn.hidden = false;
+        btn.addEventListener('click', () => show(true));
       });
-      bar.append(p, actions);
-      document.body.appendChild(bar);
+      const choice = read();
+      if (choice !== 'granted' && choice !== 'denied' && choice !== 'unavailable') show(false);
     })();
 
     // Navbar scrolled shadow

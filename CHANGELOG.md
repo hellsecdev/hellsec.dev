@@ -2,6 +2,14 @@
 
 Notable changes to hellsec.dev. Newest first. Commit history has the details.
 
+## 2026-10-03 – Cleanup and cookie settings
+
+- About 37 KB of unreachable CSS removed from `style.css` (rules for retired sections and the dark theme); all pages verified pixel-identical before and after.
+- Unused assets removed: old partner logos and full-size team avatar sources (schema now points to the 480 px versions).
+- Footer "Cookie settings" reopens the consent banner on every page; declining removes Google Analytics cookies. Privacy policy updated in EN/RU/HE.
+- Scenario pages: "what the owner could see" shown as numbered cards.
+- AI Center demo "Ready" badge darkened to meet 4.5:1 contrast.
+
 ## 2026-10-03 – Repository hygiene and docs
 
 - Build no longer publishes repository files: `README.md`, `package.json`, `build.mjs`, `scripts/` and similar are excluded from `dist/`.
