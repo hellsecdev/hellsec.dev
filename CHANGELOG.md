@@ -8,6 +8,7 @@ Notable changes to hellsec.dev. Newest first. Commit history has the details.
 - Accessibility statement in EN/RU/HE (`/accessibility/`): standard (SI 5568 AA, WCAG), what is implemented, toolbar guide, known limitations, how it was checked, coordinator contact. Linked from the footer and the toolbar.
 - "Skip to content" and other in-page links now move keyboard focus, not only the scroll position.
 - Privacy policy explains that toolbar preferences stay in the browser.
+- Fonts are committed to `assets/fonts/` and linked directly. The build used to download them from Google Fonts; when that silently failed in CI, pages linked to Google Fonts, the CSP blocked them and the live site fell back to system fonts. The build now fails if a page references Google Fonts.
 
 ## 2026-10-03 – Cleanup and cookie settings
 

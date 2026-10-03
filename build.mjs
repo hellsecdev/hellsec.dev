@@ -2,7 +2,7 @@
 // - копирует проект в dist/
 // - минифицирует CSS/JS/HTML
 // - обновляет <lastmod> в sitemap
-// - локализует Google Fonts и добавляет preload
+// - проверяет, что страницы используют локальные шрифты из assets/fonts
 // - генерирует service worker с версиированным кешем
 
 import fs from 'node:fs/promises';
@@ -132,108 +132,17 @@ function posixify(p) {
   return p.split(path.sep).join('/');
 }
 
-const LINK_TAG_REGEX = /<link\b[^>]*>/gi;
-const GOOGLE_FONTS_PRECONNECT_REGEX = /<link\b[^>]*?(?:rel=["']preconnect["'][^>]*href=["']https:\/\/fonts\.(?:googleapis|gstatic)\.com[^"']*["']|href=["']https:\/\/fonts\.(?:googleapis|gstatic)\.com[^"']*["'][^>]*rel=["']preconnect["'])[^>]*>\s*/gi;
-const FONT_URL_REGEX = /url\((https:[^)]+\.(?:woff2|woff|ttf|otf))[^)]*\)/g;
-const BROWSER_USER_AGENT =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
-
-function findGoogleFontsStylesheetTag(html) {
-  const matches = html.matchAll(LINK_TAG_REGEX);
-  for (const match of matches) {
-    const tag = match[0];
-    if (!/https:\/\/fonts\.googleapis\.com\//i.test(tag)) continue;
-    if (!/rel=["']stylesheet["']/i.test(tag)) continue;
-    const hrefMatch = tag.match(/href=["'](https:\/\/fonts\.googleapis\.com\/[^"']+)["']/i);
-    if (hrefMatch) {
-      return { tag, href: hrefMatch[1] };
-    }
-  }
-  return null;
-}
-
-async function extractFontsUrl(html) {
-  const found = findGoogleFontsStylesheetTag(html);
-  return found ? found.href : null;
-}
-
-function mapRemoteFonts(css, mapping) {
-  let result = css.replace(/url\((https:\/\/[^)]+)\)/g, (_, url) => {
-    const local = mapping[url];
-    return local ? `url(${local})` : `url(${url})`;
-  });
-  result = result.replace(/(@font-face\s*\{)([^}]+)\}/g, (all, start, body) => {
-    if (/font-display\s*:/i.test(body)) return all;
-    return `${start}${body}font-display: swap;}`;
-  });
-  return result;
-}
-
-async function localizeGoogleFonts() {
-  const indexPath = path.join(DIST, 'index.html');
-  if (!fssync.existsSync(indexPath)) return;
-  const html = await fs.readFile(indexPath, 'utf8');
-  const fontsTag = findGoogleFontsStylesheetTag(html);
-  if (!fontsTag) return;
-
-  const fontsUrl = await extractFontsUrl(html);
-  if (!fontsUrl) return;
-
-  const response = await fetch(fontsUrl, { headers: { 'User-Agent': BROWSER_USER_AGENT } });
-  if (!response.ok) return;
-  const css = await response.text();
-
-  const fontUrls = Array.from(css.matchAll(FONT_URL_REGEX)).map((match) => match[1]);
-  if (!fontUrls.length) return;
-
-  const fontsDir = path.join(DIST, 'assets', 'fonts');
-  await ensureDir(fontsDir);
-
-  // Preload only the Latin heading and body faces; Cyrillic and Hebrew subsets
-  // still load on demand through unicode-range.
-  const preloadSources = new Set();
-  for (const block of css.matchAll(/\/\*\s*([\w-]+)\s*\*\/\s*@font-face\s*\{([^}]+)\}/g)) {
-    const [, subset, body] = block;
-    const family = body.match(/font-family:\s*['"]?([^;'"]+)/)?.[1];
-    const src = body.match(FONT_URL_REGEX.source)?.[1];
-    if (subset === 'latin' && ['Manrope', 'Inter'].includes(family) && src) preloadSources.add(src);
-  }
-
-  const mapping = {};
-  const preloadHrefs = [];
-
-  for (const url of fontUrls) {
-    const filename = new URL(url).pathname.split('/').pop();
-    if (!filename) continue;
-    const fsPath = path.join(fontsDir, filename);
-    const href = `/assets/fonts/${filename}`;
-    if (!fssync.existsSync(fsPath)) {
-      const fontRes = await fetch(url, { headers: { 'User-Agent': BROWSER_USER_AGENT } });
-      if (fontRes.ok) {
-        const buffer = Buffer.from(await fontRes.arrayBuffer());
-        await fs.writeFile(fsPath, buffer);
-      }
-    }
-    mapping[url] = href;
-    if (preloadSources.has(url)) preloadHrefs.push(href);
-  }
-
-  const localCss = mapRemoteFonts(css, mapping);
-  await fs.writeFile(path.join(fontsDir, 'fonts.css'), localCss, 'utf8');
-
+// Fonts live in assets/fonts/. The site CSP blocks Google Fonts, so a page that links
+// to them would silently fall back to system fonts; fail the build instead.
+async function assertNoRemoteFonts() {
   const htmlFiles = await findFilesRecursive(DIST, (file) => file.endsWith('.html'));
-  const preloadTags = Array.from(new Set(preloadHrefs))
-    .map((href) => `<link rel="preload" as="font" href="${href}" type="font/woff2" crossorigin>`)
-    .join('\n    ');
-  const replacement = `${preloadTags}\n    <link href="/assets/fonts/fonts.css" rel="stylesheet">`;
-
+  const offenders = [];
   for (const file of htmlFiles) {
-    const content = await fs.readFile(file, 'utf8');
-    const targetTag = findGoogleFontsStylesheetTag(content);
-    if (!targetTag) continue;
-    let updated = content.replace(targetTag.tag, replacement);
-    updated = updated.replace(GOOGLE_FONTS_PRECONNECT_REGEX, '');
-    await fs.writeFile(file, updated, 'utf8');
+    const html = await fs.readFile(file, 'utf8');
+    if (/fonts\.(googleapis|gstatic)\.com/.test(html)) offenders.push(posixify(path.relative(DIST, file)));
+  }
+  if (offenders.length) {
+    throw new Error(`Remote Google Fonts referenced in: ${offenders.join(', ')}. Use /assets/fonts/fonts.css.`);
   }
 }
 
@@ -247,8 +156,8 @@ async function main() {
   console.log('➡️  Minifying CSS/JS...');
   await minifyAssets();
 
-  console.log('➡️  Localizing Google Fonts...');
-  await localizeGoogleFonts();
+  console.log('➡️  Checking pages use self-hosted fonts...');
+  await assertNoRemoteFonts();
 
   console.log('➡️  Minifying HTML...');
   await minifyHtmlFiles();

@@ -22,7 +22,7 @@ It is built with a small Node script and deployed to GitHub Pages behind Cloudfl
 | `assets/analytics.js` | Loads Google Analytics only after the visitor accepts cookies. |
 | `assets/accessibility.js` | Configures the accessibility toolbar and restyles it in the HellSec palette. |
 | `assets/vendor/` | Third-party files served from this site (open-nagish toolbar, OpenDyslexic font). See `assets/vendor/README.md`. |
-| `assets/` | Logo, icons, social preview images, fonts, team avatars. |
+| `assets/` | Logo, icons, social preview images, team avatars. Fonts are in `assets/fonts/`. |
 | `.well-known/security.txt` | Security contact ([RFC 9116](https://www.rfc-editor.org/rfc/rfc9116)). Renew `Expires` before it passes. |
 | `sitemap.xml`, `robots.txt`, `manifest.webmanifest` | SEO and app metadata. |
 | `build.mjs` | Build script, see below. |
@@ -38,7 +38,7 @@ npm run build              # writes the site to dist/
 python3 -m http.server     # preview the sources at http://localhost:8000
 ```
 
-The build copies the site into `dist/`, minifies HTML, CSS and JS, self-hosts the Google Fonts, updates `<lastmod>` in the sitemap and writes a service worker that clears old caches.
+The build copies the site into `dist/`, minifies HTML, CSS and JS, updates `<lastmod>` in the sitemap and writes a service worker that clears old caches. It fails if any page links to Google Fonts: fonts are self-hosted in `assets/fonts/` (see the README there).
 Repository tooling (`README.md`, `package.json`, `build.mjs`, `scripts/` and similar) is excluded from `dist/` so it is never served on the site.
 
 ### Navigation and footer
