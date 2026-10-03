@@ -1,13 +1,14 @@
 {
   "name": "hellsec.dev",
   "version": "1.0.0",
-  "description": "Static website for HellSec (product R&D and cybersecurity)",
+  "description": "Website of HellSec: secure software development and cybersecurity",
   "scripts": {
-    "test": "echo \"No tests defined for static site\" && exit 0",
-    "test:motion": "node scripts/test-motion.cjs",
-    "test:copy": "node scripts/test-copy.mjs",
     "build": "node build.mjs",
-    "validate:html": "node scripts/validate-html.mjs"
+    "test": "node scripts/test-copy.mjs",
+    "test:copy": "node scripts/test-copy.mjs",
+    "test:motion": "node scripts/test-motion.cjs",
+    "validate:html": "node scripts/validate-html.mjs",
+    "sync:chrome": "python3 scripts/sync-chrome.py"
   },
   "private": true,
   "devDependencies": {

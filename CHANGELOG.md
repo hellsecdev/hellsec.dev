@@ -1,6 +1,35 @@
-# Project Updates Log
+# Changelog
 
-This file tracks all changes, improvements, and bug fixes performed by the AI agent.
+Notable changes to hellsec.dev. Newest first. Commit history has the details.
+
+## 2026-10-03 – Repository hygiene and docs
+
+- Build no longer publishes repository files: `README.md`, `package.json`, `build.mjs`, `scripts/` and similar are excluded from `dist/`.
+- Editor settings (`.idea/`) removed from the repository and ignored.
+- README rewritten: structure, workflow, conventions, tests, deployment and security headers.
+- `npm test` runs the copy checks; `npm run sync:chrome` syncs nav and footer.
+- This file renamed from `lastupdate.md`.
+
+## 2026-10-02 – About page, privacy and hardening
+
+- About page in EN/RU/HE with principles and team.
+- Google Analytics loads only after cookie consent; privacy policy describes analytics and cookies.
+- `security.txt` points to hellsec.dev with a one-year expiry.
+- No inline scripts, so a strict Content Security Policy works; security headers and HSTS are set in Cloudflare, CAA records added.
+- Dark theme removed. App icons generated from the original logo. AI Center and scenario pages aligned with the new design.
+
+## 2026-10-01 – Positioning
+
+- Home repositioned around secure development and cybersecurity; AI agents, automation, OSINT and AI Center are presented as services.
+- AI Center block on home replaced by a short product teaser.
+- New social preview images for every language.
+- The original HellSec logo is kept everywhere.
+
+## 2026-09-30 – Redesign
+
+- New visual system: Manrope and Inter, brand purple `#6D4AFF`, light layout with dark service cards and closing band.
+- Home and service pages rebuilt around concrete outputs, a five-step process, illustrative scenarios and an on-page lead form.
+- Copy reviewed in all three languages for consistency and accuracy; navigation and footer unified across pages.
 
 ## [2026-01-03] - Initial Optimization & Stability Pass
 

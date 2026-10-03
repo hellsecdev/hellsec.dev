@@ -17,7 +17,13 @@ const __dirname = path.dirname(__filename);
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
-const IGNORES = new Set(['node_modules', 'dist', '.git', '.idea']);
+// Only the website is published. Repository tooling and docs stay out of dist/,
+// otherwise GitHub Pages would serve them (e.g. /build.mjs, /README.md).
+const IGNORES = new Set([
+  'node_modules', 'dist', '.git', '.github', '.idea', '.vscode', '.claude',
+  'scripts', 'README.md', 'CHANGELOG.md', 'lastupdate.md',
+  'package.json', 'package-lock.json', 'build.mjs', '.gitignore'
+]);
 
 async function rimraf(target) {
   await fs.rm(target, { recursive: true, force: true });
