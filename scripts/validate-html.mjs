@@ -38,13 +38,13 @@ async function validateFile(file) {
   try {
     await stat(DIST_DIR);
   } catch {
-    console.error('dist/ не найден. Сначала запустите "npm run build".');
+    console.error('dist/ not found. Run "npm run build" first.');
     process.exit(1);
   }
 
   const htmlFiles = await collectHtmlFiles(DIST_DIR);
   if (!htmlFiles.length) {
-    console.log('HTML-файлов в dist/ не найдено.');
+    console.log('No HTML files found in dist/.');
     return;
   }
 
@@ -53,7 +53,7 @@ async function validateFile(file) {
     const errors = await validateFile(file);
     if (!errors.length) continue;
     if (!hasErrors) {
-      console.error('Обнаружены ошибки HTML-валидации:');
+      console.error('HTML validation errors:');
     }
     hasErrors = true;
     for (const err of errors) {
@@ -69,6 +69,6 @@ async function validateFile(file) {
   if (hasErrors) {
     process.exit(1);
   } else {
-    console.log(`HTML-валидация успешно пройдена (${htmlFiles.length} файл(ов)).`);
+    console.log(`HTML validation passed (${htmlFiles.length} files).`);
   }
 })();

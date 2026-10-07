@@ -1,9 +1,9 @@
-// Build script for HellSec static site
-// - копирует проект в dist/
-// - минифицирует CSS/JS/HTML
-// - обновляет <lastmod> в sitemap
-// - проверяет, что страницы используют локальные шрифты из assets/fonts
-// - генерирует service worker с версиированным кешем
+// Build script for the HellSec static site:
+// - copies the site (not the repository tooling) into dist/
+// - minifies CSS, JS and HTML
+// - updates <lastmod> in the sitemap
+// - fails if a page links to Google Fonts instead of assets/fonts
+// - writes sw.js, a service worker that unregisters itself and clears old caches
 
 import fs from 'node:fs/promises';
 import fssync from 'node:fs';

@@ -471,7 +471,7 @@
     };
 
     if (contactForm) {
-      // Обработчик для фильтрации символов в поле сообщения
+      // Strip unsupported control characters from the message field as the user types
       const messageField = contactForm.querySelector('#contact-message');
       const messageCounter = contactForm.querySelector('#message-counter');
 
@@ -492,7 +492,7 @@
         // Remove only unsupported control characters; keep normal punctuation, currency signs, URLs and project details.
         const sanitizeMessage = (value) => value.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '');
 
-        // Фильтрация при вводе
+        // Filter on input
         messageField.addEventListener('input', (e) => {
           const originalValue = e.target.value;
           const sanitized = sanitizeMessage(originalValue);
@@ -500,11 +500,11 @@
           if (originalValue !== sanitized) {
             const cursorPos = e.target.selectionStart;
             e.target.value = sanitized;
-            // Восстанавливаем позицию курсора
+            // Restore the caret position
             e.target.setSelectionRange(cursorPos - 1, cursorPos - 1);
           }
 
-          // Ограничение до 500 символов
+          // Cap at 500 characters
           if (e.target.value.length > 500) {
             e.target.value = e.target.value.substring(0, 500);
           }
@@ -513,7 +513,7 @@
           validateForm(contactForm);
         });
 
-        // Инициализация счетчика
+        // Initialise the character counter
         updateCounter();
       }
 
@@ -544,7 +544,7 @@
           statusEl.textContent = t.sending;
         }
 
-        // Санитизация сообщения перед отправкой: убираем только служебные символы, оставляя нормальную пунктуацию и валюты.
+        // Sanitise the message before sending: drop only control characters, keep normal punctuation and currency signs.
         const sanitizeMessage = (value) => value.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').substring(0, 500);
 
         // Service-page forms tag the request so the team sees which service it came from.

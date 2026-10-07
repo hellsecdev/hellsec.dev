@@ -22,11 +22,14 @@ It is built with a small Node script and deployed to GitHub Pages behind Cloudfl
 | `assets/analytics.js` | Loads Google Analytics only after the visitor accepts cookies. |
 | `assets/accessibility.js` | Configures the accessibility toolbar and restyles it in the HellSec palette. |
 | `assets/vendor/` | Third-party files served from this site (open-nagish toolbar, OpenDyslexic font). See `assets/vendor/README.md`. |
-| `assets/` | Logo, icons, social preview images, team avatars. Fonts are in `assets/fonts/`. |
+| `assets/fonts/` | Self-hosted Inter, Manrope and Heebo (WOFF2) and `fonts.css`. See `assets/fonts/README.md`. |
+| `assets/` | Logo, icons, social preview images, team avatars. |
 | `.well-known/security.txt` | Security contact ([RFC 9116](https://www.rfc-editor.org/rfc/rfc9116)). Renew `Expires` before it passes. |
 | `sitemap.xml`, `robots.txt`, `manifest.webmanifest` | SEO and app metadata. |
 | `build.mjs` | Build script, see below. |
 | `scripts/` | Tests and maintenance helpers (not published). |
+| `.github/workflows/` | Deploy to GitHub Pages and quality checks. |
+| `CHANGELOG.md` | Notable changes, newest first. |
 
 ## Working on the site
 
@@ -54,7 +57,7 @@ npm run sync:chrome
 
 - Every change ships in all three languages. Hebrew pages use `dir="rtl"`; wrap Latin names and prices in `<bdi>` so they read in the right order.
 - When adding a page, also add it to `sitemap.xml` with `hreflang` alternates, and give it one `<h1>`.
-- Bump the `?v=` query on `style.css`, `scripts.js` and `assets/analytics.js` in every page when they change, so browsers fetch the new files.
+- When a shared file changes, bump its `?v=` query in every page so browsers fetch the new version: `style.css`, `scripts.js`, `assets/analytics.js`, `assets/accessibility.js`, `assets/fonts/fonts.css`, `assets/vendor/open-nagish/open-nagish.min.js`.
 - No inline `<script>` code (JSON-LD data blocks are fine). The Content Security Policy only allows scripts from this site and Google Tag Manager.
 - Do not use the em dash character in page copy; the copy test rejects it.
 - Do not replace the HellSec logo or other brand assets without the owner's approval.
@@ -64,8 +67,16 @@ npm run sync:chrome
 
 ```sh
 npm test                   # copy rules: one H1, scenario disclaimers, AI Center prices, no em dash
-npm run test:motion        # FAQ animation and mobile menu (needs Playwright, see the header of the file)
+npm run test:motion        # FAQ animation and mobile menus, see below
 npm run validate:html      # W3C validation of dist/ (run npm run build first)
+```
+
+`test:motion` drives a real browser. Install Playwright without saving it, serve the repository and point the test at it:
+
+```sh
+npm i --no-save playwright
+python3 -m http.server 8879 &
+MOTION_URL=http://127.0.0.1:8879 CHROMIUM_PATH=/path/to/chrome npm run test:motion
 ```
 
 GitHub Actions runs the build, a link check and HTML validation on every push (`.github/workflows/quality.yml`).
@@ -81,8 +92,15 @@ If a change needs a new external script, font, image or API host, update the CSP
 
 ## Privacy
 
-The contact forms send name, contact details and message to the HellSec form endpoint. Google Analytics 4 runs only with consent.
+- The contact forms send name, contact details and message to the HellSec form endpoint.
+- Google Analytics 4 loads only after the visitor accepts cookies; the choice is stored in `localStorage` (`hellsec-consent`) and can be changed with "Cookie settings" in the footer.
+- Accessibility toolbar preferences stay in the visitor's browser (`localStorage`, `opennagish_prefs`).
+
 Keep `privacy.html` (and its RU and HE versions) in sync with what the site actually collects.
+
+## License
+
+The website content, design and code are © HellSec, all rights reserved. Third-party files keep their own licenses: see `assets/vendor/README.md` and `assets/fonts/README.md`.
 
 ## Contact
 

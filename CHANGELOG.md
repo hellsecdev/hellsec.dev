@@ -2,9 +2,15 @@
 
 Notable changes to hellsec.dev. Newest first. Commit history has the details.
 
+## 2026-10-08 – Documentation review
+
+- README: complete file map (fonts, workflows, changelog), every versioned asset listed, exact steps for the motion test, privacy notes on locally stored choices, license status.
+- `security.txt`: removed the `Policy` link, which pointed to the privacy policy rather than a vulnerability disclosure policy.
+- Build script, form script and HTML validation messages now commented and worded in English.
+
 ## 2026-10-04 – Accessibility toolbar and statement
 
-- Accessibility toolbar on every page: open-nagish 1.1.5 (MIT), the same toolbar as stageofstars.com, restyled in the HellSec palette and served from this site together with the OpenDyslexic font. All 32 controls checked under the site CSP.
+- Accessibility toolbar on every page: open-nagish 1.1.5 (MIT), restyled in the HellSec palette and served from this site together with the OpenDyslexic font. All 32 controls checked under the site CSP.
 - Accessibility statement in EN/RU/HE (`/accessibility/`): standard (SI 5568 AA, WCAG), what is implemented, toolbar guide, known limitations, how it was checked, coordinator contact. Linked from the footer and the toolbar.
 - "Skip to content" and other in-page links now move keyboard focus, not only the scroll position.
 - Privacy policy explains that toolbar preferences stay in the browser.
@@ -47,7 +53,9 @@ Notable changes to hellsec.dev. Newest first. Commit history has the details.
 - Home and service pages rebuilt around concrete outputs, a five-step process, illustrative scenarios and an on-page lead form.
 - Copy reviewed in all three languages for consistency and accuracy; navigation and footer unified across pages.
 
-## [2026-01-03] - Initial Optimization & Stability Pass
+## 2026-01-03 – Initial optimization and stability pass
+
+Historical entry; some of this has since been replaced (Google Analytics is now consent-gated, the network canvas is no longer shown).
 
 ### Added
 - **Google Analytics (GA4):** Integrated tracking ID `G-1RGPGXH5DK` across all pages. Repositioned to be immediately after the opening `<head>` tag per Google recommendations.
@@ -64,4 +72,4 @@ Notable changes to hellsec.dev. Newest first. Commit history has the details.
 ### Fixed
 - **White Screen Bug:** Addressed the issue where users saw a blank page on initial load by unregistering old Service Workers and implementing a force-reload mechanism in the new `sw.js`.
 - **JS Stability:** Wrapped the Neural Network canvas initialization in a `try-catch` block to ensure that any potential graphics errors don't block the rest of the site's functionality.
-- **HTML Validation:** Cleaned up HTML syntax and structure across all files to pass `html-validator` checks..
+- **HTML Validation:** Cleaned up HTML syntax and structure across all files to pass `html-validator` checks.
