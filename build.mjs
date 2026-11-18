@@ -91,6 +91,44 @@ async function minifyAssets() {
       logLevel: 'warning'
     });
   }
+
+  const fontsCssEntry = path.join(ROOT, 'assets', 'fonts', 'fonts.css');
+  if (fssync.existsSync(fontsCssEntry)) {
+    await esbuild({
+      entryPoints: [fontsCssEntry],
+      outfile: path.join(DIST, 'assets', 'fonts', 'fonts.css'),
+      minify: true,
+      bundle: false,
+      sourcemap: false,
+      logLevel: 'warning'
+    });
+  }
+
+  const a11yJsEntry = path.join(ROOT, 'assets', 'accessibility.js');
+  if (fssync.existsSync(a11yJsEntry)) {
+    await esbuild({
+      entryPoints: [a11yJsEntry],
+      outfile: path.join(DIST, 'assets', 'accessibility.js'),
+      minify: true,
+      bundle: false,
+      sourcemap: false,
+      target: ['es2018'],
+      logLevel: 'warning'
+    });
+  }
+
+  const analyticsJsEntry = path.join(ROOT, 'assets', 'analytics.js');
+  if (fssync.existsSync(analyticsJsEntry)) {
+    await esbuild({
+      entryPoints: [analyticsJsEntry],
+      outfile: path.join(DIST, 'assets', 'analytics.js'),
+      minify: true,
+      bundle: false,
+      sourcemap: false,
+      target: ['es2018'],
+      logLevel: 'warning'
+    });
+  }
 }
 
 async function minifyHtmlFiles() {

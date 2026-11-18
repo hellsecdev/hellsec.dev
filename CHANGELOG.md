@@ -2,6 +2,17 @@
 
 Notable changes to hellsec.dev. Newest first. Commit history has the details.
 
+## 2026-11-18 – Comprehensive project optimization, SEO and cleanup
+
+- Removed dead Canvas engine: eliminated `<canvas id="neural-bg">` from all 30 HTML pages, removed dead CSS rules in `style.css`, and removed 120 lines of unused animation code from `scripts.js`.
+- Fixed language selector in `cases/index.html` across all 3 locales: restored `id="language-selector"` and `data-lang` attributes for proper active state highlighting.
+- Structured data & SEO: added `Service` and `BreadcrumbList` JSON-LD schemas to all 4 service pages (`product-rd`, `cybersecurity`, `automation`, `osint`) in EN, RU, and HE; corrected scenario breadcrumb URLs to properly reference the `/cases/` catalog.
+- Social preview tags: added Twitter Card metadata and localized `og:image` tags across all localized service pages.
+- Font loading optimization: localized font preloading (`Heebo` Hebrew for HE, `Inter` and `Manrope` Cyrillic for RU, Latin for EN) to eliminate FOUT.
+- B2B form enhancements: expanded message capacity from 500 to 1,500 characters with responsive threshold counter and sanitization; added `preconnect` to `https://sender.hellsec.dev` on all service and scenario pages.
+- Core Web Vitals (CLS): added explicit `width="34"` and `height="34"` attributes to all logo images.
+- Build pipeline: `build.mjs` now minifies `assets/fonts/fonts.css`, `assets/accessibility.js`, and `assets/analytics.js` when packaging `dist/`.
+
 ## 2026-10-08 – Documentation review
 
 - README: complete file map (fonts, workflows, changelog), every versioned asset listed, exact steps for the motion test, privacy notes on locally stored choices, license status.

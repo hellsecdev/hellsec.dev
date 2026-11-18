@@ -224,20 +224,6 @@ textarea {
   font: inherit;
 }
 
-#neural-bg {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.12;
-  pointer-events: none;
-  z-index: 0;
-}
-
-html[data-theme="light"] #neural-bg {
-  opacity: 0.07;
-}
-
 .skip-link {
   position: fixed;
   top: -80px;
@@ -2199,10 +2185,6 @@ html[data-theme="light"] .loop-panel {
     transition-duration: 0.01ms !important;
   }
 
-  #neural-bg {
-    display: none;
-  }
-
   body::before,
   body::after {
     display: none;
@@ -2501,9 +2483,6 @@ html[data-theme="light"] body::before {
   opacity: 1;
   background-image: radial-gradient(rgba(18, 18, 31, 0.07) 1px, transparent 1.5px);
 }
-
-/* The dot grid replaces the animated network canvas. */
-#neural-bg { display: none; }
 
 h1,
 h2,

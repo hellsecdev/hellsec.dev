@@ -107,127 +107,6 @@
       });
     });
 
-    // Canvas background network
-    try {
-      const canvas = document.getElementById('neural-bg');
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      // The brand layer hides the canvas in favour of a static dot grid.
-      if (canvas && !reduceMotion && getComputedStyle(canvas).display !== 'none') {
-        const ctx = canvas.getContext('2d');
-        let nodes = [];
-        let dpr = 1;
-        let width = 0;
-        let height = 0;
-
-        class Node {
-          constructor(x, y) {
-            this.x = x;
-            this.y = y;
-            this.vx = (Math.random() - 0.5) * 0.18;
-            this.vy = (Math.random() - 0.5) * 0.18;
-            this.radius = Math.random() * 1.2 + 0.45;
-          }
-          update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            if (this.x < 0 || this.x > width) this.vx *= -1;
-            if (this.y < 0 || this.y > height) this.vy *= -1;
-          }
-          draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(109, 74, 255, 0.45)';
-            ctx.fill();
-          }
-        }
-
-        const resizeCanvas = () => {
-          dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
-          const doc = document.documentElement;
-          const body = document.body;
-          const viewportWidth = window.innerWidth || doc.clientWidth || (body ? body.clientWidth : 0) || 0;
-          const viewportHeight = window.innerHeight || doc.clientHeight || (body ? body.clientHeight : 0) || 0;
-          const nextWidth = Math.max(viewportWidth, doc.clientWidth || 0, body ? body.clientWidth || 0 : 0);
-          const nextHeight = Math.max(
-            viewportHeight,
-            doc.scrollHeight,
-            body ? body.scrollHeight : 0
-          );
-          width = nextWidth;
-          height = nextHeight;
-          canvas.width = Math.floor(nextWidth * dpr);
-          canvas.height = Math.floor(nextHeight * dpr);
-          canvas.style.width = nextWidth + 'px';
-          canvas.style.height = nextHeight + 'px';
-          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        };
-
-        const initNodes = () => {
-          nodes = [];
-          const area = width * height;
-          const suggested = Math.round(area / 42000);
-          const count = Math.max(35, Math.min(90, suggested));
-          for (let i = 0; i < count; i++) {
-            nodes.push(new Node(Math.random() * width, Math.random() * height));
-          }
-        };
-
-        const connectNodes = () => {
-          for (let i = 0; i < nodes.length; i++) {
-            for (let j = i + 1; j < nodes.length; j++) {
-              const dx = nodes[i].x - nodes[j].x;
-              const dy = nodes[i].y - nodes[j].y;
-              const distance = Math.sqrt(dx * dx + dy * dy);
-              if (distance < 130) {
-                ctx.beginPath();
-                ctx.moveTo(nodes[i].x, nodes[i].y);
-                ctx.lineTo(nodes[j].x, nodes[j].y);
-                ctx.strokeStyle = `rgba(109, 74, 255, ${(1 - distance / 130) * 0.16})`;
-                ctx.lineWidth = 0.4;
-                ctx.stroke();
-              }
-            }
-          }
-        };
-
-        let running = true;
-        const animate = () => {
-          if (!running) return;
-          ctx.clearRect(0, 0, width, height);
-          nodes.forEach((node) => {
-            node.update();
-            node.draw();
-          });
-          connectNodes();
-          requestAnimationFrame(animate);
-        };
-
-        resizeCanvas();
-        initNodes();
-        requestAnimationFrame(animate);
-
-        document.addEventListener('visibilitychange', () => {
-          running = !document.hidden;
-          if (running) requestAnimationFrame(animate);
-        });
-
-        const handleResize = () => {
-          const prevWidth = width;
-          const prevHeight = height;
-          resizeCanvas();
-          if (Math.abs(width - prevWidth) > 1 || Math.abs(height - prevHeight) > 1) {
-            initNodes();
-          }
-        };
-
-        window.addEventListener('resize', handleResize, { passive: true });
-
-      }
-    } catch (err) {
-      console.warn('Canvas init failed:', err);
-    }
-
-
     // Smooth scrolling for anchors
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', (event) => {
@@ -379,6 +258,8 @@
     };
 
     const getCurrentLang = () => {
+      const docLang = (document.documentElement.lang || '').slice(0, 2);
+      if (['en', 'ru', 'he'].includes(docLang)) return docLang;
       const path = window.location.pathname;
       if (path.startsWith('/ru/') || path === '/ru') return 'ru';
       if (path.startsWith('/he/') || path === '/he') return 'he';
@@ -390,7 +271,7 @@
         nameRequired: 'Please enter your name.',
         emailInvalid: 'Enter a valid email address.',
         messageMinLength: 'Message should be at least 10 characters.',
-        messageMaxLength: 'Message should not exceed 500 characters.',
+        messageMaxLength: 'Message should not exceed 1500 characters.',
         messageInvalidChars: 'Message contains unsupported control characters.',
         sending: 'Sending...',
         success: 'Message sent. We reply within 24 hours.',
@@ -402,7 +283,7 @@
         nameRequired: 'Пожалуйста, введите ваше имя.',
         emailInvalid: 'Введите действительный адрес электронной почты.',
         messageMinLength: 'Сообщение должно содержать не менее 10 символов.',
-        messageMaxLength: 'Сообщение не должно превышать 500 символов.',
+        messageMaxLength: 'Сообщение не должно превышать 1500 символов.',
         messageInvalidChars: 'Сообщение содержит неподдерживаемые служебные символы.',
         sending: 'Отправка...',
         success: 'Сообщение отправлено. Мы ответим в течение 24 часов.',
@@ -414,7 +295,7 @@
         nameRequired: 'הזינו את השם שלכם.',
         emailInvalid: 'הזינו כתובת אימייל תקינה.',
         messageMinLength: 'ההודעה צריכה להכיל לפחות 10 תווים.',
-        messageMaxLength: 'ההודעה לא צריכה לעלות על 500 תווים.',
+        messageMaxLength: 'ההודעה לא צריכה לעלות על 1500 תווים.',
         messageInvalidChars: 'ההודעה מכילה תווי בקרה שאינם נתמכים.',
         sending: 'שולחים...',
         success: 'ההודעה נשלחה. נחזור אליכם תוך 24 שעות.',
@@ -453,7 +334,7 @@
       if (messageValue.length < 10) {
         setFieldError(message, t.messageMinLength);
         valid = false;
-      } else if (messageValue.length > 500) {
+      } else if (messageValue.length > 1500) {
         setFieldError(message, t.messageMaxLength);
         valid = false;
       } else {
@@ -478,10 +359,10 @@
       const updateCounter = () => {
         if (!messageField || !messageCounter) return;
         const length = messageField.value.length;
-        messageCounter.textContent = `${length}/500`;
-        if (length > 450) {
+        messageCounter.textContent = `${length}/1500`;
+        if (length > 1400) {
           messageCounter.style.color = 'var(--accent)';
-        } else if (length > 400) {
+        } else if (length > 1200) {
           messageCounter.style.color = 'var(--secondary)';
         } else {
           messageCounter.style.color = 'var(--text-secondary)';
@@ -504,9 +385,9 @@
             e.target.setSelectionRange(cursorPos - 1, cursorPos - 1);
           }
 
-          // Cap at 500 characters
-          if (e.target.value.length > 500) {
-            e.target.value = e.target.value.substring(0, 500);
+          // Cap at 1500 characters
+          if (e.target.value.length > 1500) {
+            e.target.value = e.target.value.substring(0, 1500);
           }
 
           updateCounter();
@@ -545,7 +426,7 @@
         }
 
         // Sanitise the message before sending: drop only control characters, keep normal punctuation and currency signs.
-        const sanitizeMessage = (value) => value.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').substring(0, 500);
+        const sanitizeMessage = (value) => value.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').substring(0, 1500);
 
         // Service-page forms tag the request so the team sees which service it came from.
         const context = form.dataset.context ? `[${form.dataset.context}] ` : '';
@@ -602,13 +483,23 @@
       navigator.serviceWorker.getRegistrations().then((registrations) => {
         for (const registration of registrations) {
           registration.unregister();
-          console.log('Service Worker unregistered');
         }
       });
     }
 
     // Active nav link state
     try {
+      const allNavLinks = Array.from(document.querySelectorAll('.nav-menu a'));
+      const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+      allNavLinks.forEach((link) => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        const linkPath = href.split('#')[0].replace(/\/$/, '') || '/';
+        if (linkPath === currentPath && currentPath !== '/' && currentPath !== '/ru' && currentPath !== '/he') {
+          link.setAttribute('aria-current', 'page');
+        }
+      });
+
       const navLinks = Array.from(document.querySelectorAll('.nav-menu a[href^="#"]'));
       const sectionIds = navLinks
         .map((link) => link.getAttribute('href') || '')
@@ -735,7 +626,7 @@
         const payload = {
           name,
           email: emailLike ? channel : 'case-lead@hellsec.dev',
-          message: `Case discuss: ${caseTitle}\nPreferred channel: ${channel}\n\n${context}`.substring(0, 500),
+          message: `Case discuss: ${caseTitle}\nPreferred channel: ${channel}\n\n${context}`.substring(0, 1500),
           lang
         };
         try {
