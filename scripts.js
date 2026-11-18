@@ -651,5 +651,17 @@
       });
     });
 
+    // Interactive card cursor spotlight (Linear / CrowdStrike design)
+    if (window.matchMedia('(hover: hover)').matches) {
+      const cards = document.querySelectorAll('.service-card, .product-teaser, .stat-row li, .operator-card, .case-card, .case-index-card');
+      cards.forEach((card) => {
+        card.addEventListener('pointermove', (event) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`);
+        }, { passive: true });
+      });
+    }
+
   });
 })();
