@@ -2,6 +2,19 @@
 
 Notable changes to hellsec.dev. Newest first. Commit history has the details.
 
+## 2026-11-18 – Linear / CrowdStrike dark cyber redesign
+
+- Complete visual transformation to a sleek Dark Cyber aesthetic (Linear & CrowdStrike Falcon design system) across all 40 HTML pages (EN, RU, HE RTL).
+- Color system: unified deep obsidian `#07070f` palette with ambient glowing violet/indigo mesh lighting and a subtle 28px cyber dot matrix texture.
+- Security Telemetry Console: overhauled hero interactive preview into a CrowdStrike Falcon / Linear style SOC console featuring glowing traffic light dots, monospace telemetry status bar, risk-highlighted metric tiles, and an indigo summary card.
+- Modern Linear Buttons: signature violet-indigo micro-gradients with top specular highlights (`inset 0 1px 0 rgba(255, 255, 255, 0.35)`), hover blooms, and glassmorphic ghost buttons.
+- Frosted Acrylic Glass Navigation: permanent dark frosted glass navbar (`backdrop-filter: blur(20px)`), subtle 1px border highlight, glowing brand mark accent, and live telemetry badge.
+- Services Grid: converted clunky centered pills into sleek left-aligned glass cards with glowing violet checkmarks (`✓`), interactive cursor-following radial glow (`--mx`, `--my`), and animated CTA arrows.
+- Process Pipeline: glowing electric violet timeline connector with glowing node icons and monospace step indicators (`01`–`05`).
+- Unified Dark Surfaces: replaced all hardcoded light cards (`#ffffff`) in Case Studies, Team/Operator cards, About page principles, and FAQ accordions with dark glassmorphic surfaces.
+- Forms & Controls: dark glass inputs with neon violet focus auras and responsive validation.
+- Cookie Banner: dark frosted glass floating bar matching the cyber aesthetic.
+
 ## 2026-11-18 – Comprehensive project optimization, SEO and cleanup
 
 - Removed dead Canvas engine: eliminated `<canvas id="neural-bg">` from all 30 HTML pages, removed dead CSS rules in `style.css`, and removed 120 lines of unused animation code from `scripts.js`.
