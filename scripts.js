@@ -117,6 +117,9 @@
         event.preventDefault();
         const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
         target.scrollIntoView({ behavior, block: 'start' });
+        if (href !== '#main' && history.replaceState) {
+          history.replaceState(null, '', href);
+        }
         // Move keyboard focus too, so "Skip to content" and section links work for keyboard and screen reader users.
         if (!target.matches('a, button, input, select, textarea, [tabindex]')) target.setAttribute('tabindex', '-1');
         target.focus({ preventScroll: true });
@@ -520,12 +523,15 @@
       };
 
       const updateActiveLink = () => {
-        let current = observed.length ? observed[0].id : '';
+        let current = '';
         for (const section of observed) {
           const rect = section.getBoundingClientRect();
-          if (rect.top <= 120) current = section.id;
+          if (rect.top <= 180) current = section.id;
         }
-        if (current) setAriaCurrent(current);
+        if (observed.length && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40) {
+          current = observed[observed.length - 1].id;
+        }
+        setAriaCurrent(current);
       };
 
       window.addEventListener('scroll', updateActiveLink, { passive: true });
