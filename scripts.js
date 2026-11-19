@@ -659,7 +659,9 @@
 
     // Interactive card cursor spotlight (Linear / CrowdStrike design)
     if (window.matchMedia('(hover: hover)').matches) {
-      const cards = document.querySelectorAll('.service-card, .product-teaser, .stat-row li, .operator-card, .case-card, .case-index-card');
+      const cards = document.querySelectorAll(
+        '.service-card, .product-teaser, .stat-row li, .operator-card, .case-card, .case-index-card, .timeline-step, .service-step, .principle, .about-person, .fit-card, .why-card'
+      );
       cards.forEach((card) => {
         card.addEventListener('pointermove', (event) => {
           const rect = card.getBoundingClientRect();
@@ -668,6 +670,191 @@
         }, { passive: true });
       });
     }
+
+    // Neon scroll progress bar along bottom edge of navbar
+    (function initScrollProgress() {
+      const navbar = document.getElementById('navbar');
+      if (!navbar) return;
+      const bar = document.createElement('div');
+      bar.className = 'scroll-progress';
+      bar.setAttribute('aria-hidden', 'true');
+      navbar.appendChild(bar);
+      let ticking = false;
+      const update = () => {
+        ticking = false;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+        bar.style.transform = `scaleX(${ratio})`;
+      };
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      }, { passive: true });
+      update();
+    })();
+
+    // Interactive Hero SOC Console tabs + Threat Telemetry SVG sparkline
+    (function initHeroSocConsole() {
+      const consoleEl = document.querySelector('.command-console');
+      if (!consoleEl) return;
+      const toplineSpan = consoleEl.querySelector('.command-topline span');
+      const metricStrongs = Array.from(consoleEl.querySelectorAll('.command-metrics > div strong'));
+      const noteP = consoleEl.querySelector('.command-ai-note p');
+      const metricsBox = consoleEl.querySelector('.command-metrics');
+      if (!toplineSpan || metricStrongs.length !== 4 || !noteP || !metricsBox) return;
+
+      const lang = (document.documentElement.lang || 'en').slice(0, 2);
+      const initialTitle = toplineSpan.textContent.trim();
+      const initialValues = metricStrongs.map((el) => el.textContent.trim());
+      const initialNote = noteP.textContent.trim();
+
+      const presetsByLang = {
+        en: {
+          sparkLabel: 'Telemetry posture',
+          tabs: [
+            { label: 'Pre-launch', title: initialTitle, values: initialValues, note: initialNote, sparkVal: '98.4% HARDENED', path: 'M0 22 L28 18 L54 20 L84 11 L114 15 L146 7 L176 10 L206 5 L240 4' },
+            { label: 'Live audit', title: 'Production API & access review', values: ['0', '1', '4', '12'], note: 'One high finding in webhook token scope. Patch verified and rate limits enforced.', sparkVal: '99.1% VERIFIED', path: 'M0 24 L30 16 L60 19 L92 14 L124 9 L156 12 L188 6 L216 5 L240 3' },
+            { label: 'AI hardening', title: 'Agent tools & data boundaries', values: ['0', '0', '3', '9'], note: 'Least-privilege tool scopes applied. Prompt boundaries and audit logs tested.', sparkVal: 'ZERO-TRUST PASS', path: 'M0 20 L34 17 L68 12 L102 13 L136 8 L170 6 L204 4 L240 2' }
+          ]
+        },
+        ru: {
+          sparkLabel: 'Профиль защищённости',
+          tabs: [
+            { label: 'Пре-релиз', title: initialTitle, values: initialValues, note: initialNote, sparkVal: '98.4% ЗАЩИТА', path: 'M0 22 L28 18 L54 20 L84 11 L114 15 L146 7 L176 10 L206 5 L240 4' },
+            { label: 'Аудит прода', title: 'Проверка API и прав доступа', values: ['0', '1', '4', '12'], note: 'Один высокий риск в правах webhook-токена. Патч проверен, лимиты включены.', sparkVal: '99.1% ПРОВЕРЕНО', path: 'M0 24 L30 16 L60 19 L92 14 L124 9 L156 12 L188 6 L216 5 L240 3' },
+            { label: 'Защита AI', title: 'Границы доступа AI-агентов', values: ['0', '0', '3', '9'], note: 'Настроены минимальные права инструментов, аудит-логи и защита данных.', sparkVal: 'ZERO-TRUST OK', path: 'M0 20 L34 17 L68 12 L102 13 L136 8 L170 6 L204 4 L240 2' }
+          ]
+        },
+        he: {
+          sparkLabel: 'מדד אבטחה',
+          tabs: [
+            { label: 'לפני השקה', title: initialTitle, values: initialValues, note: initialNote, sparkVal: '98.4% מוקשח', path: 'M0 22 L28 18 L54 20 L84 11 L114 15 L146 7 L176 10 L206 5 L240 4' },
+            { label: 'בדיקת פרודקשן', title: 'בדיקת API והרשאות גישה', values: ['0', '1', '4', '12'], note: 'ממצא גבוה אחד בהרשאות webhook. התיקון אומת והגבלות קצב הופעלו.', sparkVal: '99.1% מאומת', path: 'M0 24 L30 16 L60 19 L92 14 L124 9 L156 12 L188 6 L216 5 L240 3' },
+            { label: 'הקשחת AI', title: 'גבולות גישה לסוכני AI', values: ['0', '0', '3', '9'], note: 'הרשאות מינימליות הוגדרו לכלים, עם יומני ביקורת ובדיקת דליפות.', sparkVal: 'ZERO-TRUST OK', path: 'M0 20 L34 17 L68 12 L102 13 L136 8 L170 6 L204 4 L240 2' }
+          ]
+        }
+      };
+
+      const cfg = presetsByLang[lang] || presetsByLang.en;
+
+      const tabList = document.createElement('div');
+      tabList.className = 'soc-tabs';
+      tabList.setAttribute('role', 'tablist');
+
+      const sparkWrap = document.createElement('div');
+      sparkWrap.className = 'soc-sparkline';
+      sparkWrap.innerHTML =
+        `<div class="soc-sparkline-meta"><span class="soc-sparkline-label">${cfg.sparkLabel}</span><span class="soc-sparkline-val">${cfg.tabs[0].sparkVal}</span></div>` +
+        `<svg viewBox="0 0 240 28" preserveAspectRatio="none" aria-hidden="true">` +
+        `<defs>` +
+        `<linearGradient id="soc-spark-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#7c5cff"/><stop offset="55%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#34d399"/></linearGradient>` +
+        `<linearGradient id="soc-spark-fill" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="rgba(56,189,248,0.22)"/><stop offset="100%" stop-color="rgba(56,189,248,0)"/></linearGradient>` +
+        `</defs>` +
+        `<path class="soc-spark-area" d="${cfg.tabs[0].path} L240 28 L0 28 Z"/>` +
+        `<path class="soc-spark-line" d="${cfg.tabs[0].path}"/>` +
+        `</svg>`;
+
+      const sparkValEl = sparkWrap.querySelector('.soc-sparkline-val');
+      const sparkLineEl = sparkWrap.querySelector('.soc-spark-line');
+      const sparkAreaEl = sparkWrap.querySelector('.soc-spark-area');
+
+      const buttons = cfg.tabs.map((tab, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'soc-tab';
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+        btn.textContent = tab.label;
+        btn.addEventListener('click', () => {
+          buttons.forEach((b, i) => b.setAttribute('aria-selected', i === idx ? 'true' : 'false'));
+          toplineSpan.textContent = tab.title;
+          tab.values.forEach((v, i) => { metricStrongs[i].textContent = v; });
+          noteP.textContent = tab.note;
+          sparkValEl.textContent = tab.sparkVal;
+          sparkLineEl.setAttribute('d', tab.path);
+          sparkAreaEl.setAttribute('d', `${tab.path} L240 28 L0 28 Z`);
+        });
+        tabList.appendChild(btn);
+        return btn;
+      });
+
+      metricsBox.parentNode.insertBefore(tabList, metricsBox);
+      metricsBox.insertAdjacentElement('afterend', sparkWrap);
+    })();
+
+    // Quick-select topic chips in main contact form (reduces friction, sets form.dataset.context)
+    (function initContactTopicChips() {
+      const form = document.querySelector('#contact .contact-form');
+      if (!form) return;
+      const msgGroup = form.querySelector('textarea[name="message"]')?.closest('.form-group');
+      if (!msgGroup) return;
+
+      const lang = (document.documentElement.lang || 'en').slice(0, 2);
+      const copy = {
+        en: {
+          label: 'Topic (optional)',
+          topics: ['Secure Product R&D', 'Cybersecurity Audit', 'AI Agents & Automation', 'OSINT', 'AI Center']
+        },
+        ru: {
+          label: 'Направление (необязательно)',
+          topics: ['Разработка R&D', 'Аудит безопасности', 'AI-агенты и автоматизация', 'OSINT', 'AI Center']
+        },
+        he: {
+          label: 'נושא הפנייה (אופציונלי)',
+          topics: ['פיתוח מאובטח', 'בדיקת אבטחה', 'סוכני AI ואוטומציה', 'OSINT', 'AI Center']
+        }
+      }[lang] || {
+        label: 'Topic (optional)',
+        topics: ['Secure Product R&D', 'Cybersecurity Audit', 'AI Agents & Automation', 'OSINT', 'AI Center']
+      };
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'topic-picker';
+      const labelEl = document.createElement('span');
+      labelEl.className = 'topic-picker-label';
+      labelEl.textContent = copy.label;
+      const chipsBox = document.createElement('div');
+      chipsBox.className = 'topic-chips';
+      chipsBox.setAttribute('role', 'group');
+      chipsBox.setAttribute('aria-label', copy.label);
+
+      const selected = new Set();
+      copy.topics.forEach((topic) => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'topic-chip';
+        chip.setAttribute('aria-pressed', 'false');
+        chip.textContent = topic;
+        chip.addEventListener('click', () => {
+          if (selected.has(topic)) {
+            selected.delete(topic);
+            chip.classList.remove('is-active');
+            chip.setAttribute('aria-pressed', 'false');
+          } else {
+            selected.add(topic);
+            chip.classList.add('is-active');
+            chip.setAttribute('aria-pressed', 'true');
+          }
+          form.dataset.context = Array.from(selected).join(', ');
+        });
+        chipsBox.appendChild(chip);
+      });
+
+      form.addEventListener('reset', () => {
+        selected.clear();
+        form.dataset.context = '';
+        chipsBox.querySelectorAll('.topic-chip').forEach((c) => {
+          c.classList.remove('is-active');
+          c.setAttribute('aria-pressed', 'false');
+        });
+      });
+
+      wrapper.appendChild(labelEl);
+      wrapper.appendChild(chipsBox);
+      msgGroup.parentNode.insertBefore(wrapper, msgGroup);
+    })();
 
   });
 })();
